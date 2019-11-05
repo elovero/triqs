@@ -1,0 +1,268 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>triqs::gfs::gf_mesh&lt;cartesian_product&lt;Vs…&gt;&gt; &#8212; TRIQS 2.2.0 documentation</title>
+    <link rel="stylesheet" href="../../../../_static/triqs2.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="../../../../" src="../../../../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../../../_static/language_data.js"></script>
+    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=default"></script>
+    <link rel="author" title="About these documents" href="../../../../about.html" />
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" />
+    <link rel="next" title="triqs::gfs::gf_mesh&lt;cartesian_product&lt;Vs…&gt;&gt;::constructor" href="gf_meshLTcartesian_productLTVs...GTGT/constructor.html" />
+    <link rel="prev" title="triqs::gfs::gf_const_view::operator&lt;&lt;" href="gf_const_view/operator&lt;&lt;.html" />
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300,400,700' rel='stylesheet' type='text/css'>
+    <script src="../../../../_static/cufon-yui.js" type="text/javascript"></script>
+    <script src="../../../../_static/spaceman.cufonfonts.js" type="text/javascript"></script>
+    <script type="text/javascript">
+      Cufon.replace('.triqs', { fontFamily: 'spaceman', hover: true }); 
+    </script>
+ 
+    <style type="text/css">
+      table.right { float: right; margin-left: 20px; }
+      table.right td { border: 1px solid #ccc; }
+      
+    </style>
+
+  </head><body>
+<div class="pageheader">
+  <ul>
+    
+    <li><a href="../../../../install.html">Install</a></li>
+    
+    <li><a href="../../../../documentation.html">Documentation</a></li>
+    
+    <li><a href="../../../../userguide.html">User guide</a></li>
+    
+    <li><a href="../../../../applications.html">Applications</a></li>
+    
+    <li><a href="../../../../contributing.html">Contributing</a></li>
+    
+    <li><a href="../../../../about.html">About TRIQS</a></li>
+    
+  </ul>
+  <div>
+    <h1 style="padding:0; margin: 10px 0 0 0;"><a class="triqs" href="../../../../index.html">triqs</a></h1>
+    <span style="font-size: 14px; margin: 0px; padding: 0px;">a Toolbox for Research on Interacting Quantum Systems</span>
+  </div>
+</div>
+
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../../../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="gf_meshLTcartesian_productLTVs...GTGT/constructor.html" title="triqs::gfs::gf_mesh&lt;cartesian_product&lt;Vs…&gt;&gt;::constructor"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="gf_const_view/operator<<.html" title="triqs::gfs::gf_const_view::operator&lt;&lt;"
+             accesskey="P">previous</a> |</li>
+    <li><a href="../../../../index.html">Home</a> &raquo;</li>
+
+          <li class="nav-item nav-item-1"><a href="../../../../documentation.html" >Documentation</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="../../contents.html" >&lt;no title&gt;</a> &#187;</li>
+          <li class="nav-item nav-item-3"><a href="../gfs.html" accesskey="U">triqs::gfs</a> &#187;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../../../../contents.html">Table of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">triqs::gfs::gf_mesh&lt;cartesian_product&lt;Vs…&gt;&gt;</a><ul>
+<li><a class="reference internal" href="#member-types">Member types</a></li>
+<li><a class="reference internal" href="#member-functions">Member functions</a></li>
+<li><a class="reference internal" href="#non-member-functions">Non Member functions</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="gf_const_view/operator&lt;&lt;.html"
+                        title="previous chapter">triqs::gfs::gf_const_view::operator&lt;&lt;</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="gf_meshLTcartesian_productLTVs...GTGT/constructor.html"
+                        title="next chapter">triqs::gfs::gf_mesh&lt;cartesian_product&lt;Vs…&gt;&gt;::constructor</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../../../../_sources/documentation/cpp_api/triqs/gfs/gf_meshLTcartesian_productLTVs...GTGT.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="triqs-gfs-gf-mesh-cartesian-product-vs">
+<span id="triqs-gfs-gf-meshltcartesian-productltvs-gtgt"></span><h1>triqs::gfs::gf_mesh&lt;cartesian_product&lt;Vs…&gt;&gt;<a class="headerlink" href="#triqs-gfs-gf-mesh-cartesian-product-vs" title="Permalink to this headline">¶</a></h1>
+<p><em>#include &lt;triqs/gfs.hpp&gt;</em></p>
+<p class="cppsynopsis">template&lt;typename Vs&gt; class  <span class="red">gf_mesh&lt;cartesian_product&lt;Vs…&gt;&gt;</span></p>
+<p>Cartesian product of meshes</p>
+<div class="section" id="member-types">
+<h2>Member types<a class="headerlink" href="#member-types" title="Permalink to this headline">¶</a></h2>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 13%" />
+<col style="width: 60%" />
+<col style="width: 27%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>domain_t</p></td>
+<td><p>domain_product&lt;typename gf_mesh&lt;Vs&gt;::domain_t…&gt;</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>m_tuple_t</p></td>
+<td><p>std::tuple&lt;gf_mesh&lt;Vs&gt;…&gt;</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>ms_tuple_t</p></td>
+<td><p>std::tuple&lt;Vs…&gt;</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>m_pt_tuple_t</p></td>
+<td><p>std::tuple&lt;typename gf_mesh&lt;Vs&gt;::mesh_point_t…&gt;</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>domain_pt_t</p></td>
+<td><p>typename domain_t::point_t</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>linear_index_t</p></td>
+<td><p>std::tuple&lt;typename gf_mesh&lt;Vs&gt;::linear_index_t…&gt;</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>var_t</p></td>
+<td><p>cartesian_product&lt;Vs…&gt;</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>mesh_point_t</p></td>
+<td><p>mesh_point&lt;gf_mesh&lt;cartesian_product&lt;type-parameter-0-0…&gt; &gt; &gt;</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>const_iterator</p></td>
+<td><p>mesh_pt_generator&lt;gf_mesh&lt;cartesian_product&lt;type-parameter-0-0…&gt; &gt; &gt;</p></td>
+<td><p>Iterating on all the points…</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="member-functions">
+<h2>Member functions<a class="headerlink" href="#member-functions" title="Permalink to this headline">¶</a></h2>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 98%" />
+<col style="width: 2%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="gf_meshLTcartesian_productLTVs...GTGT/constructor.html#triqs-gfs-gf-meshltcartesian-productltvs-gtgt-constructor"><span class="std std-ref">(constructor)</span></a></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="gf_meshLTcartesian_productLTVs...GTGT/operator==.html#triqs-gfs-gf-meshltcartesian-productltvs-gtgt-operator"><span class="std std-ref">operator==</span></a></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="gf_meshLTcartesian_productLTVs...GTGT/size.html#triqs-gfs-gf-meshltcartesian-productltvs-gtgt-size"><span class="std std-ref">size</span></a></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="gf_meshLTcartesian_productLTVs...GTGT/size_of_components.html#triqs-gfs-gf-meshltcartesian-productltvs-gtgt-size-of-components"><span class="std std-ref">size_of_components</span></a></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="gf_meshLTcartesian_productLTVs...GTGT/is_within_boundary.html#triqs-gfs-gf-meshltcartesian-productltvs-gtgt-is-within-boundary"><span class="std std-ref">is_within_boundary</span></a></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="gf_meshLTcartesian_productLTVs...GTGT/index_to_point.html#triqs-gfs-gf-meshltcartesian-productltvs-gtgt-index-to-point"><span class="std std-ref">index_to_point</span></a></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="gf_meshLTcartesian_productLTVs...GTGT/index_to_linear.html#triqs-gfs-gf-meshltcartesian-productltvs-gtgt-index-to-linear"><span class="std std-ref">index_to_linear</span></a></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="gf_meshLTcartesian_productLTVs...GTGT/mp_to_linear.html#triqs-gfs-gf-meshltcartesian-productltvs-gtgt-mp-to-linear"><span class="std std-ref">mp_to_linear</span></a></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="gf_meshLTcartesian_productLTVs...GTGT/operator[].html#triqs-gfs-gf-meshltcartesian-productltvs-gtgt-operator"><span class="std std-ref">operator[]</span></a></p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<div class="toctree-wrapper compound">
+</div>
+</div>
+<div class="section" id="non-member-functions">
+<h2>Non Member functions<a class="headerlink" href="#non-member-functions" title="Permalink to this headline">¶</a></h2>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 98%" />
+<col style="width: 2%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="gf_meshLTcartesian_productLTVs...GTGT/h5_write.html#triqs-gfs-gf-meshltcartesian-productltvs-gtgt-h5-write"><span class="std std-ref">h5_write</span></a></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="gf_meshLTcartesian_productLTVs...GTGT/h5_read.html#triqs-gfs-gf-meshltcartesian-productltvs-gtgt-h5-read"><span class="std std-ref">h5_read</span></a></p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<div class="toctree-wrapper compound">
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../../../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="gf_meshLTcartesian_productLTVs...GTGT/constructor.html" title="triqs::gfs::gf_mesh&lt;cartesian_product&lt;Vs…&gt;&gt;::constructor"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="gf_const_view/operator<<.html" title="triqs::gfs::gf_const_view::operator&lt;&lt;"
+             >previous</a> |</li>
+    <li><a href="../../../../index.html">Home</a> &raquo;</li>
+
+          <li class="nav-item nav-item-1"><a href="../../../../documentation.html" >Documentation</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="../../contents.html" >&lt;no title&gt;</a> &#187;</li>
+          <li class="nav-item nav-item-3"><a href="../gfs.html" >triqs::gfs</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2011-2017, The TRIQS collaboration.
+    </div>
+  </body>
+</html>

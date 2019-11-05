@@ -17,7 +17,7 @@
 # If your extensions are in another directory, add it here. If the directory
 # is relative to the documentation root, use os.path.abspath to make it
 # absolute, like shown here.
-#sys.path.append(os.path.abspath('.'))
+# sys.path.append(os.path.abspath('.'))
 
 # General configuration
 # ---------------------
@@ -36,7 +36,7 @@ extensions = ['sphinx.ext.autodoc',
               ]
 
 mathjax_path = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=default"
-print "Mathjax: ",mathjax_path
+print "Mathjax: ", mathjax_path
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['./_templates']
@@ -77,8 +77,8 @@ release = '2.2.0'
 
 # List of directories, relative to source directory, that shouldn't be searched
 # for source files.
-exclude_trees = ['build','html','sphinxext'] #, 'triqs']
-exclude_patterns = ['sphinxext/*'] # For Sphinx 1.3 and later
+exclude_trees = ['build', 'html', 'sphinxext']  # , 'triqs']
+exclude_patterns = ['sphinxext/*']  # For Sphinx 1.3 and later
 
 # The reST default role (used for this markup: `text`) to use for all documents.
 #default_role = None
@@ -105,7 +105,7 @@ pygments_style = 'sphinx'
 # given in html_static_path.
 #html_style = 'default.css'
 html_theme_path = ["./themes/"]
-html_theme = "triqs"
+html_theme = "triqs2"
 html_show_sphinx = False
 html_context = {'header_title': 'triqs',
                 'header_subtitle': 'a Toolbox for Research on Interacting Quantum Systems',
@@ -115,7 +115,7 @@ html_context = {'header_title': 'triqs',
                                  ['Applications', 'applications'],
                                  ['Contributing', 'contributing'],
                                  ['About TRIQS', 'about']
-                                                       ]}
+                                 ]}
 
 #html_theme_options = { "pagewidth": "80em", "documentwidth": "60em" }
 
@@ -192,9 +192,9 @@ htmlhelp_basename = 'TRIQSdoc'
 # Grouping the document tree into LaTeX files. List of tuples
 # (source start file, target name, title, author, document class [howto/manual]).
 latex_documents = [
-        ('contents', 'TRIQS.tex', ur'TRIQS Documentation',
-            ur'2011, The TRIQS collaboration', 'manual'),
-        ]
+    ('contents', 'TRIQS.tex', ur'TRIQS Documentation',
+     ur'2011, The TRIQS collaboration', 'manual'),
+]
 
 # The name of an image file (relative to this directory) to place at the top of
 # the title page.
@@ -212,6 +212,3 @@ latex_documents = [
 
 # If false, no module index is generated.
 #latex_use_modindex = True
-
-
-
