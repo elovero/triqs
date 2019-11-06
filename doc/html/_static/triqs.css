@@ -14,8 +14,9 @@
 /* -- page layout ----------------------------------------------------------- */
 
 body {
-    font-family: 'Open Sans', 'Lucida Grande', 'Lucida Sans Unicode', 'Geneva',
-                 'Verdana', sans-serif;
+    /* font-family: itc-avant-garde-gothic-pro, 'Lucida Grande', 'Lucida Sans Unicode', 'Geneva',
+                 'Verdana', sans-serif; */
+                 font-family: granville, serif;
     font-size: 14px;
     text-align: center;
     background-image: url(bodybg.png);
@@ -24,9 +25,9 @@ body {
     border-right: 1px solid #0a507a;
     border-left: 1px solid #0a507a;
 
-    /* margin: 0 auto; */
+    margin: 0 auto;
     min-width: 780px;
-    max-width: 95vw;
+    max-width: 1080px;
 }
 
 

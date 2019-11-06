@@ -14,8 +14,9 @@
 /* -- page layout ----------------------------------------------------------- */
 
 body {
-    font-family: 'Open Sans', 'Lucida Grande', 'Lucida Sans Unicode', 'Geneva',
-                 'Verdana', sans-serif;
+    /* font-family: itc-avant-garde-gothic-pro, 'Lucida Grande', 'Lucida Sans Unicode', 'Geneva',
+                 'Verdana', sans-serif; */
+                 font-family: granville, serif;
     font-size: 14px;
     text-align: center;
     background-image: url(bodybg.png);

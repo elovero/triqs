@@ -403,3 +403,25 @@
   }
   align-content: $value;
 }
+
+$breakpointsArr: (
+  "sm": 48em,
+  "md": 62em,
+  "lg": 75em
+) !default;
+
+@mixin breakpoint($breakpointClass) {
+  // If the key exists in the map
+  @if map-has-key($breakpointsArr, $breakpointClass) {
+    // Prints a media query based on the value
+    @media only screen and (min-width: map-get($breakpointsArr, $breakpointClass)) {
+      @content;
+    }
+  }
+
+  // If the key doesn't exist in the map
+  @else {
+    @warn "Unfortunately, no value could be retrieved from `#{$breakpointClass}`. "
+        + "Available breakpoints are: #{map-keys($breakpointsArr)}.";
+  }
+}

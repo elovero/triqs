@@ -1,2 +1,39 @@
 /* List
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
+ul {
+  list-style: circle inside;
+  padding-left: 0;
+  margin-top: 0;
+  margin-bottom: 2.5rem;
+  ul {
+    margin: 1.5rem 0 1.5rem 3rem;
+    font-size: 90%;
+  }
+  ol {
+    margin: 1.5rem 0 1.5rem 3rem;
+    font-size: 90%;
+  }
+}
+ol {
+  list-style: decimal inside;
+  padding-left: 0;
+  margin-top: 0;
+  margin-bottom: 2.5rem;
+  ol {
+    margin: 1.5rem 0 1.5rem 3rem;
+    font-size: 90%;
+  }
+  ul {
+    margin: 1.5rem 0 1.5rem 3rem;
+    font-size: 90%;
+  }
+}
+li {
+  margin-bottom: 1rem;
+}
+blockquote {
+  margin-bottom: 2.5rem;
+}
+dl {
+  margin-bottom: 2.5rem;
+}
