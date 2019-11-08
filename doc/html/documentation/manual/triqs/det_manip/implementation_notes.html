@@ -18,60 +18,50 @@
     <link rel="search" title="Search" href="../../../../search.html" />
     <link rel="next" title="Green’s functions" href="../gfs/contents.html" />
     <link rel="prev" title="The det_manip class" href="det_manip.html" />
-<link rel="stylesheet" href="https://use.typekit.net/hsv6sot.css" />
-<!-- <script
-  src="../../../../_static/cufon-yui.js"
-  type="text/javascript"
-></script>
-<script
-  src="../../../../_static/spaceman.cufonfonts.js"
-  type="text/javascript"
-></script>
-<script type="text/javascript">
-  Cufon.replace(".triqs", { fontFamily: "spaceman", hover: true });
-</script> -->
- 
-<style type="text/css">
-  table.right { float: right; margin-left: 20px; }
-  table.right td { border: 1px solid #ccc; }
-  
-</style> 
+  <link rel="stylesheet" href="https://use.typekit.net/fkx2tpr.css" />
+
   </head><body>
-<div class="pageheader">
-  <ul>
-    
-    <li>
-      <a href="../../../../install.html">Install</a>
-    </li>
-    
-    <li>
-      <a href="../../../../documentation.html">Documentation</a>
-    </li>
-    
-    <li>
-      <a href="../../../../userguide.html">User guide</a>
-    </li>
-    
-    <li>
-      <a href="../../../../applications.html">Applications</a>
-    </li>
-    
-    <li>
-      <a href="../../../../contributing.html">Contributing</a>
-    </li>
-    
-    <li>
-      <a href="../../../../about.html">About TRIQS</a>
-    </li>
-    
-  </ul>
-  <div>
-    <h1 style="padding:0; margin: 10px 0 0 0;">
-      <a class="triqs" href="../../../../index.html">triqs</a>
-    </h1>
-    <span style="font-size: 14px; margin: 0px; padding: 0px;">a Toolbox for Research on Interacting Quantum Systems</span>
-  </div>
-</div>
+  <header class="header">
+    <nav class="header-content">
+      <div class="row header-row">
+        <div class="col-xs-2 logo-col">
+          <div class="row start-xs">
+            <div class="nav-item">
+              <a class="nav-link" href="/"
+                ><span class="nav-logo">TRIQS</span></a
+              >
+            </div>
+          </div>
+        </div>
+        <div class="col-xs-6">
+          <div class="row">
+            <div class="nav-item">
+              <a class="nav-link" href="/">Docs</a>
+            </div>
+            <div class="nav-item">
+              <a class="nav-link" href="/">Tutorials</a>
+            </div>
+            <div class="nav-item">
+              <a class="nav-link" href="/">Applications</a>
+            </div>
+            <div class="nav-item">
+              <a class="nav-link" href="/">Community</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-xs-4">
+          <div class="row end-xs">
+            <div class="nav-item">
+              <a class="nav-link" href="/">About</a>
+            </div>
+            <div class="nav-item">
+              <a class="nav-link" href="/">Github</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </header>
 
     <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
@@ -94,48 +84,7 @@
           <li class="nav-item nav-item-2"><a href="../../contents.html" >&lt;no title&gt;</a> &#187;</li>
           <li class="nav-item nav-item-3"><a href="contents.html" accesskey="U">Manipulations of determinants</a> &#187;</li> 
       </ul>
-    </div>
-      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
-        <div class="sphinxsidebarwrapper">
-  <h3><a href="../../../../contents.html">Table of Contents</a></h3>
-  <ul>
-<li><a class="reference internal" href="#">How does it work ?</a><ul>
-<li><a class="reference internal" href="#cofactors">Cofactors</a></li>
-<li><a class="reference internal" href="#the-sherman-morrison-formula">The Sherman-Morrison formula</a></li>
-<li><a class="reference internal" href="#addition-of-a-line-and-a-column-or-more">Addition of a line and a column, or more</a></li>
-<li><a class="reference internal" href="#removal-of-a-line-and-a-column-or-more">Removal of a line and a column, or more</a></li>
-<li><a class="reference internal" href="#change-of-a-column">Change of a column</a></li>
-<li><a class="reference internal" href="#change-of-a-line">Change of a line</a></li>
-<li><a class="reference internal" href="#change-of-a-line-and-a-column">Change of a line and a column</a></li>
-</ul>
-</li>
-</ul>
-
-  <h4>Previous topic</h4>
-  <p class="topless"><a href="det_manip.html"
-                        title="previous chapter">The det_manip class</a></p>
-  <h4>Next topic</h4>
-  <p class="topless"><a href="../gfs/contents.html"
-                        title="next chapter">Green’s functions</a></p>
-  <div role="note" aria-label="source link">
-    <h3>This Page</h3>
-    <ul class="this-page-menu">
-      <li><a href="../../../../_sources/documentation/manual/triqs/det_manip/implementation_notes.rst.txt"
-            rel="nofollow">Show Source</a></li>
-    </ul>
-   </div>
-<div id="searchbox" style="display: none" role="search">
-  <h3 id="searchlabel">Quick search</h3>
-    <div class="searchformwrapper">
-    <form class="search" action="../../../../search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" />
-      <input type="submit" value="Go" />
-    </form>
-    </div>
-</div>
-<script type="text/javascript">$('#searchbox').show(0);</script>
-        </div>
-      </div>
+    </div>  
 
     <div class="document">
       <div class="documentwrapper">
@@ -311,6 +260,47 @@ C &amp; D \end{pmatrix}.\end{split}\]</div>
 
 
           </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../../../../contents.html">Table of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">How does it work ?</a><ul>
+<li><a class="reference internal" href="#cofactors">Cofactors</a></li>
+<li><a class="reference internal" href="#the-sherman-morrison-formula">The Sherman-Morrison formula</a></li>
+<li><a class="reference internal" href="#addition-of-a-line-and-a-column-or-more">Addition of a line and a column, or more</a></li>
+<li><a class="reference internal" href="#removal-of-a-line-and-a-column-or-more">Removal of a line and a column, or more</a></li>
+<li><a class="reference internal" href="#change-of-a-column">Change of a column</a></li>
+<li><a class="reference internal" href="#change-of-a-line">Change of a line</a></li>
+<li><a class="reference internal" href="#change-of-a-line-and-a-column">Change of a line and a column</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="det_manip.html"
+                        title="previous chapter">The det_manip class</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="../gfs/contents.html"
+                        title="next chapter">Green’s functions</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../../../../_sources/documentation/manual/triqs/det_manip/implementation_notes.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
         </div>
       </div>
       <div class="clearer"></div>

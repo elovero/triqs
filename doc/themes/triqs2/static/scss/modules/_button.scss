@@ -7,7 +7,9 @@
   color: $color_4;
   text-align: center;
   font-size: 11px;
-  font-weight: 600;
+  font-family: $font_button_family;
+  font-weight: $font_button_weight;
+  font-style: $font_button_style;
   line-height: 38px;
   letter-spacing: 0.1rem;
   text-transform: uppercase;
@@ -37,7 +39,9 @@ button {
   color: $color_4;
   text-align: center;
   font-size: 11px;
-  font-weight: 600;
+  font-family: $font_button_family;
+  font-weight: $font_button_weight;
+  font-style: $font_button_style;
   line-height: 38px;
   letter-spacing: 0.1rem;
   text-transform: uppercase;
@@ -70,7 +74,9 @@ input[type="submit"] {
   color: $color_4;
   text-align: center;
   font-size: 11px;
-  font-weight: 600;
+  font-family: $font_button_family;
+  font-weight: $font_button_weight;
+  font-style: $font_button_style;
   line-height: 38px;
   letter-spacing: 0.1rem;
   text-transform: uppercase;
@@ -99,7 +105,9 @@ input[type="reset"] {
   color: $color_4;
   text-align: center;
   font-size: 11px;
-  font-weight: 600;
+  font-family: $font_button_family;
+  font-weight: $font_button_weight;
+  font-style: $font_button_style;
   line-height: 38px;
   letter-spacing: 0.1rem;
   text-transform: uppercase;
@@ -128,7 +136,9 @@ input[type="button"] {
   color: $color_4;
   text-align: center;
   font-size: 11px;
-  font-weight: 600;
+  font-family: $font_button_family;
+  font-weight: $font_button_weight;
+  font-style: $font_button_style;
   line-height: 38px;
   letter-spacing: 0.1rem;
   text-transform: uppercase;

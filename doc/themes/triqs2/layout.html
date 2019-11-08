@@ -1,48 +1,57 @@
-{# layout.html ~~~~~~~~~~~ TRIQS layout template heavily based on the sphinxdoc
-theme. :copyright: Copyright 2013 by the TRIQS team. :copyright: Copyright
-2007-2013 by the Sphinx team. :license: BSD, see LICENSE for details. #} {%-
-extends "basic/layout.html" %} {# put the sidebar before the body #} {% block
-sidebar1 %}{{ sidebar() }}{% endblock %} {% block sidebar2 %}{% endblock %} {%
-block extrahead %}
-<link rel="stylesheet" href="https://use.typekit.net/hsv6sot.css" />
-<!-- <script
-  src="{{ pathto('_static/cufon-yui.js', 1) }}"
-  type="text/javascript"
-></script>
-<script
-  src="{{ pathto('_static/spaceman.cufonfonts.js', 1) }}"
-  type="text/javascript"
-></script>
-<script type="text/javascript">
-  Cufon.replace(".triqs", { fontFamily: "spaceman", hover: true });
-</script> -->
-{{ super() }}
-{%- if not embedded %}
-<style type="text/css">
-  table.right { float: right; margin-left: 20px; }
-  table.right td { border: 1px solid #ccc; }
-  {% if pagename == 'index' %}
-  .related { display: none; }
-  {% endif %}
-</style>
-{%- endif %} {% endblock %} {% block rootrellink %}
+{# layout.html ~~~~~~~~~~~
+TRIQS2 layout template.
+:copyright: Copyright 2019, Elizabeth Lovero for the TRIQS team.#}
+
+{%-extends "basic/layout.html" %}
+
+{% block extrahead %}
+  <link rel="stylesheet" href="https://use.typekit.net/fkx2tpr.css" />
+{% endblock %}
+
+{% block rootrellink %}
 <li><a href="{{ pathto('index') }}">Home</a> &raquo;</li>
-{% endblock %} {% block header %}
-<div class="pageheader">
-  <ul>
-    {% for header_link in header_links %}
-    <li>
-      <a href="{{ pathto(header_link[1]) }}">{{ header_link[0] }}</a>
-    </li>
-    {% endfor %}
-  </ul>
-  <div>
-    <h1 style="padding:0; margin: 10px 0 0 0;">
-      <a class="triqs" href="{{ pathto('index') }}">{{ header_title }}</a>
-    </h1>
-    <span style="font-size: 14px; margin: 0px; padding: 0px;">{{
-      header_subtitle
-    }}</span>
-  </div>
-</div>
+{% endblock %}
+
+{% block header %}
+  <header class="header">
+    <nav class="header-content">
+      <div class="row header-row">
+        <div class="col-xs-2 logo-col">
+          <div class="row start-xs">
+            <div class="nav-item">
+              <a class="nav-link" href="/"
+                ><span class="nav-logo">TRIQS</span></a
+              >
+            </div>
+          </div>
+        </div>
+        <div class="col-xs-6">
+          <div class="row">
+            <div class="nav-item">
+              <a class="nav-link" href="/">Docs</a>
+            </div>
+            <div class="nav-item">
+              <a class="nav-link" href="/">Tutorials</a>
+            </div>
+            <div class="nav-item">
+              <a class="nav-link" href="/">Applications</a>
+            </div>
+            <div class="nav-item">
+              <a class="nav-link" href="/">Community</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-xs-4">
+          <div class="row end-xs">
+            <div class="nav-item">
+              <a class="nav-link" href="/">About</a>
+            </div>
+            <div class="nav-item">
+              <a class="nav-link" href="/">Github</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </header>
 {% endblock %}

@@ -1,6 +1,8 @@
 @charset "UTF-8";
 /* Variables
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
+/* Font Notes
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
 /* Reset
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 html {
@@ -213,21 +215,33 @@ template,
 /* NOTE
 html is set to 62.5% so that all the REM measurements throughout Skeleton
 are based on 10px sizing. So basically 1.5rem = 15px :) */
+html {
+  font-size: 62.5%;
+}
+
 body {
-  background: #eee;
+  background: #fbf9f8;
   box-sizing: border-box;
-  color: #222;
-  font-family: granville, "granville", Times, serif;
+  color: #131415;
+  font-family: utopia-std, serif;
   font-weight: 400;
-  font-size: 1.5em;
+  font-style: normal;
+  font-size: 1.5rem;
   line-height: 1.6;
   margin: 0;
   padding: 0;
+  display: flex;
+  min-height: calc(100vh - 40px);
+  flex-direction: column;
 }
 @media only screen and (min-width: 48em) {
   body body {
     font-size: 1.6rem;
   }
+}
+
+.main {
+  margin-top: 100px;
 }
 
 /* Typography
@@ -240,73 +254,84 @@ h5,
 h6 {
   margin-top: 0;
   margin-bottom: 2rem;
-  font-weight: 300;
-  font-family: granville, "granville", Times, serif;
 }
 
 h1 {
-  font-size: 4rem;
+  font-size: 2rem;
   line-height: 1.2;
   letter-spacing: -0.1rem;
+  font-family: synthese, sans-serif;
+  font-weight: 900;
+  font-style: normal;
 }
 @media only screen and (min-width: 48em) {
   h1 {
-    font-size: 5rem;
+    font-size: 3.2rem;
   }
 }
 
 h2 {
-  font-size: 3.6rem;
+  font-size: 1.5rem;
   line-height: 1.25;
   letter-spacing: -0.1rem;
+  font-family: synthese, sans-serif;
+  font-weight: 700;
+  font-style: normal;
 }
 @media only screen and (min-width: 48em) {
   h2 {
-    font-size: 4.2rem;
+    font-size: 2.4rem;
   }
 }
 
 h3 {
-  font-size: 3rem;
+  font-size: 1.17rem;
   line-height: 1.3;
   letter-spacing: -0.1rem;
+  font-family: utopia-std, serif;
+  font-weight: 700;
+  font-style: normal;
 }
 @media only screen and (min-width: 48em) {
   h3 {
-    font-size: 3.6rem;
+    font-size: 1.9rem;
   }
 }
 
 h4 {
-  font-size: 2.4rem;
+  font-size: 1rem;
   line-height: 1.35;
   letter-spacing: -0.08rem;
+  font-family: synthese, sans-serif;
+  font-weight: 900;
+  font-style: normal;
+  text-transform: uppercase;
 }
 @media only screen and (min-width: 48em) {
   h4 {
-    font-size: 3rem;
+    font-size: 1.6rem;
   }
 }
 
 h5 {
-  font-size: 1.8rem;
+  font-size: 0.83rem;
   line-height: 1.5;
   letter-spacing: -0.05rem;
 }
 @media only screen and (min-width: 48em) {
   h5 {
-    font-size: 2.4rem;
+    font-size: 1.4rem;
   }
 }
 
 h6 {
-  font-size: 1.5rem;
+  font-size: 0.67rem;
   line-height: 1.6;
   letter-spacing: 0;
 }
 @media only screen and (min-width: 48em) {
   h6 {
-    font-size: 1.5rem;
+    font-size: 1.3rem;
   }
 }
 
@@ -317,18 +342,21 @@ h6 {
 
 p {
   margin-top: 0;
+  font-family: utopia-std, serif;
+  font-weight: 400;
+  font-style: normal;
 }
 
 /* Links
-  –––––––––––––––––––––––––––––––––––––––––––––––––– */
+    –––––––––––––––––––––––––––––––––––––––––––––––––– */
 a {
   text-decoration: none;
-  color: #004ca3;
+  color: #dc2828;
   padding: 0 0 0.2em;
   font-weight: 700;
 }
 a:hover {
-  color: #007fff;
+  color: #f48d64;
 }
 
 /* Grid
@@ -344,6 +372,7 @@ a:hover {
   margin-left: auto;
   padding-right: 2rem;
   padding-left: 2rem;
+  max-width: 1820px;
 }
 
 .row {
@@ -2635,20 +2664,144 @@ a:hover {
 
 /* Header
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
+.header {
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.25);
+  transition: 0.3s;
+  position: fixed;
+  z-index: 1;
+  width: 100%;
+  top: 0;
+  left: 0;
+  background-color: #fbf9f8;
+  font-family: synthese, sans-serif;
+  font-weight: 900;
+  font-style: normal;
+}
+
+.header-content {
+  padding-left: 20px;
+  padding-right: 20px;
+  margin-right: auto;
+  margin-left: auto;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  color: #131415;
+}
+@media only screen and (min-width: 62em) {
+  .header-content {
+    font-size: 1.2rem;
+    height: 100px;
+  }
+}
+@media only screen and (min-width: 75em) {
+  .header-content {
+    max-width: 1820px;
+  }
+}
+
+.header-row {
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+@media only screen and (min-width: 48em) {
+  .header-row {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: baseline;
+    padding: 0.8rem 0;
+  }
+}
+
+.header-subrow {
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+@media only screen and (min-width: 48em) {
+  .header-subrow {
+    flex-direction: row;
+    align-items: baseline;
+    justify-content: flex-end;
+  }
+}
+
+.nav-item {
+  padding: 1rem;
+}
+
+.nav-logo {
+  color: #dc2828 !important;
+  font-family: synthese, sans-serif;
+  font-style: normal;
+  font-weight: 900;
+  font-size: 2rem;
+}
+@media only screen and (min-width: 48em) {
+  .nav-logo {
+    font-size: 3rem;
+  }
+}
+
 /* Navigation
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 /* Sidebar
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
+.sidebar {
+  position: fixed;
+  right: 0px;
+  top: 0;
+  width: 300px;
+  background-color: pink;
+  min-height: 100%;
+  opacity: 1 !important;
+}
+
+.sidebar-container {
+  margin-top: 120px;
+  padding-right: 20px;
+  overflow-y: auto;
+}
+
+.sidebar-header {
+  font-size: 1.4rem;
+  font-weight: 700;
+  line-height: 3;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  border: none;
+  padding: none !important;
+}
+
+.sidebar-header-link {
+  color: var(--fi-gray);
+}
+
+.sidebar-header-carat {
+  width: 10px;
+  height: 10px;
+}
+
+.sidebar-row {
+  padding: 0 2rem;
+}
+
+.sidebar-ul {
+  list-style: none;
+}
+
 /* Buttons
   –––––––––––––––––––––––––––––––––––––––––––––––––– */
 .button {
   display: inline-block;
   height: 38px;
   padding: 0 30px;
-  color: #555;
+  color: #54423b;
   text-align: center;
   font-size: 11px;
-  font-weight: 600;
+  font-family: synthese, sans-serif;
+  font-weight: 900;
+  font-style: normal;
   line-height: 38px;
   letter-spacing: 0.1rem;
   text-transform: uppercase;
@@ -2676,10 +2829,12 @@ button {
   display: inline-block;
   height: 38px;
   padding: 0 30px;
-  color: #555;
+  color: #54423b;
   text-align: center;
   font-size: 11px;
-  font-weight: 600;
+  font-family: synthese, sans-serif;
+  font-weight: 900;
+  font-style: normal;
   line-height: 38px;
   letter-spacing: 0.1rem;
   text-transform: uppercase;
@@ -2711,10 +2866,12 @@ input[type=submit] {
   display: inline-block;
   height: 38px;
   padding: 0 30px;
-  color: #555;
+  color: #54423b;
   text-align: center;
   font-size: 11px;
-  font-weight: 600;
+  font-family: synthese, sans-serif;
+  font-weight: 900;
+  font-style: normal;
   line-height: 38px;
   letter-spacing: 0.1rem;
   text-transform: uppercase;
@@ -2741,10 +2898,12 @@ input[type=reset] {
   display: inline-block;
   height: 38px;
   padding: 0 30px;
-  color: #555;
+  color: #54423b;
   text-align: center;
   font-size: 11px;
-  font-weight: 600;
+  font-family: synthese, sans-serif;
+  font-weight: 900;
+  font-style: normal;
   line-height: 38px;
   letter-spacing: 0.1rem;
   text-transform: uppercase;
@@ -2771,10 +2930,12 @@ input[type=button] {
   display: inline-block;
   height: 38px;
   padding: 0 30px;
-  color: #555;
+  color: #54423b;
   text-align: center;
   font-size: 11px;
-  font-weight: 600;
+  font-family: synthese, sans-serif;
+  font-weight: 900;
+  font-style: normal;
   line-height: 38px;
   letter-spacing: 0.1rem;
   text-transform: uppercase;
@@ -3145,7 +3306,7 @@ code {
   background: #f1f1f1;
   border: 1px solid #e1e1e1;
   border-radius: 4px;
-  color: #004ca3;
+  color: #dc2828;
 }
 
 /* Table

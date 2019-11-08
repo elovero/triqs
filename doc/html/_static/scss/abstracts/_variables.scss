@@ -1,14 +1,12 @@
 /* Variables
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
-$color_1: #222;
-$color_2: #004ca3;
-$color_3: #007fff;
-$color_4: #555;
+$color_1: #131415;
+$color_2: rgb(220, 40, 40);
+$color_3: #f48d64;
+$color_4: #54423b;
 $color_5: #333;
 $color_6: #fff;
-$font_family_sans: itc-avant-garde-gothic-pro, "itc-avant-garde-gothic-pro",
-  Helvetica, Arial, "Lucida Grande", sans-serif;
-$font_family_serif: granville, "granville", Times, serif;
+$background-color_0: #fbf9f8;
 $background_color_1: transparent;
 $background_color_2: #33c3f0;
 $background_color_3: #1eaedb;
@@ -17,3 +15,59 @@ $border_color_1: #888;
 $border_color_2: #33c3f0;
 $border_color_3: #1eaedb;
 $outline_color_1: transparent;
+// Logo - .nav-logo
+$font_logo_family: synthese, sans-serif;
+$font_logo_weight: 900;
+$font_logo_style: normal;
+// Navigation - .header
+$font_navigation_family: synthese, sans-serif;
+$font_navigation_weight: 900;
+$font_navigation_style: normal;
+// Headline - h1
+$font_headline_family: synthese, sans-serif;
+$font_headline_weight: 900;
+$font_headline_style: normal;
+// Body text header - h2
+$font_body_text_header_family: synthese, sans-serif;
+$font_body_text_header_weight: 700;
+$font_body_text_header_style: normal;
+// Summary - h3
+$font_summary_family: utopia-std, serif;
+$font_summary_weight: 700;
+$font_summary_style: normal;
+// Byline - h4
+$font_byline_family: synthese, sans-serif;
+$font_byline_weight: 900;
+$font_byline_style: normal;
+// Body text
+$font_body_text_family: utopia-std, serif;
+$font_body_text_weight: 400;
+$font_body_text_style: normal;
+// Button
+$font_button_family: synthese, sans-serif;
+$font_button_weight: 900;
+$font_button_style: normal;
+
+/* Font Notes
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+// LOGO
+// IBM Plex Mono 500 Italic
+// NAVIGATION
+// IBM Plex Mono 700
+// HEADLINE
+// IBM Plex Sans Condensed 700
+// SUMMARY
+// IBM Plex Serif 500
+// BYLINE/DATE
+// IBM Plex Mono 700
+// BODY TEXT
+// IBM Plex Serif 400
+// BODY TEXT HEADER
+// IBM Plex Sans 700
+// BUTTON
+// IBM Plex Mono 700
+
+// font-family: "IBM Plex Sans", sans-serif;
+// font-family: "IBM Plex Mono", monospace;
+// font-family: "IBM Plex Serif", serif;
+// font-family: "IBM Plex Sans Condensed", sans-serif;

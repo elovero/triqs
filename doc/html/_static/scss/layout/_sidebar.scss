@@ -1,2 +1,42 @@
 /* Sidebar
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
+.sidebar {
+  position: fixed;
+  right: 0px;
+  top: 0;
+  width: 300px;
+  //   background-color: rgb(247, 247, 247);
+  background-color: pink;
+  min-height: 100%;
+  opacity: 1 !important;
+}
+
+.sidebar-container {
+  margin-top: 120px;
+  padding-right: 20px;
+  overflow-y: auto;
+}
+
+.sidebar-header {
+  font-size: 1.4rem;
+  font-weight: 700;
+  line-height: 3;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  border: none;
+  padding: none !important;
+}
+.sidebar-header-link {
+  color: var(--fi-gray);
+}
+.sidebar-header-carat {
+  width: 10px;
+  height: 10px;
+}
+.sidebar-row {
+  padding: 0 2rem;
+}
+
+.sidebar-ul {
+  list-style: none;
+}

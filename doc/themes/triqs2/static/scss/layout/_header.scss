@@ -1,2 +1,75 @@
 /* Header
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
+.header {
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.25);
+  transition: 0.3s;
+  position: fixed;
+  z-index: 1;
+  width: 100%;
+  top: 0;
+  left: 0;
+  background-color: $background-color_0;
+  font-family: $font_navigation_family;
+  font-weight: $font_navigation_weight;
+  font-style: $font_navigation_style;
+}
+
+.header-content {
+  padding-left: 20px;
+  padding-right: 20px;
+  margin-right: auto;
+  margin-left: auto;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  color: $color_1;
+
+  @include breakpoint("md") {
+    font-size: 1.2rem;
+    height: 100px;
+  }
+
+  @include breakpoint("lg") {
+    max-width: 1820px;
+  }
+}
+
+.header-row {
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  @include breakpoint("sm") {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: baseline;
+    padding: 0.8rem 0;
+  }
+}
+
+.header-subrow {
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  @include breakpoint("sm") {
+    flex-direction: row;
+    align-items: baseline;
+    justify-content: flex-end;
+  }
+}
+
+.nav-item {
+  padding: 1rem;
+}
+
+.nav-logo {
+  color: $color_2 !important;
+  font-family: $font_logo_family;
+  font-style: $font_logo_style;
+  font-weight: $font_logo_weight;
+  font-size: 2rem;
+
+  @include breakpoint("sm") {
+    font-size: 3rem;
+  }
+}
