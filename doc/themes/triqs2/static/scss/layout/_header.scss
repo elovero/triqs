@@ -21,7 +21,6 @@
   margin-left: auto;
   font-size: 0.8rem;
   text-transform: uppercase;
-  color: $color_1;
 
   @include breakpoint("md") {
     font-size: 1.2rem;
@@ -72,4 +71,8 @@
   @include breakpoint("sm") {
     font-size: 3rem;
   }
+}
+
+.nav-link {
+  color: $color_1;
 }

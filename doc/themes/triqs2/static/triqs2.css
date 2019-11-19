@@ -235,15 +235,21 @@ body {
   flex-direction: column;
 }
 @media only screen and (min-width: 48em) {
-  body body {
+  body {
     font-size: 1.6rem;
   }
 }
 
-.main {
+.document {
   margin-top: 100px;
 }
 
+@media only screen and (min-width: 48em) {
+  .section {
+    width: calc(100% - 300px);
+    padding-top: 60px;
+  }
+}
 /* Typography
   –––––––––––––––––––––––––––––––––––––––––––––––––– */
 h1,
@@ -367,11 +373,12 @@ a:hover {
   margin: 0 auto;
 }
 
-.container-fluid {
+.container-fluid,
+.documentwrapper {
   margin-right: auto;
   margin-left: auto;
-  padding-right: 2rem;
-  padding-left: 2rem;
+  padding-right: 4rem;
+  padding-left: 4rem;
   max-width: 1820px;
 }
 
@@ -2653,13 +2660,81 @@ a:hover {
 }
 /* Footer
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
-.footer {
+footer {
   background-color: #20232a;
   color: #fff;
   padding: 2.5rem 0;
   border-top: 0.05rem solid #e5e5e5;
   font-size: 1.6rem;
   z-index: 10;
+}
+
+.footer > p.updated {
+  color: #282828;
+}
+
+.footer p:last-child {
+  margin-bottom: 0;
+}
+
+.footer__description {
+  line-height: 1.5;
+  text-align: center;
+  padding: 0 1rem;
+  margin: 2rem auto;
+  max-width: 50rem;
+  /* color: rgb(42, 42, 42); */
+  background: #222;
+  color: #fff;
+}
+
+.footer__interwebs {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  justify-content: center;
+  max-width: 50rem;
+  margin: 2rem auto;
+  padding: 1rem;
+}
+
+.footer__interwebs a {
+  border: none;
+  margin-right: 0.5em;
+}
+
+.footer__links {
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
+  flex-wrap: wrap;
+}
+
+.footer__links li {
+  margin: 0.25rem 0.5rem;
+  list-style-type: none;
+  font-size: 1.5rem;
+  line-height: 1.5;
+}
+
+.footer__links li a {
+  text-decoration: none;
+  border-bottom: 1px solid var(--fi-blue);
+  color: #fff;
+}
+
+.footer__location {
+  width: 100%;
+  text-align: center;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #fff;
+  font-size: 1.4rem;
+}
+
+.footer__emoji {
+  padding-left: 9px;
 }
 
 /* Header
@@ -2685,7 +2760,6 @@ a:hover {
   margin-left: auto;
   font-size: 0.8rem;
   text-transform: uppercase;
-  color: #131415;
 }
 @media only screen and (min-width: 62em) {
   .header-content {
@@ -2743,8 +2817,56 @@ a:hover {
   }
 }
 
+.nav-link {
+  color: #131415;
+}
+
 /* Navigation
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
+.related {
+  margin-top: 100px;
+  background-color: #fbf9f8;
+  font-family: synthese, sans-serif;
+  font-weight: 900;
+  font-style: normal;
+  width: 100%;
+}
+
+.related-content {
+  padding-left: 20px;
+  padding-right: 20px;
+  margin-right: auto;
+  margin-left: auto;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+@media only screen and (min-width: 48em) {
+  .related-content {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: baseline;
+    padding: 0.8rem 0;
+  }
+}
+@media only screen and (min-width: 62em) {
+  .related-content {
+    font-size: 1.2rem;
+    height: 100px;
+  }
+}
+@media only screen and (min-width: 75em) {
+  .related-content {
+    max-width: 1820px;
+  }
+}
+
+.related-content-item {
+  padding: 1rem;
+}
+
 /* Sidebar
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 .sidebar {

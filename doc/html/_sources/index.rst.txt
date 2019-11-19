@@ -12,7 +12,6 @@ Welcome
    This is the homepage TRIQS Version 2.2
    For the changes in 2.2, Cf :ref:`changelog page <changelog>`
 
-
 TRIQS (**T**\oolbox for **R**\esearch on **I**\nteracting **Q**\uantum **S**\ystems)
 is a scientific project providing a set of C++ and Python libraries to develop new tools
 for the study of interacting quantum systems.

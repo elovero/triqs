@@ -10,8 +10,7 @@ block extrahead %}
     <script type="text/javascript">
       Cufon.replace('.triqs', { fontFamily: 'spaceman', hover: true });
     </script> -->
-{{ super() }}
-{%- if not embedded %}
+{{ super() }} {%- if not embedded %}
 <style type="text/css">
   table.right { float: right; margin-left: 20px; }
   table.right td { border: 1px solid #ccc; }
@@ -34,9 +33,9 @@ block extrahead %}
     <h1 style="padding:0; margin: 10px 0 0 0;">
       <a class="triqs" href="{{ pathto('index') }}">{{ header_title }}</a>
     </h1>
-    <span style="font-size: 14px; margin: 0px; padding: 0px;">{{
-      header_subtitle
-    }}</span>
+    <span style="font-size: 14px; margin: 0px; padding: 0px;"
+      >{{ header_subtitle }}</span
+    >
   </div>
 </div>
 {% endblock %}
