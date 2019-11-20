@@ -3,14 +3,14 @@ Table of contents
 
 .. toctree::
    :maxdepth: 2
- 
-   index
-   install
-   documentation
-   applications
-   userguide
+
+   getting started
+   main concepts
+   code formulas
+   TRIQS-based applications
+   C++ API Reference
+   Python API Reference
    contributing
-   versions
    changelog
    about
    faqs

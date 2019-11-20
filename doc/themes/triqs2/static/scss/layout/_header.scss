@@ -1,18 +1,19 @@
 /* Header
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 .header {
-  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.25);
   transition: 0.3s;
   position: fixed;
   z-index: 1;
   width: 100%;
   top: 0;
   left: 0;
-  background-color: $background-color_0;
   font-family: $font_navigation_family;
   font-weight: $font_navigation_weight;
   font-style: $font_navigation_style;
+  background-color: $background_color_2;
+  border-bottom: 1px solid #a16eff;
 }
+// linear-gradient(90deg, #a16eff 0%, #3dcebb 100%)
 
 .header-content {
   padding-left: 20px;
@@ -24,7 +25,6 @@
 
   @include breakpoint("md") {
     font-size: 1.2rem;
-    height: 100px;
   }
 
   @include breakpoint("lg") {
@@ -41,7 +41,6 @@
     flex-direction: row;
     justify-content: space-between;
     align-items: baseline;
-    padding: 0.8rem 0;
   }
 }
 
@@ -67,12 +66,14 @@
   font-style: $font_logo_style;
   font-weight: $font_logo_weight;
   font-size: 2rem;
-
-  @include breakpoint("sm") {
-    font-size: 3rem;
-  }
 }
 
 .nav-link {
   color: $color_1;
+  font-weight: 700;
+  padding: 1rem;
+
+  &:hover {
+    color: $color_3;
+  }
 }
