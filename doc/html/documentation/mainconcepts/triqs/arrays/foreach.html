@@ -1,0 +1,268 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Loops: the foreach constructs &#8212; TRIQS Docs</title>
+    <link rel="stylesheet" href="../../../../_static/triqs2.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="../../../../" src="../../../../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../../../_static/language_data.js"></script>
+    <script type="text/javascript" src="../../../../_static/triqs2.js"></script>
+    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=default"></script>
+    <link rel="author" title="About these documents" href="../../../../about.html" />
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" />
+  <link rel="stylesheet" href="https://use.typekit.net/hsv6sot.css">
+  <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+
+  </head>
+<body class="layout">
+
+  <header class="header">
+    <nav class="header-content">
+      <div class="row header-row">
+        <div class="col-xs-2 logo-col">
+          <div class="row start-xs">
+            <div class="nav-item">
+              <a class="nav-link" href="/"
+                ><span class="nav-logo">TRIQS</span></a
+              >
+            </div>
+          </div>
+        </div>
+        <div class="col-xs-6">
+          <div class="row">
+            <div class="nav-item">
+              <a class="nav-link" href="/documentation.html">Docs</a>
+            </div>
+            <div class="nav-item">
+              <a class="nav-link" href="/tutorials.html">Tutorials</a>
+            </div>
+            <div class="nav-item">
+              <a class="nav-link" href="/applications.html">Applications</a>
+            </div>
+            <div class="nav-item">
+              <a class="nav-link" href="/community.html">Community</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-xs-4">
+          <div class="row end-xs">
+            <div class="nav-item">
+              <a class="nav-link" href="/about.html">About</a>
+            </div>
+            <div class="nav-item">
+              <a class="nav-link" target="_blank" rel="noopener noreferrer" href="https://github.com/TRIQS/triqs">Github</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </header>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="loops-the-foreach-constructs">
+<span id="foreach"></span><h1>Loops: the foreach constructs<a class="headerlink" href="#loops-the-foreach-constructs" title="Permalink to this headline">¶</a></h1>
+<p>foreach and its variants are a compact and efficient way to
+perform some action of the kind</p>
+<blockquote>
+<div><p><em>For all indices of the array, do something</em></p>
+</div></blockquote>
+<p>While this kind of construct is equivalent to write documentation/manually the <em>for</em> loops, it has
+several advantages:</p>
+<ul class="simple">
+<li><p>it is more compact, less error prone (one does not need to specify the bounds in the loop).</p></li>
+<li><p>The library orders the loops in way specified by the template parameters TraversalOrder (by default, the standard C order),
+to obtain the most efficient way to traverse the memory.</p></li>
+<li><p>it is easier to write generic code for array of several dimensions.</p></li>
+</ul>
+<div class="section" id="id1">
+<h2>foreach<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<p>The <em>foreach</em> function call a given function <em>f</em> successively on the indices of an array <em>A</em>,
+in the order specified by the TraversalOrder of the array.</p>
+<ul>
+<li><p>Synopsis:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">template</span> <span class="o">&lt;</span><span class="kr">typename</span> <span class="n">ArrayType</span><span class="p">,</span> <span class="kr">typename</span> <span class="n">Function</span><span class="o">&gt;</span>
+<span class="kt">void</span> <span class="n">foreach</span> <span class="p">(</span><span class="n">ArrayType</span> <span class="k">const</span> <span class="o">&amp;</span> <span class="n">A</span><span class="p">,</span> <span class="n">Function</span> <span class="n">F</span><span class="p">);</span>
+</pre></div>
+</div>
+<ul>
+<li><p>A is an array/matrix/vector or the corresponding view.</p></li>
+<li><p>The template is enabled iif ImmutableArray&lt;ArrayType&gt;::value == true</p></li>
+<li><p>F is a function with the following synopsis</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">F</span><span class="p">(</span><span class="kt">size_t</span> <span class="p">...</span> <span class="n">indices</span><span class="p">)</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</li>
+<li><p>The foreach algorithm is equivalent to</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">,</span><span class="n">k</span><span class="p">...)</span> <span class="n">F</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">,</span><span class="n">k</span><span class="p">...)</span>
+</pre></div>
+</div>
+</li>
+<li><p>The for loop are automatically organised to optimize the traversal order of A
+using the TraversalOrder of the array.</p></li>
+<li><p>As a result this is always equally or more optimized than a documentation/manually written loop.</p></li>
+</ul>
+<p>Example:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&lt;triqs/arrays.hpp&gt;</span><span class="cp"></span>
+<span class="n">using</span> <span class="n">triqs</span><span class="o">::</span><span class="n">arrays</span><span class="o">::</span><span class="n">array</span><span class="p">;</span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+  <span class="n">array</span><span class="o">&lt;</span><span class="kt">long</span><span class="p">,</span> <span class="mi">2</span><span class="o">&gt;</span> <span class="n">A</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">);</span>
+  <span class="n">foreach</span> <span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="p">[</span><span class="o">&amp;</span><span class="n">A</span><span class="p">](</span><span class="kt">size_t</span> <span class="n">i</span><span class="p">,</span> <span class="kt">size_t</span> <span class="n">j</span><span class="p">)</span> <span class="p">{</span> <span class="n">A</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">)</span> <span class="o">=</span> <span class="n">i</span> <span class="o">+</span> <span class="n">j</span><span class="p">;</span> <span class="p">})</span>
+    <span class="p">;</span>
+  <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot; A &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">A</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You <em>can</em> pass a std::function as Function, but it is not recommended in critical parts of the code.</p>
+<p>The indirection caused by std::function at each call may lead to big performance penalty.</p>
+<p>The call to  lambda, or a custom callable object will on the other hand by inlined.</p>
+</div>
+</div>
+<div class="section" id="assign-foreach">
+<h2>assign_foreach<a class="headerlink" href="#assign-foreach" title="Permalink to this headline">¶</a></h2>
+<p>assign_foreach is a simpler form that assigns the return value of the function to the array elements.
+Note that using the lazy expression is usually a lot simpler (except when you already have the function ready).</p>
+<p>Synopsis:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span> <span class="n">template</span> <span class="o">&lt;</span><span class="kr">typename</span> <span class="n">ArrayType</span><span class="p">,</span> <span class="kr">typename</span> <span class="n">Function</span><span class="o">&gt;</span>
+ <span class="kt">void</span> <span class="n">assign_foreach</span> <span class="p">(</span><span class="n">ArrayType</span> <span class="k">const</span> <span class="o">&amp;</span> <span class="n">A</span><span class="p">,</span> <span class="n">Function</span> <span class="n">F</span><span class="p">);</span>
+
+<span class="o">*</span> <span class="n">A</span> <span class="n">is</span> <span class="n">an</span> <span class="n">array</span><span class="o">/</span><span class="n">matrix</span><span class="o">/</span><span class="n">vector</span> <span class="n">or</span> <span class="n">the</span> <span class="n">corresponding</span> <span class="n">view</span><span class="p">.</span>
+<span class="o">*</span> <span class="n">The</span> <span class="n">template</span> <span class="n">is</span> <span class="n">enabled</span> <span class="n">iif</span> <span class="n">ImmutableArray</span><span class="o">&lt;</span><span class="n">ArrayType</span><span class="o">&gt;::</span><span class="n">value</span> <span class="o">==</span> <span class="nb">true</span>
+<span class="o">*</span> <span class="n">F</span> <span class="n">is</span> <span class="n">a</span> <span class="n">function</span> <span class="n">with</span> <span class="n">the</span> <span class="n">following</span> <span class="n">synopsis</span> <span class="o">::</span>
+
+  <span class="n">F</span><span class="p">(</span><span class="kt">size_t</span> <span class="p">...</span> <span class="n">indices</span><span class="p">)</span>
+</pre></div>
+</div>
+<ul>
+<li><p>The assign_foreach algorithm is equivalent to</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">,</span><span class="n">k</span><span class="p">...)</span> <span class="n">A</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">,</span><span class="n">k</span><span class="p">...)</span> <span class="o">=</span> <span class="n">F</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">,</span><span class="n">k</span><span class="p">...)</span>
+</pre></div>
+</div>
+</li>
+<li><p>The for loop are automatically organised to optimize the traversal order of A
+using the TraversalOrder of the array.</p></li>
+</ul>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&lt;triqs/arrays.hpp&gt;</span><span class="cp"></span>
+<span class="n">using</span> <span class="n">triqs</span><span class="o">::</span><span class="n">arrays</span><span class="o">::</span><span class="n">array</span><span class="p">;</span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+  <span class="n">array</span><span class="o">&lt;</span><span class="kt">long</span><span class="p">,</span> <span class="mi">2</span><span class="o">&gt;</span> <span class="n">A</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">);</span>
+  <span class="n">assign_foreach</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="p">[](</span><span class="kt">size_t</span> <span class="n">i</span><span class="p">,</span> <span class="kt">size_t</span> <span class="n">j</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="n">i</span> <span class="o">+</span> <span class="n">j</span><span class="p">;</span> <span class="p">});</span>
+  <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot; A &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">A</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Cf the note of the <em>foreach</em> function.</p>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper"><div class="sidebar">
+  <div class="container-fluid sidebar-container">
+      <div class="row sidebar-row">
+        <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../gettingstarted.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../mainconcepts.html">Main Concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../applications.html">Applications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../capiref.html">C++ API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../pythonapiref.html">Python API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../contributing.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../changelog.html">Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../about.html">About</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../faqs.html">FAQS</a></li>
+</ul>
+
+      </div>
+      <div class="row sidebar-row search-row">
+        <div
+          class="sidebar-section"
+          id="searchbox"
+          style="display: none"
+          role="search"
+        >
+          <div class="sidebar-header">
+            <a class="sidebar-header-link">Quick search</a>
+          </div>
+        </div>
+        <div class="searchformwrapper">
+          <form class="search" action="../../../../search.html" method="get">
+            <input type="text" name="q" aria-labelledby="searchlabel" />
+            <input type="submit" value="Go" />
+          </form>
+        </div>
+        <script type="text/javascript">
+          $("#searchbox").show(0);
+        </script>
+      </div>
+    </div>
+  </div>
+</div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+  <footer>
+    <div class="container-fluid">
+      <div class="row footer">
+        <div class="col-xs-12 center-xs middle-xs">
+          <p class="updated">Updated on November 20, 2019 (2:20pm)</p>
+          <div class="outro">
+            <p class="footer-description">
+              TRIQS (Toolbox for Research on Interacting Quantum Systems) is a
+              scientific project providing a set of C++ and Python libraries to
+              develop new tools for the study of interacting quantum systems based
+              at the Center for Computational Quantum Physics at the Flatiron
+              Institute.
+            </p>
+          </div>
+          <ul class="footer-links">
+            <li class="footer-link">
+              <a exact="true" href="/about.html">About</a>
+            </li>
+            <li class="footer-link">
+              <a
+                target="_blank"
+                rel="noopener noreferrer"
+                href="https://simonsfoundation.org"
+                >Simons Foundation</a
+              >
+            </li>
+            <li class="footer-link">
+              <a
+                target="_blank"
+                rel="noopener noreferrer"
+                href="https://flatironinstitute.org"
+                >Flatiron Institute</a
+              >
+            </li>
+            <li class="footer-link"><a exact="true" href="/">Github</a></li>
+            <li class="footer-link"><a exact="true" href="/contact">Contact</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  </body>
+</html>

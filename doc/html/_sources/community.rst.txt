@@ -1,6 +1,6 @@
 .. _community:
 
-COMMUNITY
+Community
 ===========
 
 Get support

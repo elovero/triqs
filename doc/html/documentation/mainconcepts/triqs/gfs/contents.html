@@ -1,0 +1,266 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Green’s functions &#8212; TRIQS Docs</title>
+    <link rel="stylesheet" href="../../../../_static/triqs2.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="../../../../" src="../../../../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../../../_static/language_data.js"></script>
+    <script type="text/javascript" src="../../../../_static/triqs2.js"></script>
+    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=default"></script>
+    <link rel="author" title="About these documents" href="../../../../about.html" />
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" />
+  <link rel="stylesheet" href="https://use.typekit.net/hsv6sot.css">
+  <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+
+  </head>
+<body class="layout">
+
+  <header class="header">
+    <nav class="header-content">
+      <div class="row header-row">
+        <div class="col-xs-2 logo-col">
+          <div class="row start-xs">
+            <div class="nav-item">
+              <a class="nav-link" href="/"
+                ><span class="nav-logo">TRIQS</span></a
+              >
+            </div>
+          </div>
+        </div>
+        <div class="col-xs-6">
+          <div class="row">
+            <div class="nav-item">
+              <a class="nav-link" href="/documentation.html">Docs</a>
+            </div>
+            <div class="nav-item">
+              <a class="nav-link" href="/tutorials.html">Tutorials</a>
+            </div>
+            <div class="nav-item">
+              <a class="nav-link" href="/applications.html">Applications</a>
+            </div>
+            <div class="nav-item">
+              <a class="nav-link" href="/community.html">Community</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-xs-4">
+          <div class="row end-xs">
+            <div class="nav-item">
+              <a class="nav-link" href="/about.html">About</a>
+            </div>
+            <div class="nav-item">
+              <a class="nav-link" target="_blank" rel="noopener noreferrer" href="https://github.com/TRIQS/triqs">Github</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </header>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="green-s-functions">
+<h1>Green’s functions<a class="headerlink" href="#green-s-functions" title="Permalink to this headline">¶</a></h1>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="basic_notions/contents.html">Basic notions</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="basic_notions/contents.html#types-of-green-s-functions">Types of Green’s functions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="basic_notions/contents.html#matsubara-green-s-function-in-imaginary-time-gfimtime"><span class="xref std std-ref">Matsubara Green’s function in imaginary time</span> &lt;GfImTime&gt;</a></li>
+<li class="toctree-l3"><a class="reference internal" href="basic_notions/contents.html#matsubara-green-s-function-in-imaginary-frequencies-gfimfreq"><span class="xref std std-ref">Matsubara Green’s function in imaginary frequencies</span> &lt;GfImFreq&gt;</a></li>
+<li class="toctree-l3"><a class="reference internal" href="basic_notions/contents.html#matsubara-green-s-function-with-legendre-polynomials-gflegendre"><span class="xref std std-ref">Matsubara Green’s function with Legendre polynomials</span> &lt;GfLegendre&gt;</a></li>
+<li class="toctree-l3"><a class="reference internal" href="basic_notions/contents.html#green-function-in-real-time-gfretime"><span class="xref std std-ref">Green function in real time</span> &lt;GfReTime&gt;</a></li>
+<li class="toctree-l3"><a class="reference internal" href="basic_notions/contents.html#retarded-green-s-function-in-real-frequencies-gfrefreq"><span class="xref std std-ref">Retarded Green’s function in real frequencies</span> &lt;GfReFreq&gt;</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="basic_notions/contents.html#fourier-and-legendre-transforms">Fourier and Legendre transforms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="basic_notions/contents.html#high-frequency-tail">High-frequency tail</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="c++/contents.html">c++</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="c++/gf_and_view.html">gf and views</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="c++/gf_and_view.html#template-parameters">Template parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="c++/gf_and_view.html#member-types">Member types</a></li>
+<li class="toctree-l3"><a class="reference internal" href="c++/gf_and_view.html#member-functions">Member functions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="c++/gf_and_view.html#non-member-functions">Non-member functions</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="c++/gf_special.html">Specializations</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="c++/gf_imfreq.html"><strong>[gf&lt;imfreq&gt;]</strong> Green function on Matsubara frequencies</a></li>
+<li class="toctree-l3"><a class="reference internal" href="c++/gf_imtime.html"><strong>[gf&lt;imtime&gt;]</strong> Matsubara imaginary time</a></li>
+<li class="toctree-l3"><a class="reference internal" href="c++/gf_refreq.html"><strong>[gf&lt;refreq&gt;]</strong> Real frequencies</a></li>
+<li class="toctree-l3"><a class="reference internal" href="c++/gf_retime.html"><strong>[gf&lt;retime&gt;]</strong> Real time</a></li>
+<li class="toctree-l3"><a class="reference internal" href="c++/gf_block.html"><strong>[block_gf&lt;T&gt;]</strong> Block Green functions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="c++/gf_legendre.html"><strong>[gf&lt;legendre&gt;]</strong> Legendre representation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="c++/gf_product.html"><strong>[gf&lt;cartesian_product&lt;X,Y,…&gt;&gt;]</strong> Multiple variables</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="c++/clef.html">Interaction with CLEF expressions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c++/fourier.html">Fourier transforms</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="c++/fourier.html#synopsis">Synopsis</a></li>
+<li class="toctree-l3"><a class="reference internal" href="c++/fourier.html#fourier">fourier</a></li>
+<li class="toctree-l3"><a class="reference internal" href="c++/fourier.html#example">Example</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="c++/tail.html">High-Frequency moments of the Green’s function</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="c++/tail.html#api">API</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="c++/concepts.html">Concepts</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="c++/concepts.html#domain">Domain</a></li>
+<li class="toctree-l3"><a class="reference internal" href="c++/concepts.html#purefunctionondomain">PureFunctionOnDomain</a></li>
+<li class="toctree-l3"><a class="reference internal" href="c++/concepts.html#mesh">Mesh</a></li>
+<li class="toctree-l3"><a class="reference internal" href="c++/concepts.html#meshpoint">MeshPoint</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="c++/implementation_notes.html">Implementation notes</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="py/contents.html">py</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="py/block.html">The blocks: matrix-valued Green’s functions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="py/block/GfImTime.html"><strong>[GfImTime]</strong> Matsubara Green’s function in imaginary time</a></li>
+<li class="toctree-l3"><a class="reference internal" href="py/block/GfImFreq.html"><strong>[GfImFreq]</strong> Matsubara Green’s function in imaginary frequencies</a></li>
+<li class="toctree-l3"><a class="reference internal" href="py/block/GfReTime.html"><strong>[GfReTime]</strong> Retarded Green’s function in real time</a></li>
+<li class="toctree-l3"><a class="reference internal" href="py/block/GfReFreq.html"><strong>[GfReFreq]</strong> Retarded Green’s function in real frequencies</a></li>
+<li class="toctree-l3"><a class="reference internal" href="py/block/GfLegendre.html"><strong>[GfLegendre]</strong> Matsubara Green’s function with Legendre polynomials</a></li>
+<li class="toctree-l3"><a class="reference internal" href="py/block.html#operations">Operations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="py/block.html#slicing">Slicing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="py/block.html#bracket-accessor">Bracket Accessor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="py/block.html#assignment-or-operator">Assignment: &lt;&lt; or = operator</a></li>
+<li class="toctree-l3"><a class="reference internal" href="py/block.html#lazy-expressions">Lazy expressions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="py/block.html#shelve-pickle">shelve / pickle</a></li>
+<li class="toctree-l3"><a class="reference internal" href="py/block.html#plot-options">Plot options</a></li>
+<li class="toctree-l3"><a class="reference internal" href="py/block.html#direct-access-to-data-points">Direct access to data points</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="py/full.html"><strong>BlockGf</strong>: The complete Green’s function</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="py/full.html#a-little-example">A little example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="py/full.html#reference">Reference</a></li>
+<li class="toctree-l3"><a class="reference internal" href="py/full.html#operations">Operations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="py/full.html#block-access">Block access</a></li>
+<li class="toctree-l3"><a class="reference internal" href="py/full.html#iterator">Iterator</a></li>
+<li class="toctree-l3"><a class="reference internal" href="py/full.html#view-or-copies">View or copies?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="py/full.html#shelve-pickle">shelve / pickle</a></li>
+<li class="toctree-l3"><a class="reference internal" href="py/full.html#hdf5">HDF5</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="py/transforms.html">Fourier and Legendre to Matsubara transforms</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="py/transforms.html#time-to-frequency">Time to frequency</a></li>
+<li class="toctree-l3"><a class="reference internal" href="py/transforms.html#legendre-to-matsubara">Legendre to Matsubara</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="py/tail.html">High-Frequency moments of the Green’s function</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="py/tail.html#python-api">Python API</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="py/tools.html">Tools for GFs</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper"><div class="sidebar">
+  <div class="container-fluid sidebar-container">
+      <div class="row sidebar-row">
+        <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../gettingstarted.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../mainconcepts.html">Main Concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../applications.html">Applications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../capiref.html">C++ API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../pythonapiref.html">Python API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../contributing.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../changelog.html">Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../about.html">About</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../faqs.html">FAQS</a></li>
+</ul>
+
+      </div>
+      <div class="row sidebar-row search-row">
+        <div
+          class="sidebar-section"
+          id="searchbox"
+          style="display: none"
+          role="search"
+        >
+          <div class="sidebar-header">
+            <a class="sidebar-header-link">Quick search</a>
+          </div>
+        </div>
+        <div class="searchformwrapper">
+          <form class="search" action="../../../../search.html" method="get">
+            <input type="text" name="q" aria-labelledby="searchlabel" />
+            <input type="submit" value="Go" />
+          </form>
+        </div>
+        <script type="text/javascript">
+          $("#searchbox").show(0);
+        </script>
+      </div>
+    </div>
+  </div>
+</div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+  <footer>
+    <div class="container-fluid">
+      <div class="row footer">
+        <div class="col-xs-12 center-xs middle-xs">
+          <p class="updated">Updated on November 20, 2019 (2:20pm)</p>
+          <div class="outro">
+            <p class="footer-description">
+              TRIQS (Toolbox for Research on Interacting Quantum Systems) is a
+              scientific project providing a set of C++ and Python libraries to
+              develop new tools for the study of interacting quantum systems based
+              at the Center for Computational Quantum Physics at the Flatiron
+              Institute.
+            </p>
+          </div>
+          <ul class="footer-links">
+            <li class="footer-link">
+              <a exact="true" href="/about.html">About</a>
+            </li>
+            <li class="footer-link">
+              <a
+                target="_blank"
+                rel="noopener noreferrer"
+                href="https://simonsfoundation.org"
+                >Simons Foundation</a
+              >
+            </li>
+            <li class="footer-link">
+              <a
+                target="_blank"
+                rel="noopener noreferrer"
+                href="https://flatironinstitute.org"
+                >Flatiron Institute</a
+              >
+            </li>
+            <li class="footer-link"><a exact="true" href="/">Github</a></li>
+            <li class="footer-link"><a exact="true" href="/contact">Contact</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  </body>
+</html>

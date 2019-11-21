@@ -1,0 +1,215 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>A lazy sum &#8212; TRIQS Docs</title>
+    <link rel="stylesheet" href="../../../../../_static/triqs2.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../../_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="../../../../../" src="../../../../../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../../../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../../../../_static/language_data.js"></script>
+    <script type="text/javascript" src="../../../../../_static/triqs2.js"></script>
+    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=default"></script>
+    <link rel="author" title="About these documents" href="../../../../../about.html" />
+    <link rel="index" title="Index" href="../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../search.html" />
+  <link rel="stylesheet" href="https://use.typekit.net/hsv6sot.css">
+  <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+
+  </head>
+<body class="layout">
+
+  <header class="header">
+    <nav class="header-content">
+      <div class="row header-row">
+        <div class="col-xs-2 logo-col">
+          <div class="row start-xs">
+            <div class="nav-item">
+              <a class="nav-link" href="/"
+                ><span class="nav-logo">TRIQS</span></a
+              >
+            </div>
+          </div>
+        </div>
+        <div class="col-xs-6">
+          <div class="row">
+            <div class="nav-item">
+              <a class="nav-link" href="/documentation.html">Docs</a>
+            </div>
+            <div class="nav-item">
+              <a class="nav-link" href="/tutorials.html">Tutorials</a>
+            </div>
+            <div class="nav-item">
+              <a class="nav-link" href="/applications.html">Applications</a>
+            </div>
+            <div class="nav-item">
+              <a class="nav-link" href="/community.html">Community</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-xs-4">
+          <div class="row end-xs">
+            <div class="nav-item">
+              <a class="nav-link" href="/about.html">About</a>
+            </div>
+            <div class="nav-item">
+              <a class="nav-link" target="_blank" rel="noopener noreferrer" href="https://github.com/TRIQS/triqs">Github</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </header>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="a-lazy-sum">
+<h1>A lazy sum<a class="headerlink" href="#a-lazy-sum" title="Permalink to this headline">¶</a></h1>
+<p>Here is a little functional <cite>sum</cite> that sums a function f over various domains
+and accepts lazy expressions as arguments.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&lt;triqs/clef.hpp&gt;</span><span class="cp"></span>
+
+<span class="n">template</span> <span class="o">&lt;</span><span class="kr">typename</span> <span class="n">Domain</span><span class="o">&gt;</span> <span class="k">struct</span> <span class="n">sum_impl</span> <span class="p">{</span>
+  <span class="n">Domain</span> <span class="n">d</span><span class="p">;</span>
+
+  <span class="c1">// C++14</span>
+  <span class="c1">// double operator() (NotClefExpression const &amp; f) const { double s=0; for (int u=0; u&lt;10; ++u) s += f(u/10.0); return s;}</span>
+
+  <span class="c1">// C++11 form</span>
+  <span class="n">template</span> <span class="o">&lt;</span><span class="kr">typename</span> <span class="n">F</span><span class="o">&gt;</span> <span class="kr">typename</span> <span class="n">std</span><span class="o">::</span><span class="n">enable_if</span><span class="o">&lt;!</span><span class="n">triqs</span><span class="o">::</span><span class="n">clef</span><span class="o">::</span><span class="n">is_clef_expression</span><span class="o">&lt;</span><span class="n">F</span><span class="o">&gt;::</span><span class="n">value</span><span class="p">,</span> <span class="kt">double</span><span class="o">&gt;::</span><span class="n">type</span> <span class="n">operator</span><span class="p">()(</span><span class="n">F</span> <span class="k">const</span> <span class="o">&amp;</span><span class="n">f</span><span class="p">)</span> <span class="k">const</span> <span class="p">{</span>
+    <span class="kt">double</span> <span class="n">s</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">u</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">u</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">;</span> <span class="o">++</span><span class="n">u</span><span class="p">)</span> <span class="n">s</span> <span class="o">+=</span> <span class="n">f</span><span class="p">(</span><span class="n">u</span> <span class="o">/</span> <span class="mf">10.0</span><span class="p">);</span>
+    <span class="k">return</span> <span class="n">s</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="n">TRIQS_CLEF_IMPLEMENT_LAZY_CALL</span><span class="p">(</span><span class="n">sum_impl</span><span class="p">);</span>
+
+  <span class="n">friend</span> <span class="n">std</span><span class="o">::</span><span class="n">ostream</span> <span class="o">&amp;</span><span class="n">operator</span><span class="o">&lt;&lt;</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">ostream</span> <span class="o">&amp;</span><span class="n">out</span><span class="p">,</span> <span class="n">sum_impl</span> <span class="k">const</span> <span class="o">&amp;</span><span class="n">x</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="n">out</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;sum&quot;</span><span class="p">;</span> <span class="p">}</span>
+<span class="p">};</span>
+
+<span class="c1">// a little factory ...</span>
+<span class="n">template</span> <span class="o">&lt;</span><span class="kr">typename</span> <span class="n">Domain</span><span class="o">&gt;</span> <span class="n">sum_impl</span><span class="o">&lt;</span><span class="n">Domain</span><span class="o">&gt;</span> <span class="n">sum_functional</span><span class="p">(</span><span class="n">Domain</span> <span class="n">d</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="p">{</span><span class="n">d</span><span class="p">};</span> <span class="p">}</span>
+
+<span class="k">struct</span> <span class="n">DOM</span> <span class="p">{};</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+  <span class="n">triqs</span><span class="o">::</span><span class="n">clef</span><span class="o">::</span><span class="n">placeholder</span><span class="o">&lt;</span><span class="mi">1</span><span class="o">&gt;</span> <span class="n">x_</span><span class="p">;</span>
+  <span class="n">triqs</span><span class="o">::</span><span class="n">clef</span><span class="o">::</span><span class="n">placeholder</span><span class="o">&lt;</span><span class="mi">2</span><span class="o">&gt;</span> <span class="n">y_</span><span class="p">;</span>
+  <span class="n">DOM</span> <span class="n">d</span><span class="p">;</span>
+
+  <span class="c1">// integrate_on_d is the integration functional</span>
+  <span class="k">auto</span> <span class="n">integrate_on_d</span> <span class="o">=</span> <span class="n">sum_functional</span><span class="p">(</span><span class="n">d</span><span class="p">);</span>
+
+  <span class="c1">// This is a simple application of the sum to a function</span>
+  <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">integrate_on_d</span><span class="p">(</span><span class="n">x_</span> <span class="o">&gt;&gt;</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">x_</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+
+  <span class="c1">// A function y -&gt; y_ + integrate (x -&gt; 2*x + y)</span>
+  <span class="k">auto</span> <span class="n">e1</span> <span class="o">=</span> <span class="n">y_</span> <span class="o">+</span> <span class="n">integrate_on_d</span><span class="p">(</span><span class="n">x_</span> <span class="o">&gt;&gt;</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">x_</span> <span class="o">+</span> <span class="n">y_</span><span class="p">);</span>
+  <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">e1</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+  <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">eval</span><span class="p">(</span><span class="n">e1</span><span class="p">,</span> <span class="n">y_</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper"><div class="sidebar">
+  <div class="container-fluid sidebar-container">
+      <div class="row sidebar-row">
+        <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../gettingstarted.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../mainconcepts.html">Main Concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../applications.html">Applications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../capiref.html">C++ API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../pythonapiref.html">Python API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../contributing.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../changelog.html">Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../about.html">About</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../faqs.html">FAQS</a></li>
+</ul>
+
+      </div>
+      <div class="row sidebar-row search-row">
+        <div
+          class="sidebar-section"
+          id="searchbox"
+          style="display: none"
+          role="search"
+        >
+          <div class="sidebar-header">
+            <a class="sidebar-header-link">Quick search</a>
+          </div>
+        </div>
+        <div class="searchformwrapper">
+          <form class="search" action="../../../../../search.html" method="get">
+            <input type="text" name="q" aria-labelledby="searchlabel" />
+            <input type="submit" value="Go" />
+          </form>
+        </div>
+        <script type="text/javascript">
+          $("#searchbox").show(0);
+        </script>
+      </div>
+    </div>
+  </div>
+</div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+  <footer>
+    <div class="container-fluid">
+      <div class="row footer">
+        <div class="col-xs-12 center-xs middle-xs">
+          <p class="updated">Updated on November 20, 2019 (2:20pm)</p>
+          <div class="outro">
+            <p class="footer-description">
+              TRIQS (Toolbox for Research on Interacting Quantum Systems) is a
+              scientific project providing a set of C++ and Python libraries to
+              develop new tools for the study of interacting quantum systems based
+              at the Center for Computational Quantum Physics at the Flatiron
+              Institute.
+            </p>
+          </div>
+          <ul class="footer-links">
+            <li class="footer-link">
+              <a exact="true" href="/about.html">About</a>
+            </li>
+            <li class="footer-link">
+              <a
+                target="_blank"
+                rel="noopener noreferrer"
+                href="https://simonsfoundation.org"
+                >Simons Foundation</a
+              >
+            </li>
+            <li class="footer-link">
+              <a
+                target="_blank"
+                rel="noopener noreferrer"
+                href="https://flatironinstitute.org"
+                >Flatiron Institute</a
+              >
+            </li>
+            <li class="footer-link"><a exact="true" href="/">Github</a></li>
+            <li class="footer-link"><a exact="true" href="/contact">Contact</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  </body>
+</html>

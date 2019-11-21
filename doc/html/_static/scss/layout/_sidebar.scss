@@ -11,32 +11,65 @@
   background-color: $background_color_2;
 }
 .sidebar-container {
-  margin-top: 120px;
+  margin-top: 100px;
   padding-right: 1rem;
   padding-left: 1rem;
   overflow-y: auto;
 }
-.sidebar-header {
+.sidebar-header,
+.toctree-l1 {
   font-size: 1.4rem;
   font-weight: 700;
   line-height: 3;
   text-transform: uppercase;
   letter-spacing: 0.08em;
   border: none;
-  padding: none !important;
+  padding: 0 !important;
 }
-.sidebar-header-link {
+.sidebar-header-link,
+.toctree-l1 > a {
   color: var(--fi-gray);
   font-weight: 700;
 }
-.sidebar-header-carat {
-  width: 10px;
-  height: 10px;
+
+.toctree-l2 {
+  line-height: 1.6;
 }
+
+.toctree-l2 > a {
+  text-transform: none;
+  font-size: 1.5rem;
+  line-height: 1.6;
+  padding: 0 !important;
+  margin: 0;
+  letter-spacing: normal;
+}
+
+.toctree-l1 > a:after {
+  padding-left: 5px;
+  content: url("./carat-up-up.svg");
+}
+
+.current > a:after {
+  padding-left: 5px;
+  content: url("./carat-down-down.svg");
+}
+
 .sidebar-row {
   padding: 0 2rem;
 }
 
+.search-row {
+  border-top: 1px solid $border_color_2;
+  margin-top: 4rem;
+  padding-top: 4rem;
+}
+
 .sidebar-ul {
   list-style: none;
+  display: none;
+
+  &.sidebar-active {
+    display: block;
+  }
 }

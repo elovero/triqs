@@ -1,6 +1,11 @@
+.. _about:
 
-Authors & contributors
-======================
+About
+======
+
+
+Authors
+----------------------
 
 The TRIQS library has been orginally authored by:
 
@@ -17,7 +22,7 @@ Other developers include:
  I. Krivenko, T. Ayral, H. Strand, D. Simons, H. Hafermann, L. Messio, P. Seth.
 
 Citation
-=========
+----------------------
 
 TRIQS is a part of our scientific work and we kindly request that
 projects using it include a citation to the following paper. In
@@ -30,7 +35,7 @@ simple way to help convincing funding sources that such projects are useful for
 our community and should be supported.
 
 License
-=======
+----------------------
 
 TRIQS is published under the `GNU General Public License, version 3
 <http://www.gnu.org/licenses/gpl.html>`_.
@@ -39,7 +44,7 @@ Note that it *implies* that applications using TRIQS must also be GPL.
 
 
 Disclaimer
-==========
+----------------------
 
 As stated by the License, the program is provided as is, i.e. WITHOUT ANY
 WARRANTY of any kind, as stated in the license.  In particular, its authors and

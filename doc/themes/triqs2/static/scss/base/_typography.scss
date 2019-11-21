@@ -19,7 +19,6 @@ h1 {
   font-family: $font_headline_family;
   font-weight: $font_headline_weight;
   font-style: $font_headline_style;
-
   @include breakpoint("sm") {
     font-size: 3.2rem;
   }
@@ -111,4 +110,8 @@ a {
   &:hover {
     color: $color_3;
   }
+}
+
+.headerlink {
+  display: none;
 }

@@ -1,0 +1,211 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>[triqs/clef] Clef: Compile-time lazy expressions and functions &#8212; TRIQS Docs</title>
+    <link rel="stylesheet" href="../../../../_static/triqs2.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="../../../../" src="../../../../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../../../_static/language_data.js"></script>
+    <script type="text/javascript" src="../../../../_static/triqs2.js"></script>
+    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=default"></script>
+    <link rel="author" title="About these documents" href="../../../../about.html" />
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" />
+  <link rel="stylesheet" href="https://use.typekit.net/hsv6sot.css">
+  <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+
+  </head>
+<body class="layout">
+
+  <header class="header">
+    <nav class="header-content">
+      <div class="row header-row">
+        <div class="col-xs-2 logo-col">
+          <div class="row start-xs">
+            <div class="nav-item">
+              <a class="nav-link" href="/"
+                ><span class="nav-logo">TRIQS</span></a
+              >
+            </div>
+          </div>
+        </div>
+        <div class="col-xs-6">
+          <div class="row">
+            <div class="nav-item">
+              <a class="nav-link" href="/documentation.html">Docs</a>
+            </div>
+            <div class="nav-item">
+              <a class="nav-link" href="/tutorials.html">Tutorials</a>
+            </div>
+            <div class="nav-item">
+              <a class="nav-link" href="/applications.html">Applications</a>
+            </div>
+            <div class="nav-item">
+              <a class="nav-link" href="/community.html">Community</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-xs-4">
+          <div class="row end-xs">
+            <div class="nav-item">
+              <a class="nav-link" href="/about.html">About</a>
+            </div>
+            <div class="nav-item">
+              <a class="nav-link" target="_blank" rel="noopener noreferrer" href="https://github.com/TRIQS/triqs">Github</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </header>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="triqs-clef-clef-compile-time-lazy-expressions-and-functions">
+<h1><strong>[triqs/clef]</strong> Clef: Compile-time lazy expressions and functions<a class="headerlink" href="#triqs-clef-clef-compile-time-lazy-expressions-and-functions" title="Permalink to this headline">¶</a></h1>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>This library is still a prototype. Its basic features are used in our codes, but
+there are probably still some dark corners …</p>
+<p>Documentation in progress.</p>
+</div>
+<p>The CLEF library (<strong>C</strong>ompile time <strong>L</strong>azy <strong>E</strong>xpressions and <strong>F</strong>unctions) is a little
+library to manipulate simple expressions at compile-time and use them e.g.
+to automatically fill containers.</p>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Motivation: a little tour of CLEF</a></li>
+<li class="toctree-l1"><a class="reference internal" href="expressions_form.html">Forming CLEF expressions</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="expressions_form.html#placeholders">Placeholders</a></li>
+<li class="toctree-l2"><a class="reference internal" href="expressions_form.html#forming-an-expression">Forming an expression</a></li>
+<li class="toctree-l2"><a class="reference internal" href="expressions_form.html#storage-of-expressions-advanced">Storage of expressions [advanced]</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="expressions_eval.html">Evaluating CLEF expressions</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="expressions_eval.html#complete-evaluation">Complete evaluation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="expressions_eval.html#partial-evaluation">Partial evaluation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="assign.html">Automatic assignment of containers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="overload.html">Overloading functions and methods for CLEF arguments</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="overload.html#overloading-functions">Overloading functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="overload.html#overloading-operator-and-other-methods">Overloading operator() and other methods</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="function.html">Transform CLEF expressions into functions</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="function.html#make-function">make_function</a></li>
+<li class="toctree-l2"><a class="reference internal" href="function.html#clef-function">clef::function</a></li>
+<li class="toctree-l2"><a class="reference internal" href="function.html#examples">Examples</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="examples/contents.html">More complex examples</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="examples/lazy_sum.html">A lazy sum</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper"><div class="sidebar">
+  <div class="container-fluid sidebar-container">
+      <div class="row sidebar-row">
+        <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../gettingstarted.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../mainconcepts.html">Main Concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../applications.html">Applications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../capiref.html">C++ API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../pythonapiref.html">Python API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../contributing.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../changelog.html">Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../about.html">About</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../faqs.html">FAQS</a></li>
+</ul>
+
+      </div>
+      <div class="row sidebar-row search-row">
+        <div
+          class="sidebar-section"
+          id="searchbox"
+          style="display: none"
+          role="search"
+        >
+          <div class="sidebar-header">
+            <a class="sidebar-header-link">Quick search</a>
+          </div>
+        </div>
+        <div class="searchformwrapper">
+          <form class="search" action="../../../../search.html" method="get">
+            <input type="text" name="q" aria-labelledby="searchlabel" />
+            <input type="submit" value="Go" />
+          </form>
+        </div>
+        <script type="text/javascript">
+          $("#searchbox").show(0);
+        </script>
+      </div>
+    </div>
+  </div>
+</div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+  <footer>
+    <div class="container-fluid">
+      <div class="row footer">
+        <div class="col-xs-12 center-xs middle-xs">
+          <p class="updated">Updated on November 20, 2019 (2:20pm)</p>
+          <div class="outro">
+            <p class="footer-description">
+              TRIQS (Toolbox for Research on Interacting Quantum Systems) is a
+              scientific project providing a set of C++ and Python libraries to
+              develop new tools for the study of interacting quantum systems based
+              at the Center for Computational Quantum Physics at the Flatiron
+              Institute.
+            </p>
+          </div>
+          <ul class="footer-links">
+            <li class="footer-link">
+              <a exact="true" href="/about.html">About</a>
+            </li>
+            <li class="footer-link">
+              <a
+                target="_blank"
+                rel="noopener noreferrer"
+                href="https://simonsfoundation.org"
+                >Simons Foundation</a
+              >
+            </li>
+            <li class="footer-link">
+              <a
+                target="_blank"
+                rel="noopener noreferrer"
+                href="https://flatironinstitute.org"
+                >Flatiron Institute</a
+              >
+            </li>
+            <li class="footer-link"><a exact="true" href="/">Github</a></li>
+            <li class="footer-link"><a exact="true" href="/contact">Contact</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  </body>
+</html>

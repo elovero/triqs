@@ -1,6 +1,6 @@
 .. _applications:
 
-**Applications based on TRIQS**
+Applications
 ===============================
 
 The TRIQS collaboration not only works at the elaboration of libraries to
@@ -8,7 +8,7 @@ construct new tools for the study of quantum systems. Some full-fledged
 applications have readily been developed and are maintained by the TRIQS
 collaboration.
 
-**Hybridization-expansion solver**
+Hybridization-expansion solver
 ----------------------------------
 
 The hybridization-expansion solver allows to solve the generic problem
@@ -18,7 +18,7 @@ hybridization expansion of the partition function.
 
 *Homepage:* `<https://triqs.github.io/cthyb/>`_
 
-**DFTTools**
+DFTTools
 -------------
 
 DFTTools provides an interface to DFT packages such as Wien2k and VASP for
@@ -27,7 +27,7 @@ results to inputs for full-fledged DFT+DMFT calculations in a few lines.
 
 *Homepage:* `<https://triqs.github.io/dft_tools/>`_
 
-**Hubbard I solver**
+Hubbard I solver
 --------------------
 .. warning::
 
@@ -39,7 +39,7 @@ very quick answers even for large multiband systems.
 
 *Homepage:* `<https://triqs.github.io/triqs/1.4/applications/hubbardI/>`_
 
-**Applications for Analytic Continuation**
+Applications for Analytic Continuation
 ------------------------------------------
 
 Maxent

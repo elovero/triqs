@@ -1,0 +1,367 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Views &#8212; TRIQS Docs</title>
+    <link rel="stylesheet" href="../../../../../_static/triqs2.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../../_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="../../../../../" src="../../../../../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../../../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../../../../_static/language_data.js"></script>
+    <script type="text/javascript" src="../../../../../_static/triqs2.js"></script>
+    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=default"></script>
+    <link rel="author" title="About these documents" href="../../../../../about.html" />
+    <link rel="index" title="Index" href="../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../search.html" />
+  <link rel="stylesheet" href="https://use.typekit.net/hsv6sot.css">
+  <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+
+  </head>
+<body class="layout">
+
+  <header class="header">
+    <nav class="header-content">
+      <div class="row header-row">
+        <div class="col-xs-2 logo-col">
+          <div class="row start-xs">
+            <div class="nav-item">
+              <a class="nav-link" href="/"
+                ><span class="nav-logo">TRIQS</span></a
+              >
+            </div>
+          </div>
+        </div>
+        <div class="col-xs-6">
+          <div class="row">
+            <div class="nav-item">
+              <a class="nav-link" href="/documentation.html">Docs</a>
+            </div>
+            <div class="nav-item">
+              <a class="nav-link" href="/tutorials.html">Tutorials</a>
+            </div>
+            <div class="nav-item">
+              <a class="nav-link" href="/applications.html">Applications</a>
+            </div>
+            <div class="nav-item">
+              <a class="nav-link" href="/community.html">Community</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-xs-4">
+          <div class="row end-xs">
+            <div class="nav-item">
+              <a class="nav-link" href="/about.html">About</a>
+            </div>
+            <div class="nav-item">
+              <a class="nav-link" target="_blank" rel="noopener noreferrer" href="https://github.com/TRIQS/triqs">Github</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </header>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="views">
+<span id="partial-views"></span><h1>Views<a class="headerlink" href="#views" title="Permalink to this headline">¶</a></h1>
+<p><strong>Synopsis</strong>:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">template</span> <span class="o">&lt;</span><span class="kr">typename</span> <span class="n">ValueType</span><span class="p">,</span> <span class="kt">int</span> <span class="n">Rank</span><span class="p">,</span> <span class="kr">typename</span> <span class="n">TraversalOrder</span><span class="o">=</span><span class="kt">void</span><span class="o">&gt;</span> <span class="n">class</span> <span class="n">array_view</span><span class="p">;</span>
+<span class="n">template</span> <span class="o">&lt;</span><span class="kr">typename</span> <span class="n">ValueType</span><span class="p">,</span>           <span class="kr">typename</span> <span class="n">TraversalOrder</span><span class="o">=</span><span class="kt">void</span><span class="o">&gt;</span> <span class="n">class</span> <span class="n">matrix_view</span><span class="p">;</span>
+<span class="n">template</span> <span class="o">&lt;</span><span class="kr">typename</span> <span class="n">ValueType</span><span class="o">&gt;</span>                                         <span class="n">class</span> <span class="n">vector_view</span><span class="p">;</span>
+
+<span class="n">template</span> <span class="o">&lt;</span><span class="kr">typename</span> <span class="n">ValueType</span><span class="p">,</span> <span class="kt">int</span> <span class="n">Rank</span><span class="p">,</span> <span class="kr">typename</span> <span class="n">TraversalOrder</span><span class="o">=</span><span class="kt">void</span><span class="o">&gt;</span> <span class="n">class</span> <span class="n">array_const_view</span><span class="p">;</span>
+<span class="n">template</span> <span class="o">&lt;</span><span class="kr">typename</span> <span class="n">ValueType</span><span class="p">,</span>           <span class="kr">typename</span> <span class="n">TraversalOrder</span><span class="o">=</span><span class="kt">void</span><span class="o">&gt;</span> <span class="n">class</span> <span class="n">matrix_const_view</span><span class="p">;</span>
+<span class="n">template</span> <span class="o">&lt;</span><span class="kr">typename</span> <span class="n">ValueType</span><span class="o">&gt;</span>                                         <span class="n">class</span> <span class="n">vector_const_view</span><span class="p">;</span>
+</pre></div>
+</div>
+<ul>
+<li><p>The view types of X (= array, matrix, vector) are called X_view, and X_const_view, with the same template parameters as the regular type.</p></li>
+<li><p>A <cite>view</cite> is give access to a restricted portion of the array, matrix or vector, i.e. a <cite>partial view</cite> of the data.
+The view can also be <cite>complete</cite> (i.e. show all the container).</p></li>
+<li><p>The views model the <a class="reference internal" href="../concepts.html#mutablecuboidarray"><span class="std std-ref">MutableCuboidArray</span></a>, <a class="reference internal" href="../concepts.html#mutablematrix"><span class="std std-ref">MutableMatrix</span></a>, <a class="reference internal" href="../concepts.html#mutablevector"><span class="std std-ref">MutableVector</span></a>, like the corresponding regular type.</p></li>
+<li><p>The const views are similar to view, except that theirs contents cannot be modified.
+They model  the <a class="reference internal" href="../concepts.html#immutablecuboidarray"><span class="std std-ref">ImmutableCuboidArray</span></a>, <a class="reference internal" href="../concepts.html#immutablematrix"><span class="std std-ref">ImmutableMatrix</span></a>, <a class="reference internal" href="../concepts.html#immutablevector"><span class="std std-ref">ImmutableVector</span></a>, like the corresponding <em>const</em> regular type.</p></li>
+<li><p>Views have <cite>view semantics</cite>, i.e. their behave like a documentation/manual/triqs to the data, they are not regular type.
+In particular, they never make copy of the data.
+See <a class="reference internal" href="../view_or_not_view.html#view-vs-regular"><span class="std std-ref">Regular type vs view type</span></a> for a detailed discussion of the difference between a regular type and its corresponding view.</p></li>
+<li><p>Views are largely interoperable: it is easy and quick to take a matrix_view of an array, or vice versa.
+Cf constructors belows.</p></li>
+<li><p>Const views can be constructed from a view, but the reverse is not true (Cf constructors).</p></li>
+<li><p><strong>Memory Management</strong></p>
+<p>Views offers a strong guarantee of the existence of the data, like a std::shared_ptr.
+Cf <a class="reference internal" href="memory.html#arr-view-memory"><span class="std std-ref">View memory management</span></a> for details.</p>
+<div class="toctree-wrapper compound">
+</div>
+</li>
+</ul>
+<div class="section" id="template-parameters">
+<h2>Template parameters<a class="headerlink" href="#template-parameters" title="Permalink to this headline">¶</a></h2>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 29%" />
+<col style="width: 22%" />
+<col style="width: 22%" />
+<col style="width: 27%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Template parameter</p></th>
+<th class="head"><p>Accepted type</p></th>
+<th class="head"><p>Access in the class</p></th>
+<th class="head"><p>Meaning</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>ValueType</p></td>
+<td><p>any regular type (typically a
+scalar).</p></td>
+<td><p>value_type</p></td>
+<td><p>The type of the element of the array</p></td>
+</tr>
+<tr class="row-odd"><td><p>Rank</p></td>
+<td><p>int</p></td>
+<td><p>rank</p></td>
+<td><p>The rank of the array</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="template_parameters.html#arr-templ-par-to"><span class="std std-ref">TraversalOrder</span></a></p></td>
+<td><p>ull_t</p></td>
+<td></td>
+<td><p>Traversal Order for all loops</p></td>
+</tr>
+</tbody>
+</table>
+<p>NB: Rank is only present for array, since matrix have rank 2 and vector rank 1.</p>
+<div class="toctree-wrapper compound">
+</div>
+</div>
+<div class="section" id="member-types">
+<h2>Member types<a class="headerlink" href="#member-types" title="Permalink to this headline">¶</a></h2>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 67%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Member type</p></th>
+<th class="head"><p>Definitions</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>value_type</p></td>
+<td><p>ValueType</p></td>
+</tr>
+<tr class="row-odd"><td><p>view_type</p></td>
+<td><p>The corresponding view type</p></td>
+</tr>
+<tr class="row-even"><td><p>const_view_type</p></td>
+<td><p>The corresponding const view type</p></td>
+</tr>
+<tr class="row-odd"><td><p>regular_type</p></td>
+<td><p>The corresponding regular type</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="member-constexpr">
+<h2>Member constexpr<a class="headerlink" href="#member-constexpr" title="Permalink to this headline">¶</a></h2>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 18%" />
+<col style="width: 13%" />
+<col style="width: 69%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Member</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Definitions</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>rank</p></td>
+<td><p>int</p></td>
+<td><p>Rank of the container (Rank
+for array), 2 for matrix, 1
+for vector</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="member-functions">
+<h2>Member functions<a class="headerlink" href="#member-functions" title="Permalink to this headline">¶</a></h2>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 51%" />
+<col style="width: 49%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Member function</p></th>
+<th class="head"><p>Meaning</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><a class="reference internal" href="view_constructors.html#arr-view-constr"><span class="std std-ref">(constructor)</span></a></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>(destructor)</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="call.html#arr-call"><span class="std std-ref">operator ()</span></a></p></td>
+<td><p>element of access/views/lazy expressions</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="view_assign.html#arr-view-assign"><span class="std std-ref">operator =</span></a></p></td>
+<td><p>assigns values to the container</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="compound_ops.html#arr-comp-ops"><span class="std std-ref">operator +=,-=,*=,/=</span></a></p></td>
+<td><p>compound assignment operators</p></td>
+</tr>
+<tr class="row-odd"><td><p>begin/cbegin</p></td>
+<td><p>returns iterator to the beginning</p></td>
+</tr>
+<tr class="row-even"><td><p>end/cend</p></td>
+<td><p>returns iterator to the end</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="rebind.html#arr-rebind"><span class="std std-ref">rebind</span></a></p></td>
+<td><p>rebind the view</p></td>
+</tr>
+<tr class="row-even"><td><p>bool is_empty() const</p></td>
+<td><p>Is the array empty ?</p></td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>views cannot be resized.</p>
+</div>
+<div class="toctree-wrapper compound">
+</div>
+</div>
+<div class="section" id="non-member-functions">
+<h2>Non-member functions<a class="headerlink" href="#non-member-functions" title="Permalink to this headline">¶</a></h2>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 43%" />
+<col style="width: 57%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Member function</p></th>
+<th class="head"><p>Meaning</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><a class="reference internal" href="swap.html#arr-swap"><span class="std std-ref">swap</span></a></p></td>
+<td><p>Swap of 2 containers</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="swap.html#arr-deep-swap"><span class="std std-ref">deep_swap</span></a></p></td>
+<td><p>Deep swap of the data of 2 containers ???</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="stream.html#arr-stream"><span class="std std-ref">operator&lt;&lt;</span></a></p></td>
+<td><p>Writing to stream</p></td>
+</tr>
+</tbody>
+</table>
+<div class="toctree-wrapper compound">
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper"><div class="sidebar">
+  <div class="container-fluid sidebar-container">
+      <div class="row sidebar-row">
+        <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../gettingstarted.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../mainconcepts.html">Main Concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../applications.html">Applications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../capiref.html">C++ API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../pythonapiref.html">Python API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../contributing.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../changelog.html">Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../about.html">About</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../faqs.html">FAQS</a></li>
+</ul>
+
+      </div>
+      <div class="row sidebar-row search-row">
+        <div
+          class="sidebar-section"
+          id="searchbox"
+          style="display: none"
+          role="search"
+        >
+          <div class="sidebar-header">
+            <a class="sidebar-header-link">Quick search</a>
+          </div>
+        </div>
+        <div class="searchformwrapper">
+          <form class="search" action="../../../../../search.html" method="get">
+            <input type="text" name="q" aria-labelledby="searchlabel" />
+            <input type="submit" value="Go" />
+          </form>
+        </div>
+        <script type="text/javascript">
+          $("#searchbox").show(0);
+        </script>
+      </div>
+    </div>
+  </div>
+</div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+  <footer>
+    <div class="container-fluid">
+      <div class="row footer">
+        <div class="col-xs-12 center-xs middle-xs">
+          <p class="updated">Updated on November 20, 2019 (2:20pm)</p>
+          <div class="outro">
+            <p class="footer-description">
+              TRIQS (Toolbox for Research on Interacting Quantum Systems) is a
+              scientific project providing a set of C++ and Python libraries to
+              develop new tools for the study of interacting quantum systems based
+              at the Center for Computational Quantum Physics at the Flatiron
+              Institute.
+            </p>
+          </div>
+          <ul class="footer-links">
+            <li class="footer-link">
+              <a exact="true" href="/about.html">About</a>
+            </li>
+            <li class="footer-link">
+              <a
+                target="_blank"
+                rel="noopener noreferrer"
+                href="https://simonsfoundation.org"
+                >Simons Foundation</a
+              >
+            </li>
+            <li class="footer-link">
+              <a
+                target="_blank"
+                rel="noopener noreferrer"
+                href="https://flatironinstitute.org"
+                >Flatiron Institute</a
+              >
+            </li>
+            <li class="footer-link"><a exact="true" href="/">Github</a></li>
+            <li class="footer-link"><a exact="true" href="/contact">Contact</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  </body>
+</html>

@@ -1,0 +1,233 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>16. Slicing &#8212; TRIQS Docs</title>
+    <link rel="stylesheet" href="../../../../../_static/triqs2.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../../_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="../../../../../" src="../../../../../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../../../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../../../../_static/language_data.js"></script>
+    <script type="text/javascript" src="../../../../../_static/triqs2.js"></script>
+    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=default"></script>
+    <link rel="author" title="About these documents" href="../../../../../about.html" />
+    <link rel="index" title="Index" href="../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../search.html" />
+  <link rel="stylesheet" href="https://use.typekit.net/hsv6sot.css">
+  <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+
+  </head>
+<body class="layout">
+
+  <header class="header">
+    <nav class="header-content">
+      <div class="row header-row">
+        <div class="col-xs-2 logo-col">
+          <div class="row start-xs">
+            <div class="nav-item">
+              <a class="nav-link" href="/"
+                ><span class="nav-logo">TRIQS</span></a
+              >
+            </div>
+          </div>
+        </div>
+        <div class="col-xs-6">
+          <div class="row">
+            <div class="nav-item">
+              <a class="nav-link" href="/documentation.html">Docs</a>
+            </div>
+            <div class="nav-item">
+              <a class="nav-link" href="/tutorials.html">Tutorials</a>
+            </div>
+            <div class="nav-item">
+              <a class="nav-link" href="/applications.html">Applications</a>
+            </div>
+            <div class="nav-item">
+              <a class="nav-link" href="/community.html">Community</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-xs-4">
+          <div class="row end-xs">
+            <div class="nav-item">
+              <a class="nav-link" href="/about.html">About</a>
+            </div>
+            <div class="nav-item">
+              <a class="nav-link" target="_blank" rel="noopener noreferrer" href="https://github.com/TRIQS/triqs">Github</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </header>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="slicing">
+<span id="designslicing"></span><h1>16. Slicing<a class="headerlink" href="#slicing" title="Permalink to this headline">¶</a></h1>
+<p>In this section, IM denotes some IndexMaps.</p>
+<ul class="simple">
+<li><p>We refer here to any partial view of the arrays as “slicing”, i.e. subarrays, true slices, etc…
+A slicing is any (meta)-function that take an indexmap and return another one.</p></li>
+</ul>
+<blockquote>
+<div><ul class="simple">
+<li><p>It is a meta-function that computes the type of the resulting indexmap</p></li>
+<li><p>It is a function that computes the resulting indexmap.</p></li>
+</ul>
+</div></blockquote>
+<ul class="simple">
+<li><p>The array/matrix/vector classes and their views, when called with the () operator, will:</p></li>
+</ul>
+<blockquote>
+<div><ul class="simple">
+<li><p>forward all the arguments and their types to IndexMaps::slice, to compute the new indexmap IM2.</p></li>
+<li><p>If IM2 is of dimension 0,  return a value_type &amp; or const &amp; (it is a simple number, not an array).</p></li>
+<li><p>Otherwise: return a new view, made of IM2 and the same data as for the original object.</p></li>
+</ul>
+</div></blockquote>
+<ul class="simple">
+<li><p>Possible slices are defined by the IndexMap type.
+Slicing an class C with IndexMap I1 produces a class C2_view, with IndexMap I2,
+i.e. a new sliced IndexMap on the same data.</p></li>
+<li><p><strong>Examples</strong>:</p></li>
+</ul>
+<blockquote>
+<div><ul class="simple">
+<li><p>array and array_view can be sliced:</p></li>
+</ul>
+</div></blockquote>
+<dl class="simple">
+<dt><a href="#id1"><span class="problematic" id="id2">``</span></a></dt><dd><p>array&lt;T,2&gt; A(10,10);              : defines an array
+A(1,2)                            : element access.
+A ( 1, range(0,2) )               : 1d slice
+A( range(0,10,2), range(0,10,2))  : a 2d slice viewing every each elements with even coordinates.</p>
+</dd>
+</dl>
+<dl class="simple">
+<dt><a href="#id3"><span class="problematic" id="id4">``</span></a></dt><dd><ul class="simple">
+<li><p>matrix, matrix_view when sliced, return vector_view or matrix_view.</p></li>
+</ul>
+</dd>
+</dl>
+<ul class="simple">
+<li><p>One can be much more general: e.g. slicing the diagonal of a matrix, etc…</p></li>
+<li><p>Implementation is entirely done in the IndexMaps classes, by specializing 2 templates</p></li>
+</ul>
+<blockquote>
+<div><p>(basically by writing the function IM1-&gt; IM2).
+The rest is done by indexmap_storage_pair class, which will compute the correct view class
+depending on the view class and IM2 (view_from_tag_I_S template).</p>
+</div></blockquote>
+<dl>
+<dt>::</dt><dd><p>//In namespace IndexMaps::result_of
+template&lt;typename IM, typename ArgsTuple&gt;
+struct slice&lt; IM,  ArgsTuple&gt; { typedef IM2 type; };</p>
+<p>//In namespace IndexMaps:
+template&lt;typename IM, typename ArgsTuple&gt;
+typename result_of::slice&lt;IM,ArgsTuple&gt;::type slice(IM const &amp;, ArgsTuple args);</p>
+</dd>
+</dl>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper"><div class="sidebar">
+  <div class="container-fluid sidebar-container">
+      <div class="row sidebar-row">
+        <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../gettingstarted.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../mainconcepts.html">Main Concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../applications.html">Applications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../capiref.html">C++ API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../pythonapiref.html">Python API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../contributing.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../changelog.html">Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../about.html">About</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../faqs.html">FAQS</a></li>
+</ul>
+
+      </div>
+      <div class="row sidebar-row search-row">
+        <div
+          class="sidebar-section"
+          id="searchbox"
+          style="display: none"
+          role="search"
+        >
+          <div class="sidebar-header">
+            <a class="sidebar-header-link">Quick search</a>
+          </div>
+        </div>
+        <div class="searchformwrapper">
+          <form class="search" action="../../../../../search.html" method="get">
+            <input type="text" name="q" aria-labelledby="searchlabel" />
+            <input type="submit" value="Go" />
+          </form>
+        </div>
+        <script type="text/javascript">
+          $("#searchbox").show(0);
+        </script>
+      </div>
+    </div>
+  </div>
+</div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+  <footer>
+    <div class="container-fluid">
+      <div class="row footer">
+        <div class="col-xs-12 center-xs middle-xs">
+          <p class="updated">Updated on November 20, 2019 (2:20pm)</p>
+          <div class="outro">
+            <p class="footer-description">
+              TRIQS (Toolbox for Research on Interacting Quantum Systems) is a
+              scientific project providing a set of C++ and Python libraries to
+              develop new tools for the study of interacting quantum systems based
+              at the Center for Computational Quantum Physics at the Flatiron
+              Institute.
+            </p>
+          </div>
+          <ul class="footer-links">
+            <li class="footer-link">
+              <a exact="true" href="/about.html">About</a>
+            </li>
+            <li class="footer-link">
+              <a
+                target="_blank"
+                rel="noopener noreferrer"
+                href="https://simonsfoundation.org"
+                >Simons Foundation</a
+              >
+            </li>
+            <li class="footer-link">
+              <a
+                target="_blank"
+                rel="noopener noreferrer"
+                href="https://flatironinstitute.org"
+                >Flatiron Institute</a
+              >
+            </li>
+            <li class="footer-link"><a exact="true" href="/">Github</a></li>
+            <li class="footer-link"><a exact="true" href="/contact">Contact</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  </body>
+</html>

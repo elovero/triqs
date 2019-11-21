@@ -1,0 +1,240 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Interface with Python numpy arrays &#8212; TRIQS Docs</title>
+    <link rel="stylesheet" href="../../../../_static/triqs2.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="../../../../" src="../../../../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../../../_static/language_data.js"></script>
+    <script type="text/javascript" src="../../../../_static/triqs2.js"></script>
+    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=default"></script>
+    <link rel="author" title="About these documents" href="../../../../about.html" />
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" />
+  <link rel="stylesheet" href="https://use.typekit.net/hsv6sot.css">
+  <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+
+  </head>
+<body class="layout">
+
+  <header class="header">
+    <nav class="header-content">
+      <div class="row header-row">
+        <div class="col-xs-2 logo-col">
+          <div class="row start-xs">
+            <div class="nav-item">
+              <a class="nav-link" href="/"
+                ><span class="nav-logo">TRIQS</span></a
+              >
+            </div>
+          </div>
+        </div>
+        <div class="col-xs-6">
+          <div class="row">
+            <div class="nav-item">
+              <a class="nav-link" href="/documentation.html">Docs</a>
+            </div>
+            <div class="nav-item">
+              <a class="nav-link" href="/tutorials.html">Tutorials</a>
+            </div>
+            <div class="nav-item">
+              <a class="nav-link" href="/applications.html">Applications</a>
+            </div>
+            <div class="nav-item">
+              <a class="nav-link" href="/community.html">Community</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-xs-4">
+          <div class="row end-xs">
+            <div class="nav-item">
+              <a class="nav-link" href="/about.html">About</a>
+            </div>
+            <div class="nav-item">
+              <a class="nav-link" target="_blank" rel="noopener noreferrer" href="https://github.com/TRIQS/triqs">Github</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </header>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="interface-with-python-numpy-arrays">
+<h1>Interface with Python numpy arrays<a class="headerlink" href="#interface-with-python-numpy-arrays" title="Permalink to this headline">¶</a></h1>
+<p>The array, matrix, vector and their views are fully interoperable with the numpy array objects in python.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>TO BE FULLY REWRITTEN</p>
+</div>
+<div class="section" id="from-python-to-c">
+<h2>From Python to C++<a class="headerlink" href="#from-python-to-c" title="Permalink to this headline">¶</a></h2>
+<p>Value and view classes can be constructed from a PyObject * (the opaque type of python object).
+They follow their respective semantic :</p>
+<blockquote>
+<div><ul>
+<li><p><cite>value classes</cite> (array, matrix, vector) <strong>always</strong> make copies.</p>
+<blockquote>
+<div><p>Hence they can be constructed from a python object X which is not an array, but
+out of which numpy can make an array of the correct type.</p>
+</div></blockquote>
+</li>
+<li><p><cite>view classes</cite> <strong>never</strong> make copies, they present views of the numpy array.</p>
+<blockquote>
+<div><p>If this is not possible (e.g. the python object is not a numpy, but a list, the type are not exactly the same)
+they throw an exception (<cite>triqs::runtime_error</cite>), with an explanation of the problem.</p>
+</div></blockquote>
+</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="from-c-to-python">
+<h2>From C++ to Python<a class="headerlink" href="#from-c-to-python" title="Permalink to this headline">¶</a></h2>
+<p>Value and view classes have a to_python method with the following synopsis</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">PyObject</span> <span class="o">*</span> <span class="n">to_python</span><span class="p">()</span> <span class="k">const</span>
+</pre></div>
+</div>
+<p>which return a <strong>new</strong> documentation/manual/triqs to the numpy array.</p>
+<p>To be more precise, two cases must be distinguished.</p>
+<ul>
+<li><p>array_view constructed from a PyObject * .</p>
+<p>In this case, the array_view’s storage is the numpy array, and it keeps a
+(owned) documentation/manual/triqs to the python array all along its existence.
+This means that Python cannot destroy the array as long as the view exists.</p>
+<p>The to_python method simply returns a new documentation/manual/triqs to this numpy array.</p>
+</li>
+<li><p>array or an array_view which was <em>not</em> constructed from a PyObject* .</p>
+<p>In this case, the storage has been allocated by C++, for example because the array
+was created in a C++ routine. There is no natural numpy array to return.
+The library returns a new numpy array which <em>owns</em> the C++ data,
+so the usage of the class is completely transparent.
+Python will <em>automatically</em> release the memory allocated by the C++ routine
+when the array in no longer needed.</p>
+</li>
+</ul>
+</div>
+<div class="section" id="examples">
+<h2>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h2>
+<p>Split in several files. –&gt; also the theory above.</p>
+</div>
+<div class="section" id="memory-management">
+<h2>Memory management<a class="headerlink" href="#memory-management" title="Permalink to this headline">¶</a></h2>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>TO BE WRITTEN</p>
+</div>
+<p>The documentation/manual/triqs counting system is <em>compatible</em> with the Python documentation/manual/triqs counting (but distinct),
+if you compile with python support of course.</p>
+<p>As long as you write pure C++ code, you are basically using a shared_ptr to your data block.
+No python is involved.</p>
+<p>But, if you return your view into a numpy array in python, ownership of your data
+is automatically transfered to the python interpreter.</p>
+<p>The interpreter then take the responsability of destroying the data when needed (meaning here, long after f has returned,
+when the python object returned will be cleaned).</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper"><div class="sidebar">
+  <div class="container-fluid sidebar-container">
+      <div class="row sidebar-row">
+        <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../gettingstarted.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../mainconcepts.html">Main Concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../applications.html">Applications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../capiref.html">C++ API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../pythonapiref.html">Python API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../contributing.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../changelog.html">Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../about.html">About</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../faqs.html">FAQS</a></li>
+</ul>
+
+      </div>
+      <div class="row sidebar-row search-row">
+        <div
+          class="sidebar-section"
+          id="searchbox"
+          style="display: none"
+          role="search"
+        >
+          <div class="sidebar-header">
+            <a class="sidebar-header-link">Quick search</a>
+          </div>
+        </div>
+        <div class="searchformwrapper">
+          <form class="search" action="../../../../search.html" method="get">
+            <input type="text" name="q" aria-labelledby="searchlabel" />
+            <input type="submit" value="Go" />
+          </form>
+        </div>
+        <script type="text/javascript">
+          $("#searchbox").show(0);
+        </script>
+      </div>
+    </div>
+  </div>
+</div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+  <footer>
+    <div class="container-fluid">
+      <div class="row footer">
+        <div class="col-xs-12 center-xs middle-xs">
+          <p class="updated">Updated on November 20, 2019 (2:20pm)</p>
+          <div class="outro">
+            <p class="footer-description">
+              TRIQS (Toolbox for Research on Interacting Quantum Systems) is a
+              scientific project providing a set of C++ and Python libraries to
+              develop new tools for the study of interacting quantum systems based
+              at the Center for Computational Quantum Physics at the Flatiron
+              Institute.
+            </p>
+          </div>
+          <ul class="footer-links">
+            <li class="footer-link">
+              <a exact="true" href="/about.html">About</a>
+            </li>
+            <li class="footer-link">
+              <a
+                target="_blank"
+                rel="noopener noreferrer"
+                href="https://simonsfoundation.org"
+                >Simons Foundation</a
+              >
+            </li>
+            <li class="footer-link">
+              <a
+                target="_blank"
+                rel="noopener noreferrer"
+                href="https://flatironinstitute.org"
+                >Flatiron Institute</a
+              >
+            </li>
+            <li class="footer-link"><a exact="true" href="/">Github</a></li>
+            <li class="footer-link"><a exact="true" href="/contact">Contact</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  </body>
+</html>

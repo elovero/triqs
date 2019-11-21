@@ -1,0 +1,387 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>gf and views &#8212; TRIQS Docs</title>
+    <link rel="stylesheet" href="../../../../../_static/triqs2.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../../_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="../../../../../" src="../../../../../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../../../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../../../../_static/language_data.js"></script>
+    <script type="text/javascript" src="../../../../../_static/triqs2.js"></script>
+    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=default"></script>
+    <link rel="author" title="About these documents" href="../../../../../about.html" />
+    <link rel="index" title="Index" href="../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../search.html" />
+  <link rel="stylesheet" href="https://use.typekit.net/hsv6sot.css">
+  <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+
+  </head>
+<body class="layout">
+
+  <header class="header">
+    <nav class="header-content">
+      <div class="row header-row">
+        <div class="col-xs-2 logo-col">
+          <div class="row start-xs">
+            <div class="nav-item">
+              <a class="nav-link" href="/"
+                ><span class="nav-logo">TRIQS</span></a
+              >
+            </div>
+          </div>
+        </div>
+        <div class="col-xs-6">
+          <div class="row">
+            <div class="nav-item">
+              <a class="nav-link" href="/documentation.html">Docs</a>
+            </div>
+            <div class="nav-item">
+              <a class="nav-link" href="/tutorials.html">Tutorials</a>
+            </div>
+            <div class="nav-item">
+              <a class="nav-link" href="/applications.html">Applications</a>
+            </div>
+            <div class="nav-item">
+              <a class="nav-link" href="/community.html">Community</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-xs-4">
+          <div class="row end-xs">
+            <div class="nav-item">
+              <a class="nav-link" href="/about.html">About</a>
+            </div>
+            <div class="nav-item">
+              <a class="nav-link" target="_blank" rel="noopener noreferrer" href="https://github.com/TRIQS/triqs">Github</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </header>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="gf-and-views">
+<span id="gf-and-view"></span><h1>gf and views<a class="headerlink" href="#gf-and-views" title="Permalink to this headline">¶</a></h1>
+<p><strong>Synopsis</strong>:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">template</span><span class="o">&lt;</span><span class="kr">typename</span> <span class="n">Variable</span><span class="p">,</span> <span class="kr">typename</span> <span class="n">Target</span><span class="o">=</span><span class="n">matrix_valued</span><span class="p">,</span> <span class="kr">typename</span> <span class="n">Opt</span><span class="o">=</span><span class="kt">void</span><span class="o">&gt;</span> <span class="n">class</span> <span class="n">gf</span><span class="p">;</span>
+<span class="n">template</span><span class="o">&lt;</span><span class="kr">typename</span> <span class="n">Variable</span><span class="p">,</span> <span class="kr">typename</span> <span class="n">Target</span><span class="o">=</span><span class="n">matrix_valued</span><span class="p">,</span> <span class="kr">typename</span> <span class="n">Opt</span><span class="o">=</span><span class="kt">void</span><span class="o">&gt;</span> <span class="n">class</span> <span class="n">gf_view</span><span class="p">;</span>
+<span class="n">template</span><span class="o">&lt;</span><span class="kr">typename</span> <span class="n">Variable</span><span class="p">,</span> <span class="kr">typename</span> <span class="n">Target</span><span class="o">=</span><span class="n">matrix_valued</span><span class="p">,</span> <span class="kr">typename</span> <span class="n">Opt</span><span class="o">=</span><span class="kt">void</span><span class="o">&gt;</span> <span class="n">class</span> <span class="n">gf_const_view</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>Hereafter, we describe the containers, the views.
+Properties specific to each <a class="reference internal" href="gf_special.html#gf-special"><span class="std std-ref">specializations</span></a> are described in a specific page, linked in the table below.</p>
+<div class="section" id="template-parameters">
+<h2>Template parameters<a class="headerlink" href="#template-parameters" title="Permalink to this headline">¶</a></h2>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 29%" />
+<col style="width: 22%" />
+<col style="width: 22%" />
+<col style="width: 27%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Template parameter</p></th>
+<th class="head"><p>Accepted type</p></th>
+<th class="head"><p>Access in the class</p></th>
+<th class="head"><p>Meaning</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Variable</p></td>
+<td><p>Cf table below</p></td>
+<td><p>variable_t</p></td>
+<td><p>The domain of definition of the
+Green function</p></td>
+</tr>
+<tr class="row-odd"><td><p>Target</p></td>
+<td><p>Cf Table below</p></td>
+<td><p>target_t</p></td>
+<td><p>The target space of the function</p></td>
+</tr>
+<tr class="row-even"><td><p>Opt</p></td>
+<td><p>void</p></td>
+<td><p>option_t</p></td>
+<td><p>Currently unused</p></td>
+</tr>
+</tbody>
+</table>
+<p>The various specializations of the container and its views are decribed in in the <a class="reference internal" href="gf_special.html#gf-special"><span class="std std-ref">specializations</span></a> page.</p>
+<p>The <em>Variable</em> template parameter can take the following values:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 37%" />
+<col style="width: 63%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Variable</p></th>
+<th class="head"><p>Meaning</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>imfreq</p></td>
+<td><p>Imaginary Matsubara frequency</p></td>
+</tr>
+<tr class="row-odd"><td><p>imtime</p></td>
+<td><p>Imaginary Matsubara time</p></td>
+</tr>
+<tr class="row-even"><td><p>refreq</p></td>
+<td><p>Real frequency</p></td>
+</tr>
+<tr class="row-odd"><td><p>retime</p></td>
+<td><p>Real time</p></td>
+</tr>
+<tr class="row-even"><td><p>legendre</p></td>
+<td><p>Legendre polynomial representation</p></td>
+</tr>
+<tr class="row-odd"><td><p>block_index</p></td>
+<td><p>Block Green function</p></td>
+</tr>
+<tr class="row-even"><td><p>cartesian_product&lt;Gs…&gt;</p></td>
+<td><p>Cartesian product of gf&lt;Gs&gt; … functions.</p></td>
+</tr>
+</tbody>
+</table>
+<p>The <em>Target</em> template parameter can take the following values:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 32%" />
+<col style="width: 68%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Target</p></th>
+<th class="head"><p>Meaning</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>scalar_valued</p></td>
+<td><p>The function is scalar valued (double, complex…).</p></td>
+</tr>
+<tr class="row-odd"><td><p>matrix_valued [default]</p></td>
+<td><p>The function is matrix valued.</p></td>
+</tr>
+<tr class="row-even"><td><p>tensor_valued&lt;R&gt;</p></td>
+<td><p>The function is tensor valued with rank</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="member-types">
+<h2>Member types<a class="headerlink" href="#member-types" title="Permalink to this headline">¶</a></h2>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 21%" />
+<col style="width: 79%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Member type</p></th>
+<th class="head"><p>Definitions</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>view_type</p></td>
+<td><p>The corresponding view type</p></td>
+</tr>
+<tr class="row-odd"><td><p>regular_type</p></td>
+<td><p>The corresponding regular type i.e. the container itself</p></td>
+</tr>
+<tr class="row-even"><td><p>mesh_t</p></td>
+<td><p>The mesh</p></td>
+</tr>
+<tr class="row-odd"><td><p>target_shape_t</p></td>
+<td><p>Type storing the information to construct the target space,
+Depends on the specialisation (a shape for matrix_valued
+gf, empty for a scalar valued, … Cf Specialisations)</p></td>
+</tr>
+<tr class="row-even"><td><p>data_t</p></td>
+<td><p>Type of the data array</p></td>
+</tr>
+<tr class="row-odd"><td><p>singularity_t</p></td>
+<td><p>Type of the singularity (tail, nothing…)</p></td>
+</tr>
+<tr class="row-even"><td><p>symmetry_t</p></td>
+<td><p>Symmetry (unused at this stage).</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="member-functions">
+<h2>Member functions<a class="headerlink" href="#member-functions" title="Permalink to this headline">¶</a></h2>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 51%" />
+<col style="width: 49%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Member function</p></th>
+<th class="head"><p>Meaning</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><a class="reference internal" href="gf_constructors.html#gf-constr"><span class="std std-ref">(constructor)</span></a></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>(destructor)</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="gf_call.html#gf-call"><span class="std std-ref">operator ()</span></a></p></td>
+<td><p>Evaluation on a point of the domain</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="gf_subscript.html#gf-subscript"><span class="std std-ref">operator []</span></a></p></td>
+<td><p>Access to the value on the mesh</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="gf_data.html#gf-data"><span class="std std-ref">mesh</span></a></p></td>
+<td><p>Access to the mesh</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="gf_data.html#gf-data"><span class="std std-ref">singularity</span></a></p></td>
+<td><p>Access to the singularity</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="gf_data.html#gf-data"><span class="std std-ref">symmetry</span></a></p></td>
+<td><p>Access to the symmetry</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="gf_data.html#gf-data"><span class="std std-ref">data</span></a></p></td>
+<td><p>Direct view of the data [Advanced]</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="gf_assign.html#gf-reg-assign"><span class="std std-ref">operator =</span></a></p></td>
+<td><p>Assigns values to the container</p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="xref std std-ref">operator +=,-=,*=,/=</span></p></td>
+<td><p>compound assignment operators</p></td>
+</tr>
+</tbody>
+</table>
+<div class="toctree-wrapper compound">
+</div>
+</div>
+<div class="section" id="non-member-functions">
+<h2>Non-member functions<a class="headerlink" href="#non-member-functions" title="Permalink to this headline">¶</a></h2>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 54%" />
+<col style="width: 46%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Member function</p></th>
+<th class="head"><p>Meaning</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><span class="xref std std-ref">swap</span></p></td>
+<td><p>Swap of 2 containers</p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="xref std std-ref">operator&lt;&lt;</span></p></td>
+<td><p>Writing to stream</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="gf_reinterpret.html#gf-reinterpret"><span class="std std-ref">reinterpret_scalar_valued_gf_as_matrix_valued</span></a></p></td>
+<td><p>Reinterpret a scalar_valued gf as a 1x1 matrix_valued view</p></td>
+</tr>
+</tbody>
+</table>
+<div class="toctree-wrapper compound">
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper"><div class="sidebar">
+  <div class="container-fluid sidebar-container">
+      <div class="row sidebar-row">
+        <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../gettingstarted.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../mainconcepts.html">Main Concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../applications.html">Applications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../capiref.html">C++ API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../pythonapiref.html">Python API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../contributing.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../changelog.html">Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../about.html">About</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../faqs.html">FAQS</a></li>
+</ul>
+
+      </div>
+      <div class="row sidebar-row search-row">
+        <div
+          class="sidebar-section"
+          id="searchbox"
+          style="display: none"
+          role="search"
+        >
+          <div class="sidebar-header">
+            <a class="sidebar-header-link">Quick search</a>
+          </div>
+        </div>
+        <div class="searchformwrapper">
+          <form class="search" action="../../../../../search.html" method="get">
+            <input type="text" name="q" aria-labelledby="searchlabel" />
+            <input type="submit" value="Go" />
+          </form>
+        </div>
+        <script type="text/javascript">
+          $("#searchbox").show(0);
+        </script>
+      </div>
+    </div>
+  </div>
+</div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+  <footer>
+    <div class="container-fluid">
+      <div class="row footer">
+        <div class="col-xs-12 center-xs middle-xs">
+          <p class="updated">Updated on November 20, 2019 (2:20pm)</p>
+          <div class="outro">
+            <p class="footer-description">
+              TRIQS (Toolbox for Research on Interacting Quantum Systems) is a
+              scientific project providing a set of C++ and Python libraries to
+              develop new tools for the study of interacting quantum systems based
+              at the Center for Computational Quantum Physics at the Flatiron
+              Institute.
+            </p>
+          </div>
+          <ul class="footer-links">
+            <li class="footer-link">
+              <a exact="true" href="/about.html">About</a>
+            </li>
+            <li class="footer-link">
+              <a
+                target="_blank"
+                rel="noopener noreferrer"
+                href="https://simonsfoundation.org"
+                >Simons Foundation</a
+              >
+            </li>
+            <li class="footer-link">
+              <a
+                target="_blank"
+                rel="noopener noreferrer"
+                href="https://flatironinstitute.org"
+                >Flatiron Institute</a
+              >
+            </li>
+            <li class="footer-link"><a exact="true" href="/">Github</a></li>
+            <li class="footer-link"><a exact="true" href="/contact">Contact</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  </body>
+</html>

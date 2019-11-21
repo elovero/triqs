@@ -1,0 +1,313 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Regular type vs view type &#8212; TRIQS Docs</title>
+    <link rel="stylesheet" href="../../../../_static/triqs2.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="../../../../" src="../../../../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../../../_static/language_data.js"></script>
+    <script type="text/javascript" src="../../../../_static/triqs2.js"></script>
+    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=default"></script>
+    <link rel="author" title="About these documents" href="../../../../about.html" />
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" />
+  <link rel="stylesheet" href="https://use.typekit.net/hsv6sot.css">
+  <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+
+  </head>
+<body class="layout">
+
+  <header class="header">
+    <nav class="header-content">
+      <div class="row header-row">
+        <div class="col-xs-2 logo-col">
+          <div class="row start-xs">
+            <div class="nav-item">
+              <a class="nav-link" href="/"
+                ><span class="nav-logo">TRIQS</span></a
+              >
+            </div>
+          </div>
+        </div>
+        <div class="col-xs-6">
+          <div class="row">
+            <div class="nav-item">
+              <a class="nav-link" href="/documentation.html">Docs</a>
+            </div>
+            <div class="nav-item">
+              <a class="nav-link" href="/tutorials.html">Tutorials</a>
+            </div>
+            <div class="nav-item">
+              <a class="nav-link" href="/applications.html">Applications</a>
+            </div>
+            <div class="nav-item">
+              <a class="nav-link" href="/community.html">Community</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-xs-4">
+          <div class="row end-xs">
+            <div class="nav-item">
+              <a class="nav-link" href="/about.html">About</a>
+            </div>
+            <div class="nav-item">
+              <a class="nav-link" target="_blank" rel="noopener noreferrer" href="https://github.com/TRIQS/triqs">Github</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </header>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="regular-type-vs-view-type">
+<span id="view-vs-regular"></span><h1>Regular type vs view type<a class="headerlink" href="#regular-type-vs-view-type" title="Permalink to this headline">¶</a></h1>
+<p>A fundamental distinction in TRIQS is the difference between the <cite>regular type</cite>
+and the corresponding <cite>view types</cite>.</p>
+<ul>
+<li><p>The <strong>regular types</strong></p>
+<ul>
+<li><p>Following the definition of A. Stepanov, a regular type is a <em>value</em>, much like an int, a double,
+or a std::vector. Cf http://www.stepanovpapers.com/DeSt98.pdf (I added move semantics to the definition).</p></li>
+<li><p>It has <cite>value semantics</cite>, more precisely</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">T</span> <span class="n">a</span><span class="p">;</span>               <span class="c1">// default constructible</span>
+<span class="n">T</span> <span class="n">a</span> <span class="o">=</span> <span class="n">b</span><span class="p">;</span> <span class="n">T</span> <span class="nf">a</span> <span class="p">(</span><span class="n">b</span><span class="p">);</span>  <span class="c1">// copy constructible</span>
+<span class="n">a</span> <span class="o">=</span> <span class="n">b</span><span class="p">;</span>             <span class="c1">// assignment</span>
+<span class="n">a</span> <span class="o">==</span> <span class="n">b</span><span class="p">;</span> <span class="n">a</span> <span class="o">!=</span> <span class="n">b</span><span class="p">;</span>    <span class="c1">// Equality.</span>
+</pre></div>
+</div>
+<p>with the following properties</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">T</span> <span class="n">a</span> <span class="o">=</span> <span class="n">b</span><span class="p">;</span> <span class="n">assert</span><span class="p">(</span><span class="n">a</span><span class="o">==</span><span class="n">b</span><span class="p">);</span>
+<span class="n">T</span> <span class="n">a</span><span class="p">;</span> <span class="n">a</span><span class="o">=</span><span class="n">b</span><span class="p">;</span> <span class="n">is</span> <span class="n">equivalent</span> <span class="n">to</span>  <span class="n">T</span> <span class="n">a</span><span class="o">=</span><span class="n">b</span><span class="p">;</span>
+<span class="n">T</span> <span class="n">a</span><span class="o">=</span><span class="n">c</span><span class="p">;</span> <span class="n">T</span> <span class="n">b</span><span class="o">=</span><span class="n">c</span><span class="p">;</span> <span class="n">a</span><span class="o">=</span><span class="n">d</span><span class="p">;</span> <span class="n">assert</span><span class="p">(</span><span class="n">b</span><span class="o">==</span><span class="n">c</span><span class="p">);</span>
+</pre></div>
+</div>
+</li>
+<li><p>When copied, assigned, it makes deep copy of the data and resizes itself if necessary (like e.g.  std::vector).</p></li>
+<li><p>Examples:</p>
+<ul class="simple">
+<li><p>std::vector&lt;T&gt;</p></li>
+<li><p>triqs::arrays::array&lt;T,R&gt;, triqs::arrays::matrix&lt;T&gt;, triqs::arrays::vector&lt;T&gt;</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>The <strong>view types</strong></p>
+<ul class="simple">
+<li><p>They have a <cite>documentation/manual/triqs semantics</cite>.</p></li>
+<li><p>They are just partial or complete views of the corresponding regular type.</p></li>
+<li><p>They never make deep copy, either in copying, constructing, transforming to python,</p></li>
+<li><p>They cannot be resized.</p></li>
+<li><p>They are useful to work on arrays, matrices, or on some part thereof, without making copies
+(e.g. on a slice of an array, a column of a matrix).</p></li>
+<li><p>Examples:</p>
+<ul>
+<li><p>triqs::arrays::array_view&lt;T,R&gt;, triqs::arrays::matrix_view, triqs::arrays::vector_view&lt;T&gt;</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>Many triqs containers (array, matrix, green functions)
+is therefore provided in two flavors, and it is crucial for the user
+to learn and understand their difference in order to use them appropriately.</p>
+<div class="section" id="behaviour-comparison-table-between-regular-and-view-types">
+<h2>Behaviour comparison table between regular and view types<a class="headerlink" href="#behaviour-comparison-table-between-regular-and-view-types" title="Permalink to this headline">¶</a></h2>
+<p>A detailed comparison of the behaviour of the two type of types is provided in the following table.</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 11%" />
+<col style="width: 40%" />
+<col style="width: 49%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Topics</p></th>
+<th class="head"><p>regular type (e.g. array, matrix, vector)</p></th>
+<th class="head"><p>view type (e.g. array_view, matrix_view, vector_view)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Contructors</p></td>
+<td><ul class="simple">
+<li><p>Constructors create a new fresh memory block.</p></li>
+</ul>
+</td>
+<td><ul class="simple">
+<li><p>Constructors only make another view of the data.</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p>Default Contructor</p></td>
+<td><ul class="simple">
+<li><p>Default constructor creates an empty array</p></li>
+</ul>
+</td>
+<td><ul class="simple">
+<li><p>No default constructor (what would it view ?).</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><p>Copy contructors</p></td>
+<td><ul class="simple">
+<li><p>Create a new fresh memory block.</p></li>
+<li><p>Make a <em>true</em> copy of the data.</p></li>
+</ul>
+</td>
+<td><ul class="simple">
+<li><p>Make another view of the data (shallow copy).</p></li>
+<li><p><em>Never</em> copy data, so they are quite quick.</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p>Assignment (=)</p></td>
+<td><ul class="simple">
+<li><p>The assignment operator creates a new datablock if size mismatchs.</p></li>
+<li><p>Hence, assignment never fail for size reason
+(unless there is a memory allocation exception of course)</p></li>
+</ul>
+</td>
+<td><ul class="simple">
+<li><p>The assignment operator just copy data into the view.
+Behaviour is undefined if the size of the view is too small.
+(it throws if the array has option <cite>Tag::BoundCheck</cite> or if
+<cite>TRIQS_ARRAYS_ENFORCE_BOUNDCHECK</cite> is defined, Cf below).</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><p>Resizing</p></td>
+<td><ul class="simple">
+<li><p>Can be resized, invalidating all documentation/manual/triqss/pointers</p></li>
+</ul>
+</td>
+<td><p>to the data.     - Can be not be resized.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Invalidation</p></td>
+<td><ul class="simple">
+<li><p>References/pointers to the data may become invalid after resize,
+or assignment.</p></li>
+</ul>
+</td>
+<td><ul class="simple">
+<li><p>References/pointers to the data  are still valid after assignment.</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><p>Data Contiguity</p></td>
+<td><ul class="simple">
+<li><p>The data are contiguous in memory.</p></li>
+</ul>
+</td>
+<td><ul class="simple">
+<li><p>The data may not be contiguous in memory  (e.g. a slice).</p></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper"><div class="sidebar">
+  <div class="container-fluid sidebar-container">
+      <div class="row sidebar-row">
+        <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../gettingstarted.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../mainconcepts.html">Main Concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../applications.html">Applications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../capiref.html">C++ API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../pythonapiref.html">Python API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../contributing.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../changelog.html">Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../about.html">About</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../faqs.html">FAQS</a></li>
+</ul>
+
+      </div>
+      <div class="row sidebar-row search-row">
+        <div
+          class="sidebar-section"
+          id="searchbox"
+          style="display: none"
+          role="search"
+        >
+          <div class="sidebar-header">
+            <a class="sidebar-header-link">Quick search</a>
+          </div>
+        </div>
+        <div class="searchformwrapper">
+          <form class="search" action="../../../../search.html" method="get">
+            <input type="text" name="q" aria-labelledby="searchlabel" />
+            <input type="submit" value="Go" />
+          </form>
+        </div>
+        <script type="text/javascript">
+          $("#searchbox").show(0);
+        </script>
+      </div>
+    </div>
+  </div>
+</div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+  <footer>
+    <div class="container-fluid">
+      <div class="row footer">
+        <div class="col-xs-12 center-xs middle-xs">
+          <p class="updated">Updated on November 20, 2019 (2:20pm)</p>
+          <div class="outro">
+            <p class="footer-description">
+              TRIQS (Toolbox for Research on Interacting Quantum Systems) is a
+              scientific project providing a set of C++ and Python libraries to
+              develop new tools for the study of interacting quantum systems based
+              at the Center for Computational Quantum Physics at the Flatiron
+              Institute.
+            </p>
+          </div>
+          <ul class="footer-links">
+            <li class="footer-link">
+              <a exact="true" href="/about.html">About</a>
+            </li>
+            <li class="footer-link">
+              <a
+                target="_blank"
+                rel="noopener noreferrer"
+                href="https://simonsfoundation.org"
+                >Simons Foundation</a
+              >
+            </li>
+            <li class="footer-link">
+              <a
+                target="_blank"
+                rel="noopener noreferrer"
+                href="https://flatironinstitute.org"
+                >Flatiron Institute</a
+              >
+            </li>
+            <li class="footer-link"><a exact="true" href="/">Github</a></li>
+            <li class="footer-link"><a exact="true" href="/contact">Contact</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  </body>
+</html>

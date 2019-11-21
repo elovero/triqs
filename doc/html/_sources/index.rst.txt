@@ -2,25 +2,13 @@
    :description: TRIQS: a Toolbox for Research on Interacting Quantum Systems
    :keywords: triqs quantum interacting systems toolbox research
 
-.. _welcome:
+.. _home:
 
-Welcome
+TRIQS
 =======
 
-.. .. sidebar:: TRIQS 2.2
-
-..    This is the homepage TRIQS Version 2.2
-..    For the changes in 2.2, Cf :ref:`changelog page <changelog>`
-
-TRIQS (**T**\oolbox for **R**\esearch on **I**\nteracting **Q**\uantum **S**\ystems)
-is a scientific project providing a set of C++ and Python libraries to develop new tools
-for the study of interacting quantum systems.
-
-The goal of this toolkit is to provide high level, efficient and simple to use
-libraries in C++ and Python, and to promote the use of modern programming
-techniques.
-
-TRIQS is free software distributed under the GPL license.
+*TRIQS* (Toolbox for Research on Interacting Quantum Systems) is a set of C++ and Python libraries for the study of interacting quantum systems.
+---------------------------------------------------------------------------------------------------------------------------------------------------
 
 TRIQS applications
 -----------------------
@@ -71,3 +59,18 @@ a platform for discussions with other users and developers as a `Google group <h
 You can also post an issue on the `TRIQS GitHub <https://github.com/TRIQS/triqs>`_.
 
 Finally, if you want to contribute to the project, please check our :ref:`Contributing <contributing>` section.
+
+
+.. .. toctree::
+..    :maxdepth: 2
+
+..    gettingstarted
+..    mainconcepts
+..    codeformulas
+..    applications
+..    capiref
+..    pythonapiref
+..    contributing
+..    changelog
+..    about
+..    faqs

@@ -1,0 +1,427 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Concepts &#8212; TRIQS Docs</title>
+    <link rel="stylesheet" href="../../../../_static/triqs2.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="../../../../" src="../../../../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../../../_static/language_data.js"></script>
+    <script type="text/javascript" src="../../../../_static/triqs2.js"></script>
+    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=default"></script>
+    <link rel="author" title="About these documents" href="../../../../about.html" />
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" />
+  <link rel="stylesheet" href="https://use.typekit.net/hsv6sot.css">
+  <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+
+  </head>
+<body class="layout">
+
+  <header class="header">
+    <nav class="header-content">
+      <div class="row header-row">
+        <div class="col-xs-2 logo-col">
+          <div class="row start-xs">
+            <div class="nav-item">
+              <a class="nav-link" href="/"
+                ><span class="nav-logo">TRIQS</span></a
+              >
+            </div>
+          </div>
+        </div>
+        <div class="col-xs-6">
+          <div class="row">
+            <div class="nav-item">
+              <a class="nav-link" href="/documentation.html">Docs</a>
+            </div>
+            <div class="nav-item">
+              <a class="nav-link" href="/tutorials.html">Tutorials</a>
+            </div>
+            <div class="nav-item">
+              <a class="nav-link" href="/applications.html">Applications</a>
+            </div>
+            <div class="nav-item">
+              <a class="nav-link" href="/community.html">Community</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-xs-4">
+          <div class="row end-xs">
+            <div class="nav-item">
+              <a class="nav-link" href="/about.html">About</a>
+            </div>
+            <div class="nav-item">
+              <a class="nav-link" target="_blank" rel="noopener noreferrer" href="https://github.com/TRIQS/triqs">Github</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </header>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="concepts">
+<h1>Concepts<a class="headerlink" href="#concepts" title="Permalink to this headline">¶</a></h1>
+<p>In this section, we define the basic concepts (in the C++ sense)
+related to the multidimentional arrays.
+Readers not familiar with the idea of concepts in programming can skip this section,
+which is however needed for a more advanced usage of the library.</p>
+<p>A multidimentional array is basically a function of some indices, typically integers taken in a specific domain,
+returning the element type of the array, e.g. int, double.
+Indeed, if a is an two dimensionnal array of int,
+it is expected that a(i,j) returns an int or a documentation/manual/triqs to an int, for i,j integers in some domain.</p>
+<p>We distinguish two separate notions based on whether this function is <cite>pure</cite>
+or not, i.e. whether one can or not modify a(i,j).</p>
+<ul class="simple">
+<li><p>An <cite>Immutable</cite> array is simply a pure function on the domain of definition.
+a(i,j) returns a int, or a int const &amp;, that cannot be modified (hence immutable).</p></li>
+<li><p>A <cite>Mutable</cite> array is an Immutable array that <em>can</em> be modified. The non-const</p></li>
+</ul>
+<p>object returns a documentation/manual/triqs, e.g. a(i,j) can return a int &amp;. Typically this is
+a piece of memory, with a integer coordinate system on it.</p>
+<p>The main point here is that an <cite>Immutable</cite> array is a much more general notion:
+a formal expression consisting of arrays (e.g. A + 2*B) models this concept,
+but not the <cite>Mutable</cite> one.
+Most algorithms only use the <cite>Immutable</cite> array notion, where they are pure
+(mathematical) functions that return something depending on the value of an
+object, without side effects.</p>
+<div class="section" id="immutablecuboidarray">
+<span id="id1"></span><h2>ImmutableCuboidArray<a class="headerlink" href="#immutablecuboidarray" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><p><strong>Purpose</strong>:</p>
+<p>The most abstract definition of something that behaves like an immutable array on a cuboid domain.</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>it has a cuboid domain (hence a rank).</p></li>
+<li><p>it can be evaluated on any value of the indices in the domain</p></li>
+<li><p>NB: It does not need to be stored in memory. For example, a formal expression models this concept.</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p><strong>Definition</strong> ([…] denotes something optional).</p></li>
+</ul>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 43%" />
+<col style="width: 57%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Members</p></th>
+<th class="head"><p>Comment</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>domain_type == cuboid_domain&lt;Rank&gt;</p></td>
+<td><p>Type of the domain, with rank <cite>Rank</cite></p></td>
+</tr>
+<tr class="row-odd"><td><p>domain_type [const &amp;] domain() const</p></td>
+<td><p>Access to the domain.</p></td>
+</tr>
+<tr class="row-even"><td><p>value_type</p></td>
+<td><p>Type of the element of the array</p></td>
+</tr>
+<tr class="row-odd"><td><p>value_type  [const &amp;] operator() (size_t … i) const</p></td>
+<td><p>Evaluation. Must have exactly rank argument (checked at compiled time).</p></td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li><dl class="simple">
+<dt><strong>Examples</strong>:</dt><dd><ul>
+<li><p>array, array_view, matrix, matrix_view, vector, vector_view.</p></li>
+<li><p>array expressions.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</div>
+<div class="section" id="mutablecuboidarray">
+<span id="id2"></span><h2>MutableCuboidArray<a class="headerlink" href="#mutablecuboidarray" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><strong>Purpose</strong>:   An array where the data can be modified.</p></li>
+<li><p><strong>Refines</strong>:  <a class="reference internal" href="#immutablecuboidarray"><span class="std std-ref">ImmutableCuboidArray</span></a>.</p></li>
+<li><p><strong>Definition</strong></p></li>
+</ul>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 37%" />
+<col style="width: 63%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Members</p></th>
+<th class="head"><p>Comment</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>value_type  &amp; operator() (size_t … i)</p></td>
+<td><p>Element access: Must have exactly rank argument (checked at compiled time).</p></td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li><dl class="simple">
+<dt><strong>Examples</strong>:</dt><dd><ul>
+<li><p>array, array_view, matrix, matrix_view, vector, vector_view.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</div>
+<div class="section" id="immutablearray">
+<span id="id3"></span><h2>ImmutableArray<a class="headerlink" href="#immutablearray" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Refines <a class="reference internal" href="#immutablecuboidarray"><span class="std std-ref">ImmutableCuboidArray</span></a></p></li>
+<li><p>If X is the type:</p>
+<ul>
+<li><p>ImmutableArray&lt;A&gt; == true_type</p></li>
+</ul>
+</li>
+</ul>
+<p>NB: this traits marks the fact that X belongs to the Array algebra.</p>
+</div>
+<div class="section" id="immutablematrix">
+<span id="id4"></span><h2>ImmutableMatrix<a class="headerlink" href="#immutablematrix" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Refines <a class="reference internal" href="#immutablecuboidarray"><span class="std std-ref">ImmutableCuboidArray</span></a></p></li>
+<li><p>If A is the type:</p>
+<ul>
+<li><p>ImmutableMatrix&lt;A&gt; == true_type</p></li>
+<li><p>A::domain_type::rank == 2</p></li>
+</ul>
+</li>
+</ul>
+<p>NB: this traits marks the fact that X belongs to the MatrixVector algebra.</p>
+</div>
+<div class="section" id="immutablevector">
+<span id="id5"></span><h2>ImmutableVector<a class="headerlink" href="#immutablevector" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Refines <a class="reference internal" href="#immutablecuboidarray"><span class="std std-ref">ImmutableCuboidArray</span></a></p></li>
+<li><p>If A is the type:</p>
+<ul>
+<li><p>ImmutableMatrix&lt;A&gt; == true_type</p></li>
+<li><p>A::domain_type::rank == 1</p></li>
+</ul>
+</li>
+</ul>
+<p>NB: this traits marks the fact that X belongs to the MatrixVector algebra.</p>
+</div>
+<div class="section" id="mutablearray">
+<span id="id6"></span><h2>MutableArray<a class="headerlink" href="#mutablearray" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Refines <a class="reference internal" href="#mutablecuboidarray"><span class="std std-ref">MutableCuboidArray</span></a></p></li>
+<li><p>If A is the type:</p>
+<ul>
+<li><p>ImmutableArray&lt;A&gt; == true_type</p></li>
+<li><p>MutableArray&lt;A&gt; == true_type</p></li>
+</ul>
+</li>
+</ul>
+<p>NB: this traits marks the fact that X belongs to the Array algebra.</p>
+</div>
+<div class="section" id="mutablematrix">
+<span id="id7"></span><h2>MutableMatrix<a class="headerlink" href="#mutablematrix" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Refines <a class="reference internal" href="#mutablecuboidarray"><span class="std std-ref">MutableCuboidArray</span></a></p></li>
+<li><p>If A is the type:</p>
+<ul>
+<li><p>ImmutableMatrix&lt;A&gt; == true_type</p></li>
+<li><p>MutableMatrix&lt;A&gt; == true_type</p></li>
+<li><p>A::domain_type::rank ==2</p></li>
+</ul>
+</li>
+</ul>
+<p>NB: this traits marks the fact that X belongs to the MatrixVector algebra.</p>
+</div>
+<div class="section" id="mutablevector">
+<span id="id8"></span><h2>MutableVector<a class="headerlink" href="#mutablevector" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Refines <a class="reference internal" href="#mutablecuboidarray"><span class="std std-ref">MutableCuboidArray</span></a></p></li>
+<li><p>If A is the type:</p>
+<ul>
+<li><p>ImmutableMatrix&lt;A&gt; == true_type</p></li>
+<li><p>MutableMatrix&lt;A&gt; == true_type</p></li>
+<li><p>A::domain_type::rank ==1</p></li>
+</ul>
+</li>
+</ul>
+<p>NB: this traits marks the fact that X belongs to the MatrixVector algebra.</p>
+</div>
+<div class="section" id="why-concepts-advanced">
+<h2>Why concepts ? [Advanced]<a class="headerlink" href="#why-concepts-advanced" title="Permalink to this headline">¶</a></h2>
+<p>Why is it useful to define these concepts ?</p>
+<p>Simply because of lot of the library algorithms only use these concepts,
+and such algorithms can be used for any array or custom class that models
+the concept.</p>
+<p>For example:</p>
+<ul>
+<li><p>Problem: we want to quickly assemble a small class to store a diagonal matrix.
+We want this class to operate with other matrices, e.g. be part of an
+expression, be printed, etc.
+However, we only want to store the diagonal element.</p></li>
+<li><p>A simple solution :</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>#include &lt;triqs/arrays.hpp&gt;
+#include &lt;iostream&gt;
+namespace triqs {
+  namespace arrays { // better to put it in this namespace for ADL...
+
+    template &lt;typename T&gt; class immutable_diagonal_matrix_view {
+
+      array_view&lt;T, 1&gt; data; // the diagonal stored as a 1d array
+
+      public:
+      immutable_diagonal_matrix_view(array_view&lt;T, 1&gt; v) : data(v) {} // constructor
+
+      // the ImmutableMatrix concept
+      typedef indexmaps::cuboid::domain_t&lt;2&gt; domain_type;
+      domain_type domain() const {
+        auto s = data.shape()[0];
+        return domain_type{s, s};
+      }
+      typedef T value_type;
+      T operator()(size_t i, size_t j) const { return (i == j ? data(i) : 0); } // just kronecker...
+
+      friend std::ostream &amp;operator&lt;&lt;(std::ostream &amp;out, immutable_diagonal_matrix_view const &amp;d) { return out &lt;&lt; &quot;diagonal_matrix &quot; &lt;&lt; d.data; }
+    };
+
+    // Marking this class as belonging to the Matrix &amp; Vector algebra.
+    template &lt;typename T&gt; struct ImmutableMatrix&lt;immutable_diagonal_matrix_view&lt;T&gt;&gt; : std::true_type {};
+  } // namespace arrays
+} // namespace triqs
+
+/// TESTING
+using namespace triqs::arrays;
+int main(int argc, char **argv) {
+  auto a = array&lt;int, 1&gt;{1, 2, 3, 4};
+  auto d = immutable_diagonal_matrix_view&lt;int&gt;{a};
+  std::cout &lt;&lt; &quot;domain = &quot; &lt;&lt; d.domain() &lt;&lt; std::endl;
+  std::cout &lt;&lt; &quot;d   = &quot; &lt;&lt; d &lt;&lt; std::endl;
+  std::cout &lt;&lt; &quot;2*d = &quot; &lt;&lt; make_matrix(2 * d) &lt;&lt; std::endl;
+  std::cout &lt;&lt; &quot;d*d = &quot; &lt;&lt; matrix&lt;int&gt;(d * d) &lt;&lt; std::endl;
+}
+</pre></div>
+</div>
+</li>
+<li><p>Discussion</p>
+<ul>
+<li><p>Of course, this solution is not perfect. Several algorithms could be optimised if we know that a matrix is diagonal.
+E.g. multiplying a diagonal matrix by a full matrix. Currently, it creates a full matrix from the diagonal one, and
+call gemm. This is clearly not optimal.</p>
+<p>However, this is not the point.</p>
+<p>This class <em>just works</em> out of the box, and takes only a few minutes to write.
+One can of course then work more and specialize e.g. the operator * to optimize the multiplication,
+or any other algorithm, <cite>if and when this is necesssary</cite>. That is an implementation detail,
+that be done later, or by someone else in the team, without stopping the work.</p>
+</li>
+<li><p>One can generalize for a Mutable diagonal matrix. Left as an exercise…</p></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper"><div class="sidebar">
+  <div class="container-fluid sidebar-container">
+      <div class="row sidebar-row">
+        <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../gettingstarted.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../mainconcepts.html">Main Concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../applications.html">Applications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../capiref.html">C++ API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../pythonapiref.html">Python API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../contributing.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../changelog.html">Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../about.html">About</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../faqs.html">FAQS</a></li>
+</ul>
+
+      </div>
+      <div class="row sidebar-row search-row">
+        <div
+          class="sidebar-section"
+          id="searchbox"
+          style="display: none"
+          role="search"
+        >
+          <div class="sidebar-header">
+            <a class="sidebar-header-link">Quick search</a>
+          </div>
+        </div>
+        <div class="searchformwrapper">
+          <form class="search" action="../../../../search.html" method="get">
+            <input type="text" name="q" aria-labelledby="searchlabel" />
+            <input type="submit" value="Go" />
+          </form>
+        </div>
+        <script type="text/javascript">
+          $("#searchbox").show(0);
+        </script>
+      </div>
+    </div>
+  </div>
+</div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+  <footer>
+    <div class="container-fluid">
+      <div class="row footer">
+        <div class="col-xs-12 center-xs middle-xs">
+          <p class="updated">Updated on November 20, 2019 (2:20pm)</p>
+          <div class="outro">
+            <p class="footer-description">
+              TRIQS (Toolbox for Research on Interacting Quantum Systems) is a
+              scientific project providing a set of C++ and Python libraries to
+              develop new tools for the study of interacting quantum systems based
+              at the Center for Computational Quantum Physics at the Flatiron
+              Institute.
+            </p>
+          </div>
+          <ul class="footer-links">
+            <li class="footer-link">
+              <a exact="true" href="/about.html">About</a>
+            </li>
+            <li class="footer-link">
+              <a
+                target="_blank"
+                rel="noopener noreferrer"
+                href="https://simonsfoundation.org"
+                >Simons Foundation</a
+              >
+            </li>
+            <li class="footer-link">
+              <a
+                target="_blank"
+                rel="noopener noreferrer"
+                href="https://flatironinstitute.org"
+                >Flatiron Institute</a
+              >
+            </li>
+            <li class="footer-link"><a exact="true" href="/">Github</a></li>
+            <li class="footer-link"><a exact="true" href="/contact">Contact</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  </body>
+</html>

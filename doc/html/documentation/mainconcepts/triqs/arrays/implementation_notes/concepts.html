@@ -1,0 +1,689 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>1. Concepts &#8212; TRIQS Docs</title>
+    <link rel="stylesheet" href="../../../../../_static/triqs2.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../../_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="../../../../../" src="../../../../../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../../../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../../../../_static/language_data.js"></script>
+    <script type="text/javascript" src="../../../../../_static/triqs2.js"></script>
+    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=default"></script>
+    <link rel="author" title="About these documents" href="../../../../../about.html" />
+    <link rel="index" title="Index" href="../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../search.html" />
+  <link rel="stylesheet" href="https://use.typekit.net/hsv6sot.css">
+  <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+
+  </head>
+<body class="layout">
+
+  <header class="header">
+    <nav class="header-content">
+      <div class="row header-row">
+        <div class="col-xs-2 logo-col">
+          <div class="row start-xs">
+            <div class="nav-item">
+              <a class="nav-link" href="/"
+                ><span class="nav-logo">TRIQS</span></a
+              >
+            </div>
+          </div>
+        </div>
+        <div class="col-xs-6">
+          <div class="row">
+            <div class="nav-item">
+              <a class="nav-link" href="/documentation.html">Docs</a>
+            </div>
+            <div class="nav-item">
+              <a class="nav-link" href="/tutorials.html">Tutorials</a>
+            </div>
+            <div class="nav-item">
+              <a class="nav-link" href="/applications.html">Applications</a>
+            </div>
+            <div class="nav-item">
+              <a class="nav-link" href="/community.html">Community</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-xs-4">
+          <div class="row end-xs">
+            <div class="nav-item">
+              <a class="nav-link" href="/about.html">About</a>
+            </div>
+            <div class="nav-item">
+              <a class="nav-link" target="_blank" rel="noopener noreferrer" href="https://github.com/TRIQS/triqs">Github</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </header>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="concepts">
+<span id="impl-concepts"></span><h1>1. Concepts<a class="headerlink" href="#concepts" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="boostserializable">
+<h2>1.1. BoostSerializable<a class="headerlink" href="#boostserializable" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>define serialize for boost serialize library</p></li>
+</ul>
+</div>
+<div class="section" id="printable">
+<h2>1.2. Printable<a class="headerlink" href="#printable" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><table class="docutils align-default">
+<colgroup>
+<col style="width: 48%" />
+<col style="width: 52%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Elements</p></th>
+<th class="head"><p>Comment</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>std::ostream &amp; operator &lt;&lt; (std::ostream &amp; out, …)</p></td>
+<td><p>Printing</p></td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+</div>
+<div class="section" id="domain">
+<h2>1.3. Domain<a class="headerlink" href="#domain" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><strong>Purpose</strong> : The domain of definition of the array, i.e. the possible value of the indices.</p></li>
+<li><p><strong>Refines</strong>: BoostSerializable, Printable</p></li>
+<li><p><strong>Definition</strong>:</p></li>
+</ul>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 55%" />
+<col style="width: 45%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Elements</p></th>
+<th class="head"><p>Comment</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>static const unsigned int rank</p></td>
+<td><p>rank</p></td>
+</tr>
+<tr class="row-odd"><td><p>index_value_type</p></td>
+<td><p>type of the multi-index</p></td>
+</tr>
+<tr class="row-even"><td><p>default constructor, copy construction</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>operator =</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>operator ==, !=</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>size_t number_of_elements() const</p></td>
+<td><p>number of elements</p></td>
+</tr>
+<tr class="row-even"><td><p>generator</p></td>
+<td><p>type of the IndexGenerator that generates the indices</p></td>
+</tr>
+<tr class="row-odd"><td><p>begin() const/ end() const</p></td>
+<td><p>a generator at start/end</p></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><p><strong>Examples</strong> :</p>
+<p>Typically, this is is a multi-index for an array, matrix, …., e.g.</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Cuboid&lt;rank&gt;: standard hyperrectangular arrays. This is little more than the tuple of the lengths.</p></li>
+<li><p>triangle, …. ?</p></li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+</div>
+<div class="section" id="hasimmutablearrayinterface">
+<span id="id1"></span><h2>1.4. HasImmutableArrayInterface<a class="headerlink" href="#hasimmutablearrayinterface" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><dl class="simple">
+<dt><strong>Purpose</strong>: The most abstract definition of something that behaves like an immutable array.</dt><dd><ul>
+<li><p>it has a domain (hence a rank).</p></li>
+<li><p>it can be evaluated on any value of the indices in the domain</p></li>
+<li><p>By combining the generator of the domain with the evaluation, it is therefore easy to
+iterate on the values of such an object.</p></li>
+<li><p>NB: It does not need to be stored in memory. A formal expression, e.g. model this concept.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p><strong>Definition</strong> ([A|B] denotes that the return type maybe A or B).</p></li>
+</ul>
+<blockquote>
+<div><table class="docutils align-default">
+<colgroup>
+<col style="width: 62%" />
+<col style="width: 38%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Elements</p></th>
+<th class="head"><p>Comment</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>value_type</p></td>
+<td><p>Type of the element of the array</p></td>
+</tr>
+<tr class="row-odd"><td><p>domain_type</p></td>
+<td><p>Type of the domain.</p></td>
+</tr>
+<tr class="row-even"><td><p>[domain_type const &amp; | domain_type] domain() const</p></td>
+<td><p>Access to the domain.</p></td>
+</tr>
+<tr class="row-odd"><td><p>[ value_type | value_type const &amp;] operator[] (domain_type::index_value_type const &amp;) const</p></td>
+<td><p>Evaluation.</p></td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+<ul class="simple">
+<li><dl class="simple">
+<dt><strong>Examples</strong>:</dt><dd><ul>
+<li><p>array, array_view, matrix, matrix_view, vector, vector_view (all implemented as Indexmap_Storage_Pair)</p></li>
+<li><p>array expressions (in which case the returns are not const &amp; since they are computed, not stored).</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</div>
+<div class="section" id="indexgenerator">
+<h2>1.5. IndexGenerator<a class="headerlink" href="#indexgenerator" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><strong>Purpose</strong>: Generate the indices of a domain.</p></li>
+<li><p><strong>Definition</strong>:</p></li>
+</ul>
+<blockquote>
+<div><table class="docutils align-default">
+<colgroup>
+<col style="width: 39%" />
+<col style="width: 61%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Elements</p></th>
+<th class="head"><p>Comment</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>domain_type</p></td>
+<td><p>Type of the domain whose indices are generated.</p></td>
+</tr>
+<tr class="row-odd"><td><p>default contruction, copy construction</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>construction from (domain_type const &amp;, bool atend=false)</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>IndexGenerator &amp; operator=(const IndexGenerator &amp; )</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>operator ++</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>operator =</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>operator ==, !=</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>domain_type::index_value_type  const &amp; operator * () const</p></td>
+<td><p>Access to the value of the multi-index</p></td>
+</tr>
+<tr class="row-even"><td><p>bool at_end() const</p></td>
+<td><p>True iif the generator has reached the last value</p></td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+<ul class="simple">
+<li><p><strong>Examples</strong> :</p>
+<ul>
+<li><p>cuboid_index_generator</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="indexmap">
+<h2>1.6. IndexMap<a class="headerlink" href="#indexmap" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><strong>Purpose</strong>:</p>
+<ul>
+<li><p>Store the mapping of the index domain to a linear array.</p></li>
+<li><p>It is basically a function: indices –&gt; 1d position, the bijection between the indices
+of an element and its position in the memory block.</p></li>
+</ul>
+</li>
+<li><p><strong>Refines</strong>: BoostSerializable, Printable</p></li>
+<li><p><strong>Definition</strong>:</p></li>
+</ul>
+<blockquote>
+<div><table class="docutils align-default">
+<colgroup>
+<col style="width: 42%" />
+<col style="width: 58%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Elements</p></th>
+<th class="head"><p>Comment</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><ul class="simple">
+<li><p>domain_type</p></li>
+</ul>
+</td>
+<td><p>The type of the domain.</p></td>
+</tr>
+<tr class="row-odd"><td><ul class="simple">
+<li><p>domain_type const &amp; domain() const</p></li>
+</ul>
+</td>
+<td><p>The domain.</p></td>
+</tr>
+<tr class="row-even"><td><ul class="simple">
+<li><p>default constructor, copy construction</p></li>
+</ul>
+</td>
+<td><p>Cpy is a true copy.</p></td>
+</tr>
+<tr class="row-odd"><td><ul class="simple">
+<li><p>can be constructed from domain_type const &amp;</p></li>
+</ul>
+</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><ul class="simple">
+<li><p>size_t operator[] (domain_type::index_value_type const &amp; key ) const</p></li>
+</ul>
+</td>
+<td><p>The mapping itself.</p></td>
+</tr>
+<tr class="row-odd"><td><ul class="simple">
+<li><p>iterator</p></li>
+</ul>
+</td>
+<td><p>A type modeling IndexMapIterator, which is the optimal memory traversal.
+NB: the order of indices is chosen for optimal traversal of memory, it
+does not need to be “natural”.
+cuboid_map also provides a natural_iterator for that purpose.</p></td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+<ul class="simple">
+<li><p>The type also has to define two free functions and to specialize a template:</p></li>
+</ul>
+<blockquote>
+<div><table class="docutils align-default">
+<colgroup>
+<col style="width: 37%" />
+<col style="width: 63%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Elements</p></th>
+<th class="head"><p>Comment</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><ul class="simple">
+<li><p>bool compatible_for_assignment (M1, M2)</p></li>
+</ul>
+</td>
+<td><p>Returns whether an array/matrix/vector with map M1 can be equated to a array/matrix/vector with
+map M2</p></td>
+</tr>
+<tr class="row-odd"><td><ul class="simple">
+<li><p>bool raw_copy_possible (M1, M2)</p></li>
+</ul>
+</td>
+<td><p>Is the assignment of an array/matrix/vector with map M2 into an array/matrix/vector with map M1
+doable with raw copy</p></td>
+</tr>
+<tr class="row-even"><td><ul class="simple">
+<li><p>struct indexmap_iterator_adapter&lt; It, I &gt;</p></li>
+</ul>
+</td>
+<td><p>Metafunction:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>I is the IndexMap class</p></li>
+<li><p>It any similar IndexMapIterator which returns (in ::type) the IndexMapIterator on I
+with the same order traversal as It.</p></li>
+</ul>
+</div></blockquote>
+<p>Example: It is a IndexMapIterator on I1 stored in C order, I is in Fortran order,
+the result will be an IndexMapIterator on I that presents the data of I in C order
+This is used in copying array with different indexmaps.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+<ul class="simple">
+<li><p><strong>Examples</strong>:</p></li>
+</ul>
+<blockquote>
+<div><ul class="simple">
+<li><p>cuboid_map&lt;IterationOrder&gt;  :  a map of the cuboid indices in a fixed order in memory.</p></li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="indexmapiterator">
+<h2>1.7. IndexMapIterator<a class="headerlink" href="#indexmapiterator" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><dl>
+<dt><strong>Purpose</strong>:</dt><dd><blockquote>
+<div><ul class="simple">
+<li><p>A basic iterator on an IndexMap which can be dedocumentation/manual/triqsd into the shift of successive elements compared to the start of the memory block.</p></li>
+<li><p>These iterators are kept as simple as possible, so that it is easy to implement new indices maps and their iterators.</p></li>
+<li><p>NB: In particular, they are <em>not</em> necessary STL-compliant. The array_iterator class will</p></li>
+</ul>
+</div></blockquote>
+<p>take such an iterator and a Storage and produce a true, STL compliant iterator on the array (iterator_adapter).</p>
+</dd>
+</dl>
+</li>
+<li><p><strong>Definition</strong>:</p></li>
+</ul>
+<blockquote>
+<div><table class="docutils align-default">
+<colgroup>
+<col style="width: 37%" />
+<col style="width: 63%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Elements</p></th>
+<th class="head"><p>Comment</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>indexmap_type</p></td>
+<td><p>The index_map on which the iterator is iterating</p></td>
+</tr>
+<tr class="row-odd"><td><p>domain_type</p></td>
+<td><p>Type of the domain whose indices are generated.</p></td>
+</tr>
+<tr class="row-even"><td><p>default contruction, copy construction</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>construction from (domain_type const &amp;, bool atend=false)</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>IndexMapIterator &amp; operator=(const IndexMapIterator &amp; )</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>IndexMapIterator &amp; operator ++</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>operator ==, !=</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>std::ptrdiff_t  operator*() const</p></td>
+<td><p>Dedocumentation/manual/triqs as a shift from the beginning of the array</p></td>
+</tr>
+<tr class="row-even"><td><p>domain_type::index_value_type  const &amp; indices () const</p></td>
+<td><p>Access to the value of the multi-index at the iterator position</p></td>
+</tr>
+<tr class="row-odd"><td><p>bool at_end() const</p></td>
+<td><p>True iif the generator has reached the last value (in practice quicker that it = XX.end()).</p></td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+<ul class="simple">
+<li><p><strong>Example(s)</strong> :</p>
+<ul>
+<li><p>cuboid_map_iterator</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="storage">
+<h2>1.8. Storage<a class="headerlink" href="#storage" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><dl class="simple">
+<dt><strong>Purpose</strong>:</dt><dd><ul class="simple">
+<li><p>The storage of the array in memory, e.g. plain C++ array, a numpy, etc…</p></li>
+<li><p>A Storage keeps the documentation/manual/triqs to the memory block where the array is stored.</p></li>
+<li><p>NB: This memory block can be typically shared between various arrays and views,
+so the Storage is just a documentation/manual/triqs. The memory is deallocated only
+when all storages referencing it has been destroyed.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p><strong>Refines</strong>:  BoostSerializable</p></li>
+<li><p><strong>Definition</strong> :</p>
+<blockquote>
+<div><table class="docutils align-default">
+<colgroup>
+<col style="width: 36%" />
+<col style="width: 64%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Elements</p></th>
+<th class="head"><p>Comment</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>value_type</p></td>
+<td><p>Type of the element stored, e.g. int, const int, double, const double, …</p></td>
+</tr>
+<tr class="row-odd"><td><p>default construction</p></td>
+<td><p>Makes a storage of size 0</p></td>
+</tr>
+<tr class="row-even"><td><p>copy construction</p></td>
+<td><p>a shallow copy (another documentation/manual/triqs to the same data).
+the copy construction is possible from another storage of the same value_type
+up to the const qualifier.
+The construction of a storage with value_type=T from a storage with value_type const T
+is forbidden at compile time.</p></td>
+</tr>
+<tr class="row-odd"><td><p>void operator = (const STO &amp;)</p></td>
+<td><p>A shallow copy of the documentation/manual/triqs to the data.</p></td>
+</tr>
+<tr class="row-even"><td><p>clone() const</p></td>
+<td><p>Create a clone of the data.</p></td>
+</tr>
+<tr class="row-odd"><td><p>const_clone() const</p></td>
+<td><p>Create a clone of the data with const value_type (e.g. int–&gt; const int).</p></td>
+</tr>
+<tr class="row-even"><td><p>void raw_copy_from(const STO &amp; X)</p></td>
+<td><p>Copy all the data from X to * this. Behaviour undefined if sizes do not match.</p></td>
+</tr>
+<tr class="row-odd"><td><p>size_t size() const</p></td>
+<td><p>Number of elements in the storage</p></td>
+</tr>
+<tr class="row-even"><td><p>value_type &amp; operator[](size_t p) const</p></td>
+<td><p>Access to the data.  Behaviour is undefined if empty()==true.</p></td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+</li>
+</ul>
+</div>
+<div class="section" id="storageorder-concept">
+<h2>1.9. StorageOrder concept<a class="headerlink" href="#storageorder-concept" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><p><strong>Purpose</strong> :</p>
+<ul class="simple">
+<li><p>Store the order of indices in memory.</p></li>
+<li><p>Can be fixed at compile time, or dynamically (not implemented).</p></li>
+</ul>
+</li>
+<li><p><strong>Refines</strong>:  BoostSerializable</p></li>
+<li><p><strong>Definition</strong> :</p>
+<blockquote>
+<div><table class="docutils align-default">
+<colgroup>
+<col style="width: 36%" />
+<col style="width: 64%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Elements</p></th>
+<th class="head"><p>Comment</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>size_t index_number(size_t i)</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>static unsigned int rank</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>default construction</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>copy construction</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>bool is_Fortran() const</p></td>
+<td><p>Is it Fortran-style ordering ?</p></td>
+</tr>
+<tr class="row-odd"><td><p>bool is_C() const</p></td>
+<td><p>Is it C-style ordering ?</p></td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+</li>
+<li><p>The type also has to define the == operator:</p></li>
+</ul>
+<blockquote>
+<div><table class="docutils align-default">
+<colgroup>
+<col style="width: 37%" />
+<col style="width: 63%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Elements</p></th>
+<th class="head"><p>Comment</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Operator ==</p></td>
+<td><p>Defined between any of the ordering.</p></td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper"><div class="sidebar">
+  <div class="container-fluid sidebar-container">
+      <div class="row sidebar-row">
+        <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../gettingstarted.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../mainconcepts.html">Main Concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../applications.html">Applications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../capiref.html">C++ API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../pythonapiref.html">Python API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../contributing.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../changelog.html">Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../about.html">About</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../faqs.html">FAQS</a></li>
+</ul>
+
+      </div>
+      <div class="row sidebar-row search-row">
+        <div
+          class="sidebar-section"
+          id="searchbox"
+          style="display: none"
+          role="search"
+        >
+          <div class="sidebar-header">
+            <a class="sidebar-header-link">Quick search</a>
+          </div>
+        </div>
+        <div class="searchformwrapper">
+          <form class="search" action="../../../../../search.html" method="get">
+            <input type="text" name="q" aria-labelledby="searchlabel" />
+            <input type="submit" value="Go" />
+          </form>
+        </div>
+        <script type="text/javascript">
+          $("#searchbox").show(0);
+        </script>
+      </div>
+    </div>
+  </div>
+</div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+  <footer>
+    <div class="container-fluid">
+      <div class="row footer">
+        <div class="col-xs-12 center-xs middle-xs">
+          <p class="updated">Updated on November 20, 2019 (2:20pm)</p>
+          <div class="outro">
+            <p class="footer-description">
+              TRIQS (Toolbox for Research on Interacting Quantum Systems) is a
+              scientific project providing a set of C++ and Python libraries to
+              develop new tools for the study of interacting quantum systems based
+              at the Center for Computational Quantum Physics at the Flatiron
+              Institute.
+            </p>
+          </div>
+          <ul class="footer-links">
+            <li class="footer-link">
+              <a exact="true" href="/about.html">About</a>
+            </li>
+            <li class="footer-link">
+              <a
+                target="_blank"
+                rel="noopener noreferrer"
+                href="https://simonsfoundation.org"
+                >Simons Foundation</a
+              >
+            </li>
+            <li class="footer-link">
+              <a
+                target="_blank"
+                rel="noopener noreferrer"
+                href="https://flatironinstitute.org"
+                >Flatiron Institute</a
+              >
+            </li>
+            <li class="footer-link"><a exact="true" href="/">Github</a></li>
+            <li class="footer-link"><a exact="true" href="/contact">Contact</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  </body>
+</html>

@@ -1,0 +1,254 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>[gf&lt;imtime&gt;] Matsubara imaginary time &#8212; TRIQS Docs</title>
+    <link rel="stylesheet" href="../../../../../_static/triqs2.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../../_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="../../../../../" src="../../../../../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../../../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../../../../_static/language_data.js"></script>
+    <script type="text/javascript" src="../../../../../_static/triqs2.js"></script>
+    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=default"></script>
+    <link rel="author" title="About these documents" href="../../../../../about.html" />
+    <link rel="index" title="Index" href="../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../search.html" />
+  <link rel="stylesheet" href="https://use.typekit.net/hsv6sot.css">
+  <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+
+  </head>
+<body class="layout">
+
+  <header class="header">
+    <nav class="header-content">
+      <div class="row header-row">
+        <div class="col-xs-2 logo-col">
+          <div class="row start-xs">
+            <div class="nav-item">
+              <a class="nav-link" href="/"
+                ><span class="nav-logo">TRIQS</span></a
+              >
+            </div>
+          </div>
+        </div>
+        <div class="col-xs-6">
+          <div class="row">
+            <div class="nav-item">
+              <a class="nav-link" href="/documentation.html">Docs</a>
+            </div>
+            <div class="nav-item">
+              <a class="nav-link" href="/tutorials.html">Tutorials</a>
+            </div>
+            <div class="nav-item">
+              <a class="nav-link" href="/applications.html">Applications</a>
+            </div>
+            <div class="nav-item">
+              <a class="nav-link" href="/community.html">Community</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-xs-4">
+          <div class="row end-xs">
+            <div class="nav-item">
+              <a class="nav-link" href="/about.html">About</a>
+            </div>
+            <div class="nav-item">
+              <a class="nav-link" target="_blank" rel="noopener noreferrer" href="https://github.com/TRIQS/triqs">Github</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </header>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="gf-imtime-matsubara-imaginary-time">
+<span id="gf-imtime"></span><h1><strong>[gf&lt;imtime&gt;]</strong> Matsubara imaginary time<a class="headerlink" href="#gf-imtime-matsubara-imaginary-time" title="Permalink to this headline">¶</a></h1>
+<p>This is a specialisation of <a class="reference internal" href="gf_and_view.html#gf-and-view"><span class="std std-ref">gf</span></a> for imaginary Matsubara time.</p>
+<div class="section" id="synopsis">
+<h2>Synopsis<a class="headerlink" href="#synopsis" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">gf</span><span class="o">&lt;</span><span class="n">imtime</span><span class="p">,</span> <span class="n">Target</span><span class="p">,</span> <span class="n">Opt</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>The <em>Target</em> template parameter can take the following values:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 32%" />
+<col style="width: 68%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Target</p></th>
+<th class="head"><p>Meaning</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>scalar_valued</p></td>
+<td><p>The function is scalar valued (double, complex…).</p></td>
+</tr>
+<tr class="row-odd"><td><p>matrix_valued [default]</p></td>
+<td><p>The function is matrix valued.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="domain-mesh">
+<h2>Domain &amp; mesh<a class="headerlink" href="#domain-mesh" title="Permalink to this headline">¶</a></h2>
+<p>The domain is  the set of real numbers between 0 and <span class="math notranslate nohighlight">\(\beta\)</span>
+since the function is periodic (resp. antiperiodic) for bosons (resp. fermions),  i.e.</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(G(\tau+\beta)=-G(\tau)\)</span>  for fermions</p></li>
+<li><p><span class="math notranslate nohighlight">\(G(\tau+\beta)=G(\tau)\)</span> for bosons.</p></li>
+</ul>
+<p>The domain is implemented in</p>
+<p>The mesh is <a class="reference internal" href="matsubara_imtime.html#gf-mesh-imtime"><span class="std std-ref">gf_mesh&lt;imtime&gt;</span></a>.</p>
+</div>
+<div class="section" id="singularity">
+<h2>Singularity<a class="headerlink" href="#singularity" title="Permalink to this headline">¶</a></h2>
+<p>The singularity is a high frequency expansion,  <a class="reference internal" href="tail.html#gf-tail"><span class="std std-ref">High-Frequency moments of the Green’s function</span></a>.</p>
+</div>
+<div class="section" id="evaluation-method">
+<h2>Evaluation method<a class="headerlink" href="#evaluation-method" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Use a linear interpolation between the two closest point of the mesh.</p></li>
+<li><p>Return type:</p>
+<ul>
+<li><p>If Target==scalar_valued: a complex</p></li>
+<li><p>If Target==matrix_valued: an object modeling ImmutableMatrix concept.</p></li>
+</ul>
+</li>
+<li><p>When the point is outside of the mesh, the evaluation of the gf returns:</p>
+<ul>
+<li><p>the evaluation of the high frequency tail</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="data-storage">
+<h2>Data storage<a class="headerlink" href="#data-storage" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>If Target==scalar_valued :</p>
+<ul>
+<li><p><cite>data_t</cite>: 1d array of complex&lt;double&gt;.</p></li>
+<li><p>g.data()(i) is the value of g for the i-th point of the mesh.</p></li>
+</ul>
+</li>
+<li><p>If Target==matrix_valued :</p>
+<ul>
+<li><p><cite>data_t</cite>: 3d array (C ordered) of complex&lt;double&gt;.</p></li>
+<li><p>g.data()(i, range(), range()) is the value of g for the i-th point of the mesh.</p></li>
+</ul>
+</li>
+</ul>
+<p>TO DO: complex OR DOUBLE: FIX and document !!</p>
+</div>
+<div class="section" id="hdf5-storage-convention">
+<h2>HDF5 storage convention<a class="headerlink" href="#hdf5-storage-convention" title="Permalink to this headline">¶</a></h2>
+<p>h5 tag: <cite>ImTime</cite></p>
+</div>
+<div class="section" id="examples">
+<h2>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper"><div class="sidebar">
+  <div class="container-fluid sidebar-container">
+      <div class="row sidebar-row">
+        <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../gettingstarted.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../mainconcepts.html">Main Concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../applications.html">Applications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../capiref.html">C++ API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../pythonapiref.html">Python API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../contributing.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../changelog.html">Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../about.html">About</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../faqs.html">FAQS</a></li>
+</ul>
+
+      </div>
+      <div class="row sidebar-row search-row">
+        <div
+          class="sidebar-section"
+          id="searchbox"
+          style="display: none"
+          role="search"
+        >
+          <div class="sidebar-header">
+            <a class="sidebar-header-link">Quick search</a>
+          </div>
+        </div>
+        <div class="searchformwrapper">
+          <form class="search" action="../../../../../search.html" method="get">
+            <input type="text" name="q" aria-labelledby="searchlabel" />
+            <input type="submit" value="Go" />
+          </form>
+        </div>
+        <script type="text/javascript">
+          $("#searchbox").show(0);
+        </script>
+      </div>
+    </div>
+  </div>
+</div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+  <footer>
+    <div class="container-fluid">
+      <div class="row footer">
+        <div class="col-xs-12 center-xs middle-xs">
+          <p class="updated">Updated on November 20, 2019 (2:20pm)</p>
+          <div class="outro">
+            <p class="footer-description">
+              TRIQS (Toolbox for Research on Interacting Quantum Systems) is a
+              scientific project providing a set of C++ and Python libraries to
+              develop new tools for the study of interacting quantum systems based
+              at the Center for Computational Quantum Physics at the Flatiron
+              Institute.
+            </p>
+          </div>
+          <ul class="footer-links">
+            <li class="footer-link">
+              <a exact="true" href="/about.html">About</a>
+            </li>
+            <li class="footer-link">
+              <a
+                target="_blank"
+                rel="noopener noreferrer"
+                href="https://simonsfoundation.org"
+                >Simons Foundation</a
+              >
+            </li>
+            <li class="footer-link">
+              <a
+                target="_blank"
+                rel="noopener noreferrer"
+                href="https://flatironinstitute.org"
+                >Flatiron Institute</a
+              >
+            </li>
+            <li class="footer-link"><a exact="true" href="/">Github</a></li>
+            <li class="footer-link"><a exact="true" href="/contact">Contact</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  </body>
+</html>

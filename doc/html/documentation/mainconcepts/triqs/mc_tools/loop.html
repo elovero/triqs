@@ -1,0 +1,235 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Introduction &#8212; TRIQS Docs</title>
+    <link rel="stylesheet" href="../../../../_static/triqs2.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="../../../../" src="../../../../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../../../_static/language_data.js"></script>
+    <script type="text/javascript" src="../../../../_static/triqs2.js"></script>
+    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=default"></script>
+    <link rel="author" title="About these documents" href="../../../../about.html" />
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" />
+  <link rel="stylesheet" href="https://use.typekit.net/hsv6sot.css">
+  <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+
+  </head>
+<body class="layout">
+
+  <header class="header">
+    <nav class="header-content">
+      <div class="row header-row">
+        <div class="col-xs-2 logo-col">
+          <div class="row start-xs">
+            <div class="nav-item">
+              <a class="nav-link" href="/"
+                ><span class="nav-logo">TRIQS</span></a
+              >
+            </div>
+          </div>
+        </div>
+        <div class="col-xs-6">
+          <div class="row">
+            <div class="nav-item">
+              <a class="nav-link" href="/documentation.html">Docs</a>
+            </div>
+            <div class="nav-item">
+              <a class="nav-link" href="/tutorials.html">Tutorials</a>
+            </div>
+            <div class="nav-item">
+              <a class="nav-link" href="/applications.html">Applications</a>
+            </div>
+            <div class="nav-item">
+              <a class="nav-link" href="/community.html">Community</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-xs-4">
+          <div class="row end-xs">
+            <div class="nav-item">
+              <a class="nav-link" href="/about.html">About</a>
+            </div>
+            <div class="nav-item">
+              <a class="nav-link" target="_blank" rel="noopener noreferrer" href="https://github.com/TRIQS/triqs">Github</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </header>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="introduction">
+<span id="montecarloloop"></span><h1>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="the-monte-carlo-loop">
+<h2>The Monte Carlo loop<a class="headerlink" href="#the-monte-carlo-loop" title="Permalink to this headline">¶</a></h2>
+<p>The <code class="docutils literal notranslate"><span class="pre">mc_generic</span></code> class is an implementation of the Monte Carlo loop.  Its
+goal is to propose and then accept or reject changes to a configuration
+according to this loop:</p>
+<a class="reference internal image-reference" href="documentation/manual/triqs/mc_tools/loop.png"><img alt="documentation/manual/triqs/mc_tools/loop.png" class="align-center" src="documentation/manual/triqs/mc_tools/loop.png" style="width: 700px;" /></a>
+<p>As shown in the figure, after a first initialization, the loop starts by
+proposing an update. In the following, we generically refer to this proposal as
+a proposed <strong>move</strong>. The move proposes a modification of the state of the
+system, which we call the <strong>configuration</strong> of the system. After having
+computed the transition probabilities between this proposed configuration and
+the old one, as well as their probability density, we compute an acceptance
+probability for the move. Based on this probability, the move is either
+<strong>accepted</strong> or <strong>rejected</strong>. If it is rejected, nothing happens and we remain
+in the same configuration. If it is accepted, the configuration is updated.</p>
+<p>This procedure is the heart of the Monte Carlo algorithm and is repeated
+at every Monte Carlo <strong>step</strong> (meaning one loop). Measurements are not
+made at every step, to allow for some decorrelation between measured
+configurations. Thus, measurements are made every <span class="math notranslate nohighlight">\(L\)</span> steps. We
+say that these <span class="math notranslate nohighlight">\(L\)</span> steps form a <strong>cycle</strong> and <span class="math notranslate nohighlight">\(L\)</span> is the
+length of a cycle.</p>
+<p>At the very beginning of the simulation, one usually allows for <span class="math notranslate nohighlight">\(W\)</span>
+<strong>warmup</strong> (thermalization) cycles. This means that there will be no measurements
+during these first <span class="math notranslate nohighlight">\(W\)</span> cycles. After that, we define <span class="math notranslate nohighlight">\(N\)</span>, the
+number of cycles that will be done until the end of the simulation.</p>
+<p>At the end of the simulation, the code will have done:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(N\)</span> measurements</p></li>
+<li><p><span class="math notranslate nohighlight">\(N + W\)</span> cycles</p></li>
+<li><p><span class="math notranslate nohighlight">\((N + W) \times L\)</span> steps</p></li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="c-variable-names">
+<h2>C++ variable names<a class="headerlink" href="#c-variable-names" title="Permalink to this headline">¶</a></h2>
+<p>In the C++ examples, these variables will be called:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">n_cycles</span></code> <span class="math notranslate nohighlight">\(= N\)</span></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">length_cycle</span></code> <span class="math notranslate nohighlight">\(= L\)</span></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">n_warmup_cycle</span></code> <span class="math notranslate nohighlight">\(= W\)</span></p></li>
+</ul>
+</div></blockquote>
+<p>You will also have to use these names if you will construct an <code class="docutils literal notranslate"><span class="pre">mc_generic</span></code>
+instance from a dictonary (see full documentation/manual/triqs below).</p>
+</div>
+<div class="section" id="monte-carlo-loop-and-connection-with-moves-and-measures">
+<h2>Monte Carlo loop and connection with moves and measures<a class="headerlink" href="#monte-carlo-loop-and-connection-with-moves-and-measures" title="Permalink to this headline">¶</a></h2>
+<p>We will cover this in more details, but let us already mention here that the
+<code class="docutils literal notranslate"><span class="pre">mc_generic</span></code> class only implements the Monte Carlo loop. It doesn’t need (and
+in fact doesn’t) know anything about what the configuration is or what the
+moves and measurements really do. All it does, is to use external classes which
+take care of making the moves. It just expects back a Metropolis ratio so that
+it can decide wether the move should be accepted or rejected. Once this choice
+is made, it tells the external class which again does we is needed if the move
+is accepted or rejected. The same is true for measurements which are external
+classes called by the loop.  This will become clearer with an example in the
+following section.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Above, we described the Metropolis algorithm. A different accept/reject
+scheme could be used but the mechanism remains the same.</p>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper"><div class="sidebar">
+  <div class="container-fluid sidebar-container">
+      <div class="row sidebar-row">
+        <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../gettingstarted.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../mainconcepts.html">Main Concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../applications.html">Applications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../capiref.html">C++ API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../pythonapiref.html">Python API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../contributing.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../changelog.html">Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../about.html">About</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../faqs.html">FAQS</a></li>
+</ul>
+
+      </div>
+      <div class="row sidebar-row search-row">
+        <div
+          class="sidebar-section"
+          id="searchbox"
+          style="display: none"
+          role="search"
+        >
+          <div class="sidebar-header">
+            <a class="sidebar-header-link">Quick search</a>
+          </div>
+        </div>
+        <div class="searchformwrapper">
+          <form class="search" action="../../../../search.html" method="get">
+            <input type="text" name="q" aria-labelledby="searchlabel" />
+            <input type="submit" value="Go" />
+          </form>
+        </div>
+        <script type="text/javascript">
+          $("#searchbox").show(0);
+        </script>
+      </div>
+    </div>
+  </div>
+</div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+  <footer>
+    <div class="container-fluid">
+      <div class="row footer">
+        <div class="col-xs-12 center-xs middle-xs">
+          <p class="updated">Updated on November 20, 2019 (2:20pm)</p>
+          <div class="outro">
+            <p class="footer-description">
+              TRIQS (Toolbox for Research on Interacting Quantum Systems) is a
+              scientific project providing a set of C++ and Python libraries to
+              develop new tools for the study of interacting quantum systems based
+              at the Center for Computational Quantum Physics at the Flatiron
+              Institute.
+            </p>
+          </div>
+          <ul class="footer-links">
+            <li class="footer-link">
+              <a exact="true" href="/about.html">About</a>
+            </li>
+            <li class="footer-link">
+              <a
+                target="_blank"
+                rel="noopener noreferrer"
+                href="https://simonsfoundation.org"
+                >Simons Foundation</a
+              >
+            </li>
+            <li class="footer-link">
+              <a
+                target="_blank"
+                rel="noopener noreferrer"
+                href="https://flatironinstitute.org"
+                >Flatiron Institute</a
+              >
+            </li>
+            <li class="footer-link"><a exact="true" href="/">Github</a></li>
+            <li class="footer-link"><a exact="true" href="/contact">Contact</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  </body>
+</html>

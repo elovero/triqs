@@ -48,7 +48,7 @@ TRIQS2 layout template.
               <a class="nav-link" href="/about.html">About</a>
             </div>
             <div class="nav-item">
-              <a class="nav-link" target="_blank" noopener noreferrer href="https://github.com/TRIQS/triqs">Github</a>
+              <a class="nav-link" target="_blank" rel="noopener noreferrer" href="https://github.com/TRIQS/triqs">Github</a>
             </div>
           </div>
         </div>
@@ -58,9 +58,8 @@ TRIQS2 layout template.
 {% endblock %}
 
 {% block relbar1 %}{% endblock %}
-
-{%- block relbar2 %}
-  {% macro relbar() %}
+{%- block relbar2 %}{% endblock %}
+  {# {% macro relbar() %}
       <div class="related" role="navigation" aria-label="related navigation">
         <ul class="related-content">
           {%- for rellink in rellinks %}
@@ -86,15 +85,14 @@ TRIQS2 layout template.
           {%- block relbaritems %} {% endblock %}
         </ul>
       </div>
-  {% endmacro %}
-{% endblock %}
+  {% endmacro %} #}
+
 
 {% block footer %}
   <footer>
     <div class="container-fluid">
       <div class="row footer">
         <div class="col-xs-12 center-xs middle-xs">
-          <p class="updated">Updated on November 20, 2019 (2:20pm)</p>
           <div class="outro">
             <p class="footer-description">
               TRIQS (Toolbox for Research on Interacting Quantum Systems) is a
@@ -106,7 +104,7 @@ TRIQS2 layout template.
           </div>
           <ul class="footer-links">
             <li class="footer-link">
-              <a exact="true" href="/about">About</a>
+              <a exact="true" href="/about.html">About</a>
             </li>
             <li class="footer-link">
               <a
@@ -127,6 +125,7 @@ TRIQS2 layout template.
             <li class="footer-link"><a exact="true" href="/">Github</a></li>
             <li class="footer-link"><a exact="true" href="/contact">Contact</a></li>
           </ul>
+          <p class="updated">Updated on November 20, 2019 (2:20pm)</p>
         </div>
       </div>
     </div>

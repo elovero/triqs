@@ -1,0 +1,250 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Linear algebra &#8212; TRIQS Docs</title>
+    <link rel="stylesheet" href="../../../../_static/triqs2.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="../../../../" src="../../../../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../../../_static/language_data.js"></script>
+    <script type="text/javascript" src="../../../../_static/triqs2.js"></script>
+    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=default"></script>
+    <link rel="author" title="About these documents" href="../../../../about.html" />
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" />
+  <link rel="stylesheet" href="https://use.typekit.net/hsv6sot.css">
+  <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+
+  </head>
+<body class="layout">
+
+  <header class="header">
+    <nav class="header-content">
+      <div class="row header-row">
+        <div class="col-xs-2 logo-col">
+          <div class="row start-xs">
+            <div class="nav-item">
+              <a class="nav-link" href="/"
+                ><span class="nav-logo">TRIQS</span></a
+              >
+            </div>
+          </div>
+        </div>
+        <div class="col-xs-6">
+          <div class="row">
+            <div class="nav-item">
+              <a class="nav-link" href="/documentation.html">Docs</a>
+            </div>
+            <div class="nav-item">
+              <a class="nav-link" href="/tutorials.html">Tutorials</a>
+            </div>
+            <div class="nav-item">
+              <a class="nav-link" href="/applications.html">Applications</a>
+            </div>
+            <div class="nav-item">
+              <a class="nav-link" href="/community.html">Community</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-xs-4">
+          <div class="row end-xs">
+            <div class="nav-item">
+              <a class="nav-link" href="/about.html">About</a>
+            </div>
+            <div class="nav-item">
+              <a class="nav-link" target="_blank" rel="noopener noreferrer" href="https://github.com/TRIQS/triqs">Github</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </header>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="linear-algebra">
+<h1>Linear algebra<a class="headerlink" href="#linear-algebra" title="Permalink to this headline">¶</a></h1>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Doc still largely to be written and updated….</p>
+</div>
+<p>Several standard linear algebra operations are provided for the matrix and vector.
+Note however that matrix and vector are not the main purpose of this library,
+hence the linear algebra support is less extended than other purely matrix library,
+like e.g. Eigen.</p>
+<p>The computation are done when possible by calling lapack and blas.
+In some important cases (like matrix product), a slow but generic version is also
+provided for type that lapack do not treat (e.g. matrix of int, matrix of custom objects)
+but be aware that these are not optimized for performance and should be used only in
+non critical part of the codes.</p>
+<div class="section" id="matrix-product">
+<h2>matrix product<a class="headerlink" href="#matrix-product" title="Permalink to this headline">¶</a></h2>
+<p>The * operator map the matrix x matrix and matrix x vector product.</p>
+<p>Example: matrix * matrix and * vector …</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&lt;triqs/arrays.hpp&gt;</span><span class="cp"></span>
+<span class="n">using</span> <span class="n">triqs</span><span class="o">::</span><span class="n">arrays</span><span class="o">::</span><span class="n">matrix</span><span class="p">;</span>
+<span class="n">using</span> <span class="n">triqs</span><span class="o">::</span><span class="n">clef</span><span class="o">::</span><span class="n">placeholder</span><span class="p">;</span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+  <span class="c1">// declare an init 2 matrices</span>
+  <span class="n">placeholder</span><span class="o">&lt;</span><span class="mi">0</span><span class="o">&gt;</span> <span class="n">i_</span><span class="p">;</span>
+  <span class="n">placeholder</span><span class="o">&lt;</span><span class="mi">1</span><span class="o">&gt;</span> <span class="n">j_</span><span class="p">;</span>
+  <span class="n">matrix</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span> <span class="n">A</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="n">B</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="n">C</span><span class="p">;</span>
+  <span class="n">A</span><span class="p">(</span><span class="n">i_</span><span class="p">,</span> <span class="n">j_</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="n">i_</span> <span class="o">+</span> <span class="n">j_</span><span class="p">;</span>
+  <span class="n">B</span><span class="p">(</span><span class="n">i_</span><span class="p">,</span> <span class="n">j_</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">i_</span> <span class="o">+</span> <span class="n">j_</span><span class="p">;</span>
+  <span class="n">C</span> <span class="o">=</span> <span class="n">A</span> <span class="o">*</span> <span class="n">B</span><span class="p">;</span>
+  <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot; C = &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">C</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>For types that lapack do not use, a generic version of the matrix product is provided.
+(same syntax, the dispatch is made at compile time depending of the type of the matrices).</p>
+</div>
+<div class="section" id="matrix-inversion">
+<h2>Matrix inversion<a class="headerlink" href="#matrix-inversion" title="Permalink to this headline">¶</a></h2>
+<p>The inverse function return a lazy inverse of any object which has ImmutableMatrix concept
+and can therefore be mixed with any other matrix expression.</p>
+<p>Example:
+.. warning:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">TO</span> <span class="n">BE</span> <span class="n">WRITTEN</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="lu-decomposition">
+<h2>LU decomposition<a class="headerlink" href="#lu-decomposition" title="Permalink to this headline">¶</a></h2>
+<p>Done. doc to be written</p>
+</div>
+<div class="section" id="diagonalization">
+<h2>Diagonalization<a class="headerlink" href="#diagonalization" title="Permalink to this headline">¶</a></h2>
+<p>Done. doc to be written</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&lt;triqs/arrays.hpp&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;triqs/arrays/linalg/eigenelements.hpp&gt;</span><span class="cp"></span>
+
+<span class="n">using</span> <span class="n">triqs</span><span class="o">::</span><span class="n">arrays</span><span class="o">::</span><span class="n">array</span><span class="p">;</span>
+<span class="n">using</span> <span class="n">triqs</span><span class="o">::</span><span class="n">arrays</span><span class="o">::</span><span class="n">matrix</span><span class="p">;</span>
+<span class="n">using</span> <span class="n">triqs</span><span class="o">::</span><span class="n">arrays</span><span class="o">::</span><span class="n">linalg</span><span class="o">::</span><span class="n">eigenvalues</span><span class="p">;</span>
+<span class="n">using</span> <span class="n">triqs</span><span class="o">::</span><span class="n">clef</span><span class="o">::</span><span class="n">placeholder</span><span class="p">;</span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+  <span class="n">placeholder</span><span class="o">&lt;</span><span class="mi">0</span><span class="o">&gt;</span> <span class="n">i_</span><span class="p">;</span>
+  <span class="n">placeholder</span><span class="o">&lt;</span><span class="mi">1</span><span class="o">&gt;</span> <span class="n">j_</span><span class="p">;</span>
+  <span class="n">matrix</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span> <span class="n">A</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span>
+  <span class="n">A</span><span class="p">(</span><span class="n">i_</span><span class="p">,</span> <span class="n">j_</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="n">i_</span> <span class="o">+</span> <span class="n">j_</span><span class="p">;</span>
+
+  <span class="k">auto</span> <span class="n">v</span> <span class="o">=</span> <span class="n">eigenvalues</span><span class="p">(</span><span class="n">A</span><span class="p">);</span>
+
+  <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;v = &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">v</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="svd-decomposition">
+<h2>SVD decomposition<a class="headerlink" href="#svd-decomposition" title="Permalink to this headline">¶</a></h2>
+<p>To be done</p>
+</div>
+<div class="section" id="interface-with-eigen">
+<h2>Interface with Eigen<a class="headerlink" href="#interface-with-eigen" title="Permalink to this headline">¶</a></h2>
+<p>To be implemented. Only possible for when order is known at compile time.</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper"><div class="sidebar">
+  <div class="container-fluid sidebar-container">
+      <div class="row sidebar-row">
+        <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../gettingstarted.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../mainconcepts.html">Main Concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../applications.html">Applications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../capiref.html">C++ API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../pythonapiref.html">Python API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../contributing.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../changelog.html">Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../about.html">About</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../faqs.html">FAQS</a></li>
+</ul>
+
+      </div>
+      <div class="row sidebar-row search-row">
+        <div
+          class="sidebar-section"
+          id="searchbox"
+          style="display: none"
+          role="search"
+        >
+          <div class="sidebar-header">
+            <a class="sidebar-header-link">Quick search</a>
+          </div>
+        </div>
+        <div class="searchformwrapper">
+          <form class="search" action="../../../../search.html" method="get">
+            <input type="text" name="q" aria-labelledby="searchlabel" />
+            <input type="submit" value="Go" />
+          </form>
+        </div>
+        <script type="text/javascript">
+          $("#searchbox").show(0);
+        </script>
+      </div>
+    </div>
+  </div>
+</div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+  <footer>
+    <div class="container-fluid">
+      <div class="row footer">
+        <div class="col-xs-12 center-xs middle-xs">
+          <p class="updated">Updated on November 20, 2019 (2:20pm)</p>
+          <div class="outro">
+            <p class="footer-description">
+              TRIQS (Toolbox for Research on Interacting Quantum Systems) is a
+              scientific project providing a set of C++ and Python libraries to
+              develop new tools for the study of interacting quantum systems based
+              at the Center for Computational Quantum Physics at the Flatiron
+              Institute.
+            </p>
+          </div>
+          <ul class="footer-links">
+            <li class="footer-link">
+              <a exact="true" href="/about.html">About</a>
+            </li>
+            <li class="footer-link">
+              <a
+                target="_blank"
+                rel="noopener noreferrer"
+                href="https://simonsfoundation.org"
+                >Simons Foundation</a
+              >
+            </li>
+            <li class="footer-link">
+              <a
+                target="_blank"
+                rel="noopener noreferrer"
+                href="https://flatironinstitute.org"
+                >Flatiron Institute</a
+              >
+            </li>
+            <li class="footer-link"><a exact="true" href="/">Github</a></li>
+            <li class="footer-link"><a exact="true" href="/contact">Contact</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  </body>
+</html>

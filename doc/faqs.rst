@@ -1,15 +1,15 @@
 
 .. _faqs:
 
-Frequently-asked questions
+FAQS
 ==========================
 
-Should you be encountering issues with TRIQS, please first take a look our issue page on GitHub: `<https://github.com/TRIQS/triqs/issues>`_ and make sure it has not been solved in previous posts. 
+Should you be encountering issues with TRIQS, please first take a look our issue page on GitHub: `<https://github.com/TRIQS/triqs/issues>`_ and make sure it has not been solved in previous posts.
 
 Q: How do I write my GF data to text files, e.g. to plot using other plotting tools?
 ----------------------------------------------------------------------------------------
 
-A: We recommend simply saving the GF data using numpy functions. 
+A: We recommend simply saving the GF data using numpy functions.
 For example, to simply save the imaginary part of the self-energy::
 
     import numpy as np

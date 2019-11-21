@@ -1,0 +1,276 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Solution 1. The class provides the transformation into a dict of hdf-compliant objects &#8212; TRIQS Docs</title>
+    <link rel="stylesheet" href="../../../../_static/triqs2.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="../../../../" src="../../../../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../../../_static/language_data.js"></script>
+    <script type="text/javascript" src="../../../../_static/triqs2.js"></script>
+    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=default"></script>
+    <link rel="author" title="About these documents" href="../../../../about.html" />
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" />
+  <link rel="stylesheet" href="https://use.typekit.net/hsv6sot.css">
+  <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+
+  </head>
+<body class="layout">
+
+  <header class="header">
+    <nav class="header-content">
+      <div class="row header-row">
+        <div class="col-xs-2 logo-col">
+          <div class="row start-xs">
+            <div class="nav-item">
+              <a class="nav-link" href="/"
+                ><span class="nav-logo">TRIQS</span></a
+              >
+            </div>
+          </div>
+        </div>
+        <div class="col-xs-6">
+          <div class="row">
+            <div class="nav-item">
+              <a class="nav-link" href="/documentation.html">Docs</a>
+            </div>
+            <div class="nav-item">
+              <a class="nav-link" href="/tutorials.html">Tutorials</a>
+            </div>
+            <div class="nav-item">
+              <a class="nav-link" href="/applications.html">Applications</a>
+            </div>
+            <div class="nav-item">
+              <a class="nav-link" href="/community.html">Community</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-xs-4">
+          <div class="row end-xs">
+            <div class="nav-item">
+              <a class="nav-link" href="/about.html">About</a>
+            </div>
+            <div class="nav-item">
+              <a class="nav-link" target="_blank" rel="noopener noreferrer" href="https://github.com/TRIQS/triqs">Github</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </header>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="solution-1-the-class-provides-the-transformation-into-a-dict-of-hdf-compliant-objects">
+<span id="hdf-protocol1"></span><h1>Solution 1. The class provides the transformation into a dict of hdf-compliant objects<a class="headerlink" href="#solution-1-the-class-provides-the-transformation-into-a-dict-of-hdf-compliant-objects" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="principle">
+<h2>Principle<a class="headerlink" href="#principle" title="Permalink to this headline">¶</a></h2>
+<p>The object which can be reduced to and reconstructed from a dictionary whose keys are strings,
+and whose values are of one of the following types:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>a scalar (int, float, complex ….)</p></li>
+<li><p>a numpy array of scalars</p></li>
+<li><p>an hdf-compliant object</p></li>
+<li><p>a list, a tuple or a dict of any of the types above.</p></li>
+</ul>
+</div></blockquote>
+<p>A class <cite>cls</cite> has to implement :</p>
+<dl class="method">
+<dt id="__reduce_to_dict__">
+<code class="sig-name descname">__reduce_to_dict__</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#__reduce_to_dict__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a dictionary of objects implementing <a class="reference internal" href="ref.html#hdf-protocol"><span class="std std-ref">hdf-compliant</span></a>
+or basic objects as number, strings, and arrays of numbers (any type and shape).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>a dictionary</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt>
+<code class="sig-name descname">__factory_from_dict__(cls,D) :</code></dt>
+<dd><p>A <strong>classmethod</strong> which reconstructs a new object of type <cite>cls</cite>
+from the dictionary  returned by <a class="reference internal" href="#__reduce_to_dict__" title="__reduce_to_dict__"><code class="xref py py-func docutils literal notranslate"><span class="pre">__reduce_to_dict__()</span></code></a>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>cls</strong> – the class</p></li>
+<li><p><strong>D</strong> – the dictionary returned by __reduce_to_dict__.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>a new object of type <cite>cls</cite></p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="example">
+<h2>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h2>
+<p>A little example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Example</span><span class="p">:</span>
+
+   <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">d</span><span class="p">,</span><span class="n">t</span><span class="p">):</span>
+       <span class="bp">self</span><span class="o">.</span><span class="n">d</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">t</span> <span class="o">=</span> <span class="n">d</span><span class="p">,</span><span class="n">t</span> <span class="c1"># some data</span>
+
+   <span class="k">def</span> <span class="nf">__reduce_to_dict__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+       <span class="k">return</span> <span class="p">{</span><span class="s1">&#39;d&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">d</span><span class="p">,</span> <span class="s1">&#39;t&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">t</span><span class="p">}</span>
+
+   <span class="nd">@classmethod</span>
+   <span class="k">def</span> <span class="nf">__factory_from_dict__</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span><span class="n">D</span><span class="p">)</span> <span class="p">:</span>
+       <span class="k">return</span> <span class="bp">cls</span><span class="p">(</span><span class="n">D</span><span class="p">[</span><span class="s1">&#39;d&#39;</span><span class="p">],</span><span class="n">D</span><span class="p">[</span><span class="s1">&#39;t&#39;</span><span class="p">])</span>
+
+<span class="c1"># registering my class</span>
+<span class="kn">from</span> <span class="nn">pytriqs.archive.hdf_archive_schemes</span> <span class="k">import</span> <span class="n">register_class</span>
+<span class="n">register_class</span> <span class="p">(</span><span class="n">myclass</span><span class="p">)</span>
+
+<span class="c1"># Testing it:</span>
+<span class="n">HDFArchive</span><span class="p">(</span><span class="s2">&quot;myfile2.h5&quot;</span><span class="p">)[</span><span class="s1">&#39;e&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">Example</span><span class="p">(</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">],</span> <span class="mi">56</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="what-happens-in-details">
+<h2>What happens in details  ?<a class="headerlink" href="#what-happens-in-details" title="Permalink to this headline">¶</a></h2>
+<p>Let us consider an object <cite>Ob</cite> of class <cite>Cls</cite>, interacting with and <code class="xref py py-class docutils literal notranslate"><span class="pre">HDFArchive</span></code>/<code class="xref py py-class docutils literal notranslate"><span class="pre">HDFArchiveGroup</span></code>  <cite>H</cite>.</p>
+<ul>
+<li><p><strong>Writing</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">H</span><span class="p">[</span><span class="n">Name</span><span class="p">]</span> <span class="o">=</span> <span class="n">Ob</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>a subgroup <cite>S</cite> of path <cite>Root_of_H/Name</cite> is created.</p></li>
+<li><p>Ob.__reduce_to_dict__() is called and returns a dictionary <cite>D</cite> of  scalar/numpy arrays/hdf-compliant objects.</p></li>
+<li><p>The objects in <cite>D</cite> are then stored <cite>S</cite> in a regular way (scalar/arrays) or using the same recursive procedure (other objects).</p></li>
+<li><p><cite>S</cite> is tagged with the attribute <cite>HDF5_data_scheme</cite> of <cite>Cls</cite>.</p></li>
+</ul>
+</li>
+<li><p><strong>Reading</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">res</span> <span class="o">=</span> <span class="n">H</span><span class="p">[</span><span class="n">Name</span><span class="p">]</span>
+</pre></div>
+</div>
+<ul>
+<li><p>The subgroup <cite>S</cite> of path <cite>Root_of_H/Name</cite> is explored. All objects are taken to build a dictionary <cite>D</cite>: name -&gt; values.
+This procedure is recursive: the hdf-compliant objects in the subgroup are rebuilt.</p></li>
+<li><p>An attribute <cite>HDF5_data_scheme</cite> is searched for <cite>S</cite>.</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>If it is found and it corresponds to a registered class <cite>Cls</cite> :</p>
+<ul>
+<li><p>Cls.__factory_from_dict__(D) is called and returns a new object Obj of type Cls, which is returned as <cite>res</cite>.</p></li>
+</ul>
+</li>
+<li><p>Otherwise, a new <code class="xref py py-class docutils literal notranslate"><span class="pre">HDFArchiveGroup</span></code> is constructed with <cite>S</cite> as root, and returned as <cite>res</cite>.</p></li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper"><div class="sidebar">
+  <div class="container-fluid sidebar-container">
+      <div class="row sidebar-row">
+        <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../gettingstarted.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../mainconcepts.html">Main Concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../applications.html">Applications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../capiref.html">C++ API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../pythonapiref.html">Python API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../contributing.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../changelog.html">Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../about.html">About</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../faqs.html">FAQS</a></li>
+</ul>
+
+      </div>
+      <div class="row sidebar-row search-row">
+        <div
+          class="sidebar-section"
+          id="searchbox"
+          style="display: none"
+          role="search"
+        >
+          <div class="sidebar-header">
+            <a class="sidebar-header-link">Quick search</a>
+          </div>
+        </div>
+        <div class="searchformwrapper">
+          <form class="search" action="../../../../search.html" method="get">
+            <input type="text" name="q" aria-labelledby="searchlabel" />
+            <input type="submit" value="Go" />
+          </form>
+        </div>
+        <script type="text/javascript">
+          $("#searchbox").show(0);
+        </script>
+      </div>
+    </div>
+  </div>
+</div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+  <footer>
+    <div class="container-fluid">
+      <div class="row footer">
+        <div class="col-xs-12 center-xs middle-xs">
+          <p class="updated">Updated on November 20, 2019 (2:20pm)</p>
+          <div class="outro">
+            <p class="footer-description">
+              TRIQS (Toolbox for Research on Interacting Quantum Systems) is a
+              scientific project providing a set of C++ and Python libraries to
+              develop new tools for the study of interacting quantum systems based
+              at the Center for Computational Quantum Physics at the Flatiron
+              Institute.
+            </p>
+          </div>
+          <ul class="footer-links">
+            <li class="footer-link">
+              <a exact="true" href="/about.html">About</a>
+            </li>
+            <li class="footer-link">
+              <a
+                target="_blank"
+                rel="noopener noreferrer"
+                href="https://simonsfoundation.org"
+                >Simons Foundation</a
+              >
+            </li>
+            <li class="footer-link">
+              <a
+                target="_blank"
+                rel="noopener noreferrer"
+                href="https://flatironinstitute.org"
+                >Flatiron Institute</a
+              >
+            </li>
+            <li class="footer-link"><a exact="true" href="/">Github</a></li>
+            <li class="footer-link"><a exact="true" href="/contact">Contact</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  </body>
+</html>
