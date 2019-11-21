@@ -242,6 +242,7 @@ body {
 
 .document {
   margin-top: 52px;
+  margin-bottom: 52px;
 }
 
 @media only screen and (min-width: 48em) {
@@ -2724,7 +2725,7 @@ li.footer-link > a:hover {
   font-weight: 500;
   font-style: normal;
   background-color: #fff;
-  border-bottom: 1px solid #a16eff;
+  border-top: 1px solid #a18dcc;
 }
 
 .header-content {
@@ -2849,6 +2850,7 @@ li.footer-link > a:hover {
   box-shadow: 1px 0 0 2px #eee;
   min-height: 100%;
   opacity: 1 !important;
+  background-color: #fff;
 }
 
 .sidebar-container {
@@ -3263,7 +3265,7 @@ form {
 /* List
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 ul {
-  list-style: circle inside;
+  list-style: none;
   padding-left: 0;
   margin-top: 0;
   margin-bottom: 2.5rem;
