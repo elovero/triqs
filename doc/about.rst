@@ -51,3 +51,6 @@ WARRANTY of any kind, as stated in the license.  In particular, its authors and
 contributors will take no responsability for any possible bugs or any improper
 use of these programs, including those resulting in incorrect scientific
 publications.
+
+Changelog
+----------------------

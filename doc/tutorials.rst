@@ -3,12 +3,10 @@
 Tutorials
 =============
 
-Jupyter
--------
+1. Landing page for tutorials with link to Binder
+2. Github repo that contains these
 
-- Landing page for tutorials with link to Binder
-- Github repo that contains these
-
+*What to do with the following?*
 
 Arrays
 ------

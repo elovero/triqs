@@ -1,0 +1,25 @@
+.document {
+  margin-top: 80px;
+  margin-bottom: 80px;
+  min-height: calc(100vh - 220px);
+
+  @include breakpoint("sm") {
+    .section {
+      padding-top: 10px;
+    }
+  }
+}
+
+.documentwrapper {
+  margin-right: auto;
+  margin-left: auto;
+  padding-right: $flexboxgrid-outer-margin;
+  padding-left: $flexboxgrid-outer-margin;
+  max-width: 1820px;
+  width: calc(100% - 300px);
+}
+
+.bodywrapper {
+  background-color: $color-white;
+  padding: 70px 1vw;
+}

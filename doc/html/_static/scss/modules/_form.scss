@@ -3,8 +3,8 @@
 input[type="email"] {
   height: 38px;
   padding: 6px 10px;
-  background-color: $background_color_2;
-  border: 1px solid $color_2;
+  background-color: $color-white;
+  border: 1px solid $color-primary;
   border-radius: 4px;
   box-shadow: none;
   box-sizing: border-box;
@@ -12,15 +12,15 @@ input[type="email"] {
   -moz-appearance: none;
   appearance: none;
   &:focus {
-    border: 1px solid $color_2;
+    border: 1px solid $color-primary;
     outline: 0;
   }
 }
 input[type="number"] {
   height: 38px;
   padding: 6px 10px;
-  background-color: $background_color_2;
-  border: 1px solid $color_2;
+  background-color: $color-white;
+  border: 1px solid $color-primary;
   border-radius: 4px;
   box-shadow: none;
   box-sizing: border-box;
@@ -28,15 +28,15 @@ input[type="number"] {
   -moz-appearance: none;
   appearance: none;
   &:focus {
-    border: 1px solid $color_2;
+    border: 1px solid $color-primary;
     outline: 0;
   }
 }
 input[type="search"] {
   height: 38px;
   padding: 6px 10px;
-  background-color: $background_color_2;
-  border: 1px solid $color_2;
+  background-color: $color-white;
+  border: 1px solid $color-primary;
   border-radius: 4px;
   box-shadow: none;
   box-sizing: border-box;
@@ -44,15 +44,15 @@ input[type="search"] {
   -moz-appearance: none;
   appearance: none;
   &:focus {
-    border: 1px solid $color_2;
+    border: 1px solid $color-primary;
     outline: 0;
   }
 }
 input[type="text"] {
   height: 38px;
   padding: 6px 10px;
-  background-color: $background_color_2;
-  border: 1px solid $color_2;
+  background-color: $color-white;
+  border: 1px solid $color-primary;
   border-radius: 4px;
   box-shadow: none;
   box-sizing: border-box;
@@ -60,15 +60,15 @@ input[type="text"] {
   -moz-appearance: none;
   appearance: none;
   &:focus {
-    border: 1px solid $color_2;
+    border: 1px solid $color-primary;
     outline: 0;
   }
 }
 input[type="tel"] {
   height: 38px;
   padding: 6px 10px;
-  background-color: $background_color_2;
-  border: 1px solid $color_2;
+  background-color: $color-white;
+  border: 1px solid $color-primary;
   border-radius: 4px;
   box-shadow: none;
   box-sizing: border-box;
@@ -76,15 +76,15 @@ input[type="tel"] {
   -moz-appearance: none;
   appearance: none;
   &:focus {
-    border: 1px solid $color_2;
+    border: 1px solid $color-primary;
     outline: 0;
   }
 }
 input[type="url"] {
   height: 38px;
   padding: 6px 10px;
-  background-color: $background_color_2;
-  border: 1px solid $color_2;
+  background-color: $color-white;
+  border: 1px solid $color-primary;
   border-radius: 4px;
   box-shadow: none;
   box-sizing: border-box;
@@ -92,15 +92,15 @@ input[type="url"] {
   -moz-appearance: none;
   appearance: none;
   &:focus {
-    border: 1px solid $color_2;
+    border: 1px solid $color-primary;
     outline: 0;
   }
 }
 input[type="password"] {
   height: 38px;
   padding: 6px 10px;
-  background-color: $background_color_2;
-  border: 1px solid $color_2;
+  background-color: $color-white;
+  border: 1px solid $color-primary;
   border-radius: 4px;
   box-shadow: none;
   box-sizing: border-box;
@@ -108,15 +108,15 @@ input[type="password"] {
   -moz-appearance: none;
   appearance: none;
   &:focus {
-    border: 1px solid $color_2;
+    border: 1px solid $color-primary;
     outline: 0;
   }
 }
 textarea {
   height: 38px;
   padding: 6px 10px;
-  background-color: $background_color_2;
-  border: 1px solid $color_2;
+  background-color: $color-white;
+  border: 1px solid $color-primary;
   border-radius: 4px;
   box-shadow: none;
   box-sizing: border-box;
@@ -128,21 +128,21 @@ textarea {
   padding-bottom: 6px;
   margin-bottom: 1.5rem;
   &:focus {
-    border: 1px solid $color_2;
+    border: 1px solid $color-primary;
     outline: 0;
   }
 }
 select {
   height: 38px;
   padding: 6px 10px;
-  background-color: $background_color_2;
-  border: 1px solid $color_2;
+  background-color: $color-white;
+  border: 1px solid $color-primary;
   border-radius: 4px;
   box-shadow: none;
   box-sizing: border-box;
   margin-bottom: 1.5rem;
   &:focus {
-    border: 1px solid $color_2;
+    border: 1px solid $color-primary;
     outline: 0;
   }
 }

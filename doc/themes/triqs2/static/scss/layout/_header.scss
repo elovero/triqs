@@ -7,11 +7,11 @@
   width: 100%;
   top: 0;
   left: 0;
-  font-family: $font_navigation_family;
+  font-family: $typographic-font-family;
   font-weight: $font_navigation_weight;
   font-style: $font_navigation_style;
-  background-color: $background_color_2;
-  border-top: 1px solid $color_3;
+  background-color: $color-white;
+  border-top: 1px solid $color-secondary;
 }
 // linear-gradient(90deg, #a16eff 0%, #3dcebb 100%)
 
@@ -61,19 +61,19 @@
 }
 
 .nav-logo {
-  color: $color_2 !important;
-  font-family: $font_logo_family;
-  font-style: $font_logo_style;
-  font-weight: $font_logo_weight;
+  color: $color-primary !important;
+  font-family: $typographic-font-family;
+  font-style: $font-style-normal;
+  font-weight: $font-weight-normal;
   font-size: 2rem;
 }
 
 .nav-link {
-  color: $color_1;
+  color: $color-base;
   font-weight: 700;
   padding: 1rem;
 
   &:hover {
-    color: $color_3;
+    color: $color-secondary;
   }
 }

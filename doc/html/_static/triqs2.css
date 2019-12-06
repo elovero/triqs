@@ -1,8 +1,6 @@
 @charset "UTF-8";
 /* Variables
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
-/* Font Notes
-–––––––––––––––––––––––––––––––––––––––––––––––––– */
 /* Reset
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 html {
@@ -222,8 +220,8 @@ html {
 body {
   background: #fbf9f8;
   box-sizing: border-box;
-  color: #333332;
-  font-family: "proxima-nova", Helvetica, Arial, sans-serif;
+  color: #3e4349;
+  font-family: "proxima-nova", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
   font-weight: 400;
   font-style: normal;
   font-size: 1.5rem;
@@ -240,18 +238,6 @@ body {
   }
 }
 
-.document {
-  margin-top: 80px;
-  margin-bottom: 80px;
-  min-height: calc(100vh - 220px);
-}
-
-@media only screen and (min-width: 48em) {
-  .section {
-    width: calc(100% - 300px);
-    padding-top: 10px;
-  }
-}
 /* Typography
   –––––––––––––––––––––––––––––––––––––––––––––––––– */
 h1,
@@ -268,7 +254,7 @@ h1 {
   font-size: 2rem;
   line-height: 1.2;
   letter-spacing: -0.1rem;
-  font-family: "proxima-nova", Helvetica, Arial, sans-serif;
+  font-family: "proxima-nova", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
   font-weight: 500;
   font-style: normal;
 }
@@ -282,7 +268,7 @@ h2 {
   font-size: 1.5rem;
   line-height: 1.25;
   letter-spacing: -0.1rem;
-  font-family: "proxima-nova", Helvetica, Arial, sans-serif;
+  font-family: "proxima-nova", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
   font-weight: 500;
   font-style: normal;
 }
@@ -296,7 +282,7 @@ h3 {
   font-size: 1.17rem;
   line-height: 1.3;
   letter-spacing: -0.1rem;
-  font-family: "proxima-nova", Helvetica, Arial, sans-serif;
+  font-family: "proxima-nova", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
   font-weight: 500;
   font-style: normal;
 }
@@ -310,7 +296,7 @@ h4 {
   font-size: 1rem;
   line-height: 1.35;
   letter-spacing: -0.08rem;
-  font-family: "proxima-nova", Helvetica, Arial, sans-serif;
+  font-family: "proxima-nova", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
   font-weight: 500;
   font-style: normal;
   text-transform: uppercase;
@@ -350,7 +336,7 @@ h6 {
 
 p {
   margin-top: 0;
-  font-family: "proxima-nova", Helvetica, Arial, sans-serif;
+  font-family: "proxima-nova", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
   font-weight: 400;
   font-style: normal;
 }
@@ -2664,6 +2650,31 @@ a:hover {
     order: 1;
   }
 }
+.document {
+  margin-top: 80px;
+  margin-bottom: 80px;
+  min-height: calc(100vh - 220px);
+}
+@media only screen and (min-width: 48em) {
+  .document .section {
+    padding-top: 10px;
+  }
+}
+
+.documentwrapper {
+  margin-right: auto;
+  margin-left: auto;
+  padding-right: 4rem;
+  padding-left: 4rem;
+  max-width: 1820px;
+  width: calc(100% - 300px);
+}
+
+.bodywrapper {
+  background-color: #fff;
+  padding: 70px 1vw;
+}
+
 /* Footer
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 footer {
@@ -2676,7 +2687,7 @@ footer {
 }
 
 .footer > p.updated {
-  color: #333332;
+  color: #3e4349;
   background-color: #fbf9f8;
 }
 
@@ -2726,7 +2737,7 @@ li.footer-link > a:hover {
   width: 100%;
   top: 0;
   left: 0;
-  font-family: "proxima-nova", Helvetica, Arial, sans-serif;
+  font-family: "proxima-nova", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
   font-weight: 500;
   font-style: normal;
   background-color: #fff;
@@ -2784,14 +2795,14 @@ li.footer-link > a:hover {
 
 .nav-logo {
   color: #56478f !important;
-  font-family: "proxima-nova", Helvetica, Arial, sans-serif;
+  font-family: "proxima-nova", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
   font-style: normal;
   font-weight: 500;
   font-size: 2rem;
 }
 
 .nav-link {
-  color: #333332;
+  color: #3e4349;
   font-weight: 700;
   padding: 1rem;
 }
@@ -2804,7 +2815,7 @@ li.footer-link > a:hover {
 .related {
   margin-top: 100px;
   background-color: #fbf9f8;
-  font-family: "proxima-nova", Helvetica, Arial, sans-serif;
+  font-family: "proxima-nova", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
   font-weight: 500;
   font-style: normal;
   width: 100%;
@@ -2852,7 +2863,7 @@ li.footer-link > a:hover {
   right: 0px;
   top: 0;
   width: 300px;
-  box-shadow: 1px 0 0 2px #eee;
+  box-shadow: 1px 0 0 2px white;
   min-height: 100%;
   opacity: 1 !important;
   background-color: #fff;
@@ -2910,7 +2921,7 @@ li.footer-link > a:hover {
 }
 
 .search-row {
-  border-top: 1px solid #eee;
+  border-top: 1px solid white;
   margin-top: 4rem;
   padding-top: 4rem;
 }
@@ -2931,7 +2942,7 @@ li.footer-link > a:hover {
   padding: 0 30px;
   text-align: center;
   font-size: 11px;
-  font-family: "proxima-nova", Helvetica, Arial, sans-serif;
+  font-family: "proxima-nova", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
   font-weight: 900;
   font-style: normal;
   line-height: 30px;
@@ -2944,7 +2955,7 @@ li.footer-link > a:hover {
   color: #56478f;
   border: 1px solid #56478f;
   box-sizing: border-box;
-  background-color: #fbf9f8;
+  background-color: transparent;
   margin-bottom: 1rem;
 }
 .button:hover {
@@ -2967,7 +2978,7 @@ button {
   color: #56478f;
   text-align: center;
   font-size: 11px;
-  font-family: "proxima-nova", Helvetica, Arial, sans-serif;
+  font-family: "proxima-nova", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
   font-weight: 900;
   font-style: normal;
   line-height: 30px;
@@ -3007,7 +3018,7 @@ input[type=submit] {
   color: #fff;
   text-align: center;
   font-size: 11px;
-  font-family: "proxima-nova", Helvetica, Arial, sans-serif;
+  font-family: "proxima-nova", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
   font-weight: 900;
   font-style: normal;
   line-height: 30px;
@@ -3040,7 +3051,7 @@ input[type=reset] {
   color: #56478f;
   text-align: center;
   font-size: 11px;
-  font-family: "proxima-nova", Helvetica, Arial, sans-serif;
+  font-family: "proxima-nova", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
   font-weight: 900;
   font-style: normal;
   line-height: 30px;
@@ -3074,7 +3085,7 @@ input[type=button] {
   color: #56478f;
   text-align: center;
   font-size: 11px;
-  font-family: "proxima-nova", Helvetica, Arial, sans-serif;
+  font-family: "proxima-nova", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
   font-weight: 900;
   font-style: normal;
   line-height: 30px;

@@ -4,6 +4,14 @@
 Main Concepts
 =============
 
+- Green’s functions
+- Many body operators
+- Lattice
+- Generic Monte Carlo
+- Multidimensional arrays
+- HDF5 file format
+- Diagonalization
+
 .. toctree::
 
    documentation/manual/contents

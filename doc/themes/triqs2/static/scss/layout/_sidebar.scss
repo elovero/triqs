@@ -5,10 +5,10 @@
   right: 0px;
   top: 0;
   width: 300px;
-  box-shadow: 1px 0 0 2px $border_color_2;
+  box-shadow: 1px 0 0 2px $color-gray-border;
   min-height: 100%;
   opacity: 1 !important;
-  background-color: $background_color_2;
+  background-color: $color-white;
 }
 .sidebar-container {
   margin-top: 100px;
@@ -60,7 +60,7 @@
 }
 
 .search-row {
-  border-top: 1px solid $border_color_2;
+  border-top: 1px solid $color-gray-border;
   margin-top: 4rem;
   padding-top: 4rem;
 }

@@ -1,0 +1,966 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Code Concepts &#8212; TRIQS Docs</title>
+    <link rel="stylesheet" href="_static/triqs2.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/language_data.js"></script>
+    <script type="text/javascript" src="_static/triqs2.js"></script>
+    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=default"></script>
+    <link rel="author" title="About these documents" href="about.html" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+<link rel="stylesheet" href="https://use.typekit.net/hsv6sot.css" />
+<script type="text/javascript">
+  try {
+    Typekit.load();
+  } catch (e) {}
+</script>
+
+  </head>
+<body class="layout">
+  
+  <header class="header">
+    <nav class="header-content">
+      <div class="row header-row">
+        <div class="col-xs-2 logo-col">
+          <div class="row start-xs">
+            <div class="nav-item">
+              <a class="nav-link" href="/"
+                ><span class="nav-logo">TRIQS</span></a
+              >
+            </div>
+          </div>
+        </div>
+        <div class="col-xs-6">
+          <div class="row">
+            <div class="nav-item">
+              <a class="nav-link" href="/documentation.html">Docs</a>
+            </div>
+            <div class="nav-item">
+              <a class="nav-link" href="/tutorials.html">Tutorials</a>
+            </div>
+            <div class="nav-item">
+              <a class="nav-link" href="/applications.html">Applications</a>
+            </div>
+            <div class="nav-item">
+              <a class="nav-link" href="/community.html">Community</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-xs-4">
+          <div class="row end-xs">
+            <div class="nav-item">
+              <a class="nav-link" href="/about.html">About</a>
+            </div>
+            <div class="nav-item">
+              <a
+                class="nav-link"
+                target="_blank"
+                rel="noopener noreferrer"
+                href="https://github.com/TRIQS/triqs"
+                >Github</a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </header>
+    
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="code-concepts">
+<span id="codeconcepts"></span><h1>Code Concepts<a class="headerlink" href="#code-concepts" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li><p>HDF5 file format</p></li>
+<li><p>Diagonalization</p></li>
+</ul>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="documentation/manual/triqs/arrays/contents.html"><strong>[triqs/arrays]</strong> Multidimensional arrays</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="documentation/manual/triqs/arrays/introduction.html">Rationale</a></li>
+<li class="toctree-l2"><a class="reference internal" href="documentation/manual/triqs/arrays/concepts.html">Concepts</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="documentation/manual/triqs/arrays/concepts.html#immutablecuboidarray">ImmutableCuboidArray</a></li>
+<li class="toctree-l3"><a class="reference internal" href="documentation/manual/triqs/arrays/concepts.html#mutablecuboidarray">MutableCuboidArray</a></li>
+<li class="toctree-l3"><a class="reference internal" href="documentation/manual/triqs/arrays/concepts.html#immutablearray">ImmutableArray</a></li>
+<li class="toctree-l3"><a class="reference internal" href="documentation/manual/triqs/arrays/concepts.html#immutablematrix">ImmutableMatrix</a></li>
+<li class="toctree-l3"><a class="reference internal" href="documentation/manual/triqs/arrays/concepts.html#immutablevector">ImmutableVector</a></li>
+<li class="toctree-l3"><a class="reference internal" href="documentation/manual/triqs/arrays/concepts.html#mutablearray">MutableArray</a></li>
+<li class="toctree-l3"><a class="reference internal" href="documentation/manual/triqs/arrays/concepts.html#mutablematrix">MutableMatrix</a></li>
+<li class="toctree-l3"><a class="reference internal" href="documentation/manual/triqs/arrays/concepts.html#mutablevector">MutableVector</a></li>
+<li class="toctree-l3"><a class="reference internal" href="documentation/manual/triqs/arrays/concepts.html#why-concepts-advanced">Why concepts ? [Advanced]</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="documentation/manual/triqs/arrays/containers/regular.html">array, matrix &amp; vector</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="documentation/manual/triqs/arrays/containers/regular.html#template-parameters">Template parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="documentation/manual/triqs/arrays/containers/regular.html#member-types">Member types</a></li>
+<li class="toctree-l3"><a class="reference internal" href="documentation/manual/triqs/arrays/containers/regular.html#member-constexpr">Member constexpr</a></li>
+<li class="toctree-l3"><a class="reference internal" href="documentation/manual/triqs/arrays/containers/regular.html#member-functions">Member functions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="documentation/manual/triqs/arrays/containers/regular.html#non-member-functions">Non-member functions</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="documentation/manual/triqs/arrays/containers/views.html">Views</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="documentation/manual/triqs/arrays/containers/views.html#template-parameters">Template parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="documentation/manual/triqs/arrays/containers/views.html#member-types">Member types</a></li>
+<li class="toctree-l3"><a class="reference internal" href="documentation/manual/triqs/arrays/containers/views.html#member-constexpr">Member constexpr</a></li>
+<li class="toctree-l3"><a class="reference internal" href="documentation/manual/triqs/arrays/containers/views.html#member-functions">Member functions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="documentation/manual/triqs/arrays/containers/views.html#non-member-functions">Non-member functions</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="documentation/manual/triqs/arrays/shape.html">Shape &amp; dimensions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="documentation/manual/triqs/arrays/view_or_not_view.html">Regular type vs view type</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="documentation/manual/triqs/arrays/view_or_not_view.html#behaviour-comparison-table-between-regular-and-view-types">Behaviour comparison table between regular and view types</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="documentation/manual/triqs/arrays/lazy.html">Interaction with CLEF expressions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="documentation/manual/triqs/arrays/foreach.html">Loops: the foreach constructs</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="documentation/manual/triqs/arrays/foreach.html#id1">foreach</a></li>
+<li class="toctree-l3"><a class="reference internal" href="documentation/manual/triqs/arrays/foreach.html#assign-foreach">assign_foreach</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="documentation/manual/triqs/arrays/simple_fnt.html">Simple array functions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="documentation/manual/triqs/arrays/simple_fnt.html#element-wise-functions">Element-wise functions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="documentation/manual/triqs/arrays/simple_fnt.html#sum">sum</a></li>
+<li class="toctree-l3"><a class="reference internal" href="documentation/manual/triqs/arrays/simple_fnt.html#max-element-min-element">max_element, min_element</a></li>
+<li class="toctree-l3"><a class="reference internal" href="documentation/manual/triqs/arrays/simple_fnt.html#examples">Examples</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="documentation/manual/triqs/arrays/map.html">Functional constructs: map &amp; fold</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="documentation/manual/triqs/arrays/map.html#map">map</a></li>
+<li class="toctree-l3"><a class="reference internal" href="documentation/manual/triqs/arrays/map.html#fold">fold</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="documentation/manual/triqs/arrays/algebras.html">Operations: array and matrix/vector algebras</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="documentation/manual/triqs/arrays/algebras.html#arithmetic-operations">Arithmetic operations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="documentation/manual/triqs/arrays/algebras.html#arrays-vs-matrices">Arrays vs matrices</a></li>
+<li class="toctree-l3"><a class="reference internal" href="documentation/manual/triqs/arrays/algebras.html#performance">Performance</a></li>
+<li class="toctree-l3"><a class="reference internal" href="documentation/manual/triqs/arrays/algebras.html#expressions-are-lazy">Expressions are lazy….</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="documentation/manual/triqs/arrays/play_with_concept.html">Using basic concepts</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="documentation/manual/triqs/arrays/play_with_concept.html#make-immutable-array">make_immutable_array</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="documentation/manual/triqs/arrays/blas_lapack.html">Linear algebra</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="documentation/manual/triqs/arrays/blas_lapack.html#matrix-product">matrix product</a></li>
+<li class="toctree-l3"><a class="reference internal" href="documentation/manual/triqs/arrays/blas_lapack.html#matrix-inversion">Matrix inversion</a></li>
+<li class="toctree-l3"><a class="reference internal" href="documentation/manual/triqs/arrays/blas_lapack.html#lu-decomposition">LU decomposition</a></li>
+<li class="toctree-l3"><a class="reference internal" href="documentation/manual/triqs/arrays/blas_lapack.html#diagonalization">Diagonalization</a></li>
+<li class="toctree-l3"><a class="reference internal" href="documentation/manual/triqs/arrays/blas_lapack.html#svd-decomposition">SVD decomposition</a></li>
+<li class="toctree-l3"><a class="reference internal" href="documentation/manual/triqs/arrays/blas_lapack.html#interface-with-eigen">Interface with Eigen</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="documentation/manual/triqs/arrays/H5.html">The HDF5 interface</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="documentation/manual/triqs/arrays/H5.html#a-simple-example">A simple example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="documentation/manual/triqs/arrays/H5.html#reference">Reference</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="documentation/manual/triqs/arrays/h5_rw.html">Simple read/write operations of an array (or a view)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="documentation/manual/triqs/arrays/h5_stack.html">h5::array_stack: stacking arrays or scalars</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="documentation/manual/triqs/arrays/h5_stack.html#reference">Reference</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="documentation/manual/triqs/arrays/h5_stack.html#tutorial">Tutorial</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="documentation/manual/triqs/arrays/h5_complex.html">Issue with the complex numbers</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="documentation/manual/triqs/arrays/Interop_Python.html">Interface with Python numpy arrays</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="documentation/manual/triqs/arrays/Interop_Python.html#from-python-to-c">From Python to C++</a></li>
+<li class="toctree-l3"><a class="reference internal" href="documentation/manual/triqs/arrays/Interop_Python.html#from-c-to-python">From C++ to Python</a></li>
+<li class="toctree-l3"><a class="reference internal" href="documentation/manual/triqs/arrays/Interop_Python.html#examples">Examples</a></li>
+<li class="toctree-l3"><a class="reference internal" href="documentation/manual/triqs/arrays/Interop_Python.html#memory-management">Memory management</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="documentation/manual/triqs/arrays/IO.html">MPI and serialization</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="documentation/manual/triqs/arrays/IO.html#serialization">Serialization</a></li>
+<li class="toctree-l3"><a class="reference internal" href="documentation/manual/triqs/arrays/IO.html#mpi">MPI</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="documentation/manual/triqs/arrays/group_indices.html">Grouping indices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="documentation/manual/triqs/arrays/debug.html">Bound checking and debug macros</a></li>
+<li class="toctree-l2"><a class="reference internal" href="documentation/manual/triqs/arrays/multithreading.html">Multithreading</a></li>
+<li class="toctree-l2"><a class="reference internal" href="documentation/manual/triqs/arrays/FAQ.html">FAQ</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="documentation/manual/triqs/arrays/FAQ.html#how-do-i-iterate-on-my-array">How do I iterate on my array ?</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="documentation/manual/triqs/arrays/implementation_notes/contents.html">Implementation notes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="documentation/manual/triqs/arrays/implementation_notes/concepts.html">1. Concepts</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="documentation/manual/triqs/arrays/implementation_notes/concepts.html#boostserializable">1.1. BoostSerializable</a></li>
+<li class="toctree-l4"><a class="reference internal" href="documentation/manual/triqs/arrays/implementation_notes/concepts.html#printable">1.2. Printable</a></li>
+<li class="toctree-l4"><a class="reference internal" href="documentation/manual/triqs/arrays/implementation_notes/concepts.html#domain">1.3. Domain</a></li>
+<li class="toctree-l4"><a class="reference internal" href="documentation/manual/triqs/arrays/implementation_notes/concepts.html#hasimmutablearrayinterface">1.4. HasImmutableArrayInterface</a></li>
+<li class="toctree-l4"><a class="reference internal" href="documentation/manual/triqs/arrays/implementation_notes/concepts.html#indexgenerator">1.5. IndexGenerator</a></li>
+<li class="toctree-l4"><a class="reference internal" href="documentation/manual/triqs/arrays/implementation_notes/concepts.html#indexmap">1.6. IndexMap</a></li>
+<li class="toctree-l4"><a class="reference internal" href="documentation/manual/triqs/arrays/implementation_notes/concepts.html#indexmapiterator">1.7. IndexMapIterator</a></li>
+<li class="toctree-l4"><a class="reference internal" href="documentation/manual/triqs/arrays/implementation_notes/concepts.html#storage">1.8. Storage</a></li>
+<li class="toctree-l4"><a class="reference internal" href="documentation/manual/triqs/arrays/implementation_notes/concepts.html#storageorder-concept">1.9. StorageOrder concept</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="documentation/manual/triqs/arrays/implementation_notes/strategy.html">2. Strategy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="documentation/manual/triqs/arrays/implementation_notes/strategy.html#quick-guide-through-the-implementation">3. Quick guide through the implementation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="documentation/manual/triqs/arrays/implementation_notes/storage.html">4. Storage</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="documentation/manual/triqs/arrays/implementation_notes/storage.html#concept">4.1. Concept</a></li>
+<li class="toctree-l4"><a class="reference internal" href="documentation/manual/triqs/arrays/implementation_notes/storage.html#implementation-shared-block">4.2. Implementation: shared_block</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="documentation/manual/triqs/arrays/implementation_notes/indexmaps.html">5. Indexmaps</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="documentation/manual/triqs/arrays/implementation_notes/indexmaps.html#concepts">5.1. Concepts</a></li>
+<li class="toctree-l4"><a class="reference internal" href="documentation/manual/triqs/arrays/implementation_notes/indexmaps.html#implementation-cuboid-map">5.2. Implementation: cuboid map</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="documentation/manual/triqs/arrays/implementation_notes/isp.html">6. IndexmapStoragePair implementation class</a></li>
+<li class="toctree-l3"><a class="reference internal" href="documentation/manual/triqs/arrays/implementation_notes/userclasses.html">7. User classes: array, matrix, vector</a></li>
+<li class="toctree-l3"><a class="reference internal" href="documentation/manual/triqs/arrays/implementation_notes/assignment.html">8. operator =</a></li>
+<li class="toctree-l3"><a class="reference internal" href="documentation/manual/triqs/arrays/implementation_notes/expression_template.html">9. Expression template</a></li>
+<li class="toctree-l3"><a class="reference internal" href="documentation/manual/triqs/arrays/implementation_notes/functional.html">10. Functional aspect: fold, map, mapped functions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="documentation/manual/triqs/arrays/implementation_notes/linalg.html">11. Linear algebra, blas, lapack</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="documentation/manual/triqs/arrays/implementation_notes/linalg.html#blas-lapack-interface">11.1. Blas/lapack interface</a></li>
+<li class="toctree-l4"><a class="reference internal" href="documentation/manual/triqs/arrays/implementation_notes/linalg.html#linalg">11.2. Linalg</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="documentation/manual/triqs/arrays/implementation_notes/hdf5.html">12. Hdf5 interface (also for utility/h5)</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="documentation/manual/triqs/arrays/implementation_notes/hdf5.html#organisation">12.1. Organisation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="documentation/manual/triqs/arrays/implementation_notes/hdf5.html#issue-with-complex-numbers">12.2. Issue with complex numbers</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="documentation/manual/triqs/arrays/implementation_notes/reinterpretation.html">13. Reinterpretation</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="documentation/manual/triqs/arrays/implementation_notes/reinterpretation.html#basic-reinterpretation">13.1. Basic reinterpretation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="documentation/manual/triqs/arrays/implementation_notes/reinterpretation.html#grouping-indices">13.2. Grouping indices</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="documentation/manual/triqs/arrays/implementation_notes/python.html">14. Interface to python</a></li>
+<li class="toctree-l3"><a class="reference internal" href="documentation/manual/triqs/arrays/implementation_notes/cuboid_formula.html">15. Cuboid formula</a></li>
+<li class="toctree-l3"><a class="reference internal" href="documentation/manual/triqs/arrays/implementation_notes/slicing.html">16. Slicing</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="documentation/manual/triqs/atom_diag/contents.html"><strong>[triqs/atom_diag]</strong> Lightweight exact diagonalization solver and tools</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="documentation/cpp_api/triqs/atom_diag/atom_diag.html"> [atom_diag] Exact diagonalization of an atomic problem</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="documentation/cpp_api/triqs/atom_diag/atom_diag.html#template-parameters">Template parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="documentation/cpp_api/triqs/atom_diag/atom_diag.html#member-types">Member types</a></li>
+<li class="toctree-l3"><a class="reference internal" href="documentation/cpp_api/triqs/atom_diag/atom_diag.html#member-functions">Member functions</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="documentation/manual/triqs/atom_diag/functions.html"> [atom_diag_functions] Utility functions for atom_diag</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="documentation/cpp_api/triqs/atom_diag/partition_function.html">triqs::atom_diag::partition_function</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="documentation/cpp_api/triqs/atom_diag/partition_function.html#template-parameters">Template parameters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="documentation/cpp_api/triqs/atom_diag/partition_function.html#parameters">Parameters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="documentation/cpp_api/triqs/atom_diag/partition_function.html#returns">Returns</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="documentation/cpp_api/triqs/atom_diag/atomic_density_matrix.html">triqs::atom_diag::atomic_density_matrix</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="documentation/cpp_api/triqs/atom_diag/atomic_density_matrix.html#template-parameters">Template parameters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="documentation/cpp_api/triqs/atom_diag/atomic_density_matrix.html#parameters">Parameters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="documentation/cpp_api/triqs/atom_diag/atomic_density_matrix.html#returns">Returns</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="documentation/cpp_api/triqs/atom_diag/trace_rho_op.html">triqs::atom_diag::trace_rho_op</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="documentation/cpp_api/triqs/atom_diag/trace_rho_op.html#parameters">Parameters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="documentation/cpp_api/triqs/atom_diag/trace_rho_op.html#returns">Returns</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="documentation/cpp_api/triqs/atom_diag/act.html">triqs::atom_diag::act</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="documentation/cpp_api/triqs/atom_diag/act.html#parameters">Parameters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="documentation/cpp_api/triqs/atom_diag/act.html#returns">Returns</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="documentation/cpp_api/triqs/atom_diag/quantum_number_eigenvalues.html">triqs::atom_diag::quantum_number_eigenvalues</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="documentation/cpp_api/triqs/atom_diag/quantum_number_eigenvalues.html#parameters">Parameters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="documentation/cpp_api/triqs/atom_diag/quantum_number_eigenvalues.html#returns">Returns</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="documentation/cpp_api/triqs/atom_diag/quantum_number_eigenvalues_checked.html">triqs::atom_diag::quantum_number_eigenvalues_checked</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="documentation/cpp_api/triqs/atom_diag/quantum_number_eigenvalues_checked.html#parameters">Parameters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="documentation/cpp_api/triqs/atom_diag/quantum_number_eigenvalues_checked.html#returns">Returns</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="documentation/manual/triqs/atom_diag/contents.html#example-of-use-python">Example of use: Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="documentation/manual/triqs/atom_diag/contents.html#example-of-use-c">Example of use: C++</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="documentation/manual/triqs/clef/contents.html"><strong>[triqs/clef]</strong> Clef: Compile-time lazy expressions and functions</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="documentation/manual/triqs/clef/introduction.html">Motivation: a little tour of CLEF</a></li>
+<li class="toctree-l2"><a class="reference internal" href="documentation/manual/triqs/clef/expressions_form.html">Forming CLEF expressions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="documentation/manual/triqs/clef/expressions_form.html#placeholders">Placeholders</a></li>
+<li class="toctree-l3"><a class="reference internal" href="documentation/manual/triqs/clef/expressions_form.html#forming-an-expression">Forming an expression</a></li>
+<li class="toctree-l3"><a class="reference internal" href="documentation/manual/triqs/clef/expressions_form.html#storage-of-expressions-advanced">Storage of expressions [advanced]</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="documentation/manual/triqs/clef/expressions_eval.html">Evaluating CLEF expressions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="documentation/manual/triqs/clef/expressions_eval.html#complete-evaluation">Complete evaluation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="documentation/manual/triqs/clef/expressions_eval.html#partial-evaluation">Partial evaluation</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="documentation/manual/triqs/clef/assign.html">Automatic assignment of containers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="documentation/manual/triqs/clef/overload.html">Overloading functions and methods for CLEF arguments</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="documentation/manual/triqs/clef/overload.html#overloading-functions">Overloading functions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="documentation/manual/triqs/clef/overload.html#overloading-operator-and-other-methods">Overloading operator() and other methods</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="documentation/manual/triqs/clef/function.html">Transform CLEF expressions into functions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="documentation/manual/triqs/clef/function.html#make-function">make_function</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="documentation/manual/triqs/clef/function.html#short-notation-with-operator">Short notation with &gt;&gt; operator</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="documentation/manual/triqs/clef/function.html#clef-function">clef::function</a></li>
+<li class="toctree-l3"><a class="reference internal" href="documentation/manual/triqs/clef/function.html#examples">Examples</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="documentation/manual/triqs/clef/examples/contents.html">More complex examples</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="documentation/manual/triqs/clef/examples/lazy_sum.html">A lazy sum</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="documentation/manual/triqs/det_manip/contents.html">Manipulations of determinants</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="documentation/manual/triqs/det_manip/det_manip.html">The det_manip class</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="documentation/manual/triqs/det_manip/det_manip.html#parameter-construction">Parameter &amp; construction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="documentation/manual/triqs/det_manip/det_manip.html#public-types">Public types</a></li>
+<li class="toctree-l3"><a class="reference internal" href="documentation/manual/triqs/det_manip/det_manip.html#public-member-functions">Public member functions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="documentation/manual/triqs/det_manip/det_manip.html#synopsis">Synopsis</a></li>
+<li class="toctree-l3"><a class="reference internal" href="documentation/manual/triqs/det_manip/det_manip.html#under-the-hood">Under the hood …</a></li>
+<li class="toctree-l3"><a class="reference internal" href="documentation/manual/triqs/det_manip/det_manip.html#full-documentation-manual-triqs">Full documentation/manual/triqs</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="documentation/manual/triqs/det_manip/det_manip.html#example">Example</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="documentation/manual/triqs/det_manip/implementation_notes.html">How does it work ?</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="documentation/manual/triqs/det_manip/implementation_notes.html#cofactors">Cofactors</a></li>
+<li class="toctree-l3"><a class="reference internal" href="documentation/manual/triqs/det_manip/implementation_notes.html#the-sherman-morrison-formula">The Sherman-Morrison formula</a></li>
+<li class="toctree-l3"><a class="reference internal" href="documentation/manual/triqs/det_manip/implementation_notes.html#addition-of-a-line-and-a-column-or-more">Addition of a line and a column, or more</a></li>
+<li class="toctree-l3"><a class="reference internal" href="documentation/manual/triqs/det_manip/implementation_notes.html#removal-of-a-line-and-a-column-or-more">Removal of a line and a column, or more</a></li>
+<li class="toctree-l3"><a class="reference internal" href="documentation/manual/triqs/det_manip/implementation_notes.html#change-of-a-column">Change of a column</a></li>
+<li class="toctree-l3"><a class="reference internal" href="documentation/manual/triqs/det_manip/implementation_notes.html#change-of-a-line">Change of a line</a></li>
+<li class="toctree-l3"><a class="reference internal" href="documentation/manual/triqs/det_manip/implementation_notes.html#change-of-a-line-and-a-column">Change of a line and a column</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="documentation/manual/triqs/gfs/contents.html">Green’s functions</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="documentation/manual/triqs/gfs/basic_notions/contents.html">Basic notions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="documentation/manual/triqs/gfs/basic_notions/contents.html#types-of-green-s-functions">Types of Green’s functions</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="documentation/manual/triqs/gfs/basic_notions/contents.html#matsubara-green-s-function-in-imaginary-time-gfimtime"><span class="xref std std-ref">Matsubara Green’s function in imaginary time</span> &lt;GfImTime&gt;</a></li>
+<li class="toctree-l4"><a class="reference internal" href="documentation/manual/triqs/gfs/basic_notions/contents.html#matsubara-green-s-function-in-imaginary-frequencies-gfimfreq"><span class="xref std std-ref">Matsubara Green’s function in imaginary frequencies</span> &lt;GfImFreq&gt;</a></li>
+<li class="toctree-l4"><a class="reference internal" href="documentation/manual/triqs/gfs/basic_notions/contents.html#matsubara-green-s-function-with-legendre-polynomials-gflegendre"><span class="xref std std-ref">Matsubara Green’s function with Legendre polynomials</span> &lt;GfLegendre&gt;</a></li>
+<li class="toctree-l4"><a class="reference internal" href="documentation/manual/triqs/gfs/basic_notions/contents.html#green-function-in-real-time-gfretime"><span class="xref std std-ref">Green function in real time</span> &lt;GfReTime&gt;</a></li>
+<li class="toctree-l4"><a class="reference internal" href="documentation/manual/triqs/gfs/basic_notions/contents.html#retarded-green-s-function-in-real-frequencies-gfrefreq"><span class="xref std std-ref">Retarded Green’s function in real frequencies</span> &lt;GfReFreq&gt;</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="documentation/manual/triqs/gfs/basic_notions/contents.html#fourier-and-legendre-transforms">Fourier and Legendre transforms</a></li>
+<li class="toctree-l3"><a class="reference internal" href="documentation/manual/triqs/gfs/basic_notions/contents.html#high-frequency-tail">High-frequency tail</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="documentation/manual/triqs/gfs/c++/contents.html">c++</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="documentation/manual/triqs/gfs/c++/gf_and_view.html">gf and views</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="documentation/manual/triqs/gfs/c++/gf_and_view.html#template-parameters">Template parameters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="documentation/manual/triqs/gfs/c++/gf_and_view.html#member-types">Member types</a></li>
+<li class="toctree-l4"><a class="reference internal" href="documentation/manual/triqs/gfs/c++/gf_and_view.html#member-functions">Member functions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="documentation/manual/triqs/gfs/c++/gf_and_view.html#non-member-functions">Non-member functions</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="documentation/manual/triqs/gfs/c++/gf_special.html">Specializations</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="documentation/manual/triqs/gfs/c++/gf_imfreq.html"><strong>[gf&lt;imfreq&gt;]</strong> Green function on Matsubara frequencies</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="documentation/manual/triqs/gfs/c++/gf_imfreq.html#synopsis">Synopsis</a></li>
+<li class="toctree-l5"><a class="reference internal" href="documentation/manual/triqs/gfs/c++/gf_imfreq.html#domain-mesh">Domain &amp; mesh</a></li>
+<li class="toctree-l5"><a class="reference internal" href="documentation/manual/triqs/gfs/c++/gf_imfreq.html#evaluation-method">Evaluation method</a></li>
+<li class="toctree-l5"><a class="reference internal" href="documentation/manual/triqs/gfs/c++/gf_imfreq.html#data-storage">Data storage</a></li>
+<li class="toctree-l5"><a class="reference internal" href="documentation/manual/triqs/gfs/c++/gf_imfreq.html#hdf5-storage-convention">HDF5 storage convention</a></li>
+<li class="toctree-l5"><a class="reference internal" href="documentation/manual/triqs/gfs/c++/gf_imfreq.html#examples">Examples</a></li>
+<li class="toctree-l5"><a class="reference internal" href="documentation/manual/triqs/gfs/c++/gf_imfreq.html#free-functions">Free functions</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="documentation/cpp_api/triqs/gfs/is_gf_real.html">triqs::gfs::is_gf_real</a><ul>
+<li class="toctree-l7"><a class="reference internal" href="documentation/cpp_api/triqs/gfs/is_gf_real.html#template-parameters">Template parameters</a></li>
+<li class="toctree-l7"><a class="reference internal" href="documentation/cpp_api/triqs/gfs/is_gf_real.html#parameters">Parameters</a></li>
+<li class="toctree-l7"><a class="reference internal" href="documentation/cpp_api/triqs/gfs/is_gf_real.html#returns">Returns</a></li>
+</ul>
+</li>
+<li class="toctree-l6"><a class="reference internal" href="documentation/cpp_api/triqs/gfs/is_gf_real_in_tau.html">triqs::gfs::is_gf_real_in_tau</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="documentation/manual/triqs/gfs/c++/gf_imtime.html"><strong>[gf&lt;imtime&gt;]</strong> Matsubara imaginary time</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="documentation/manual/triqs/gfs/c++/gf_imtime.html#synopsis">Synopsis</a></li>
+<li class="toctree-l5"><a class="reference internal" href="documentation/manual/triqs/gfs/c++/gf_imtime.html#domain-mesh">Domain &amp; mesh</a></li>
+<li class="toctree-l5"><a class="reference internal" href="documentation/manual/triqs/gfs/c++/gf_imtime.html#singularity">Singularity</a></li>
+<li class="toctree-l5"><a class="reference internal" href="documentation/manual/triqs/gfs/c++/gf_imtime.html#evaluation-method">Evaluation method</a></li>
+<li class="toctree-l5"><a class="reference internal" href="documentation/manual/triqs/gfs/c++/gf_imtime.html#data-storage">Data storage</a></li>
+<li class="toctree-l5"><a class="reference internal" href="documentation/manual/triqs/gfs/c++/gf_imtime.html#hdf5-storage-convention">HDF5 storage convention</a></li>
+<li class="toctree-l5"><a class="reference internal" href="documentation/manual/triqs/gfs/c++/gf_imtime.html#examples">Examples</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="documentation/manual/triqs/gfs/c++/gf_refreq.html"><strong>[gf&lt;refreq&gt;]</strong> Real frequencies</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="documentation/manual/triqs/gfs/c++/gf_refreq.html#synopsis">Synopsis</a></li>
+<li class="toctree-l5"><a class="reference internal" href="documentation/manual/triqs/gfs/c++/gf_refreq.html#domain-mesh">Domain &amp; mesh</a></li>
+<li class="toctree-l5"><a class="reference internal" href="documentation/manual/triqs/gfs/c++/gf_refreq.html#evaluation-method">Evaluation method</a></li>
+<li class="toctree-l5"><a class="reference internal" href="documentation/manual/triqs/gfs/c++/gf_refreq.html#data-storage">Data storage</a></li>
+<li class="toctree-l5"><a class="reference internal" href="documentation/manual/triqs/gfs/c++/gf_refreq.html#hdf5-storage-convention">HDF5 storage convention</a></li>
+<li class="toctree-l5"><a class="reference internal" href="documentation/manual/triqs/gfs/c++/gf_refreq.html#examples">Examples</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="documentation/manual/triqs/gfs/c++/gf_retime.html"><strong>[gf&lt;retime&gt;]</strong> Real time</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="documentation/manual/triqs/gfs/c++/gf_retime.html#synopsis">Synopsis</a></li>
+<li class="toctree-l5"><a class="reference internal" href="documentation/manual/triqs/gfs/c++/gf_retime.html#domain-mesh">Domain &amp; mesh</a></li>
+<li class="toctree-l5"><a class="reference internal" href="documentation/manual/triqs/gfs/c++/gf_retime.html#singularity">Singularity</a></li>
+<li class="toctree-l5"><a class="reference internal" href="documentation/manual/triqs/gfs/c++/gf_retime.html#evaluation-method">Evaluation method</a></li>
+<li class="toctree-l5"><a class="reference internal" href="documentation/manual/triqs/gfs/c++/gf_retime.html#data-storage">Data storage</a></li>
+<li class="toctree-l5"><a class="reference internal" href="documentation/manual/triqs/gfs/c++/gf_retime.html#hdf5-storage-convention">HDF5 storage convention</a></li>
+<li class="toctree-l5"><a class="reference internal" href="documentation/manual/triqs/gfs/c++/gf_retime.html#examples">Examples</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="documentation/manual/triqs/gfs/c++/gf_block.html"><strong>[block_gf&lt;T&gt;]</strong> Block Green functions</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="documentation/manual/triqs/gfs/c++/gf_block.html#constructors">Constructors</a></li>
+<li class="toctree-l5"><a class="reference internal" href="documentation/manual/triqs/gfs/c++/gf_block.html#factories">Factories</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="documentation/manual/triqs/gfs/c++/gf_block.html#factories-for-the-regular-type">Factories for the regular type</a></li>
+<li class="toctree-l6"><a class="reference internal" href="documentation/manual/triqs/gfs/c++/gf_block.html#factories-for-the-view-type">Factories for the view type</a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="documentation/manual/triqs/gfs/c++/gf_block.html#domain-mesh">Domain &amp; mesh</a></li>
+<li class="toctree-l5"><a class="reference internal" href="documentation/manual/triqs/gfs/c++/gf_block.html#singularity">Singularity</a></li>
+<li class="toctree-l5"><a class="reference internal" href="documentation/manual/triqs/gfs/c++/gf_block.html#interpolation-method">Interpolation method</a></li>
+<li class="toctree-l5"><a class="reference internal" href="documentation/manual/triqs/gfs/c++/gf_block.html#data-storage">Data storage</a></li>
+<li class="toctree-l5"><a class="reference internal" href="documentation/manual/triqs/gfs/c++/gf_block.html#hdf5-storage-convention">HDF5 storage convention</a></li>
+<li class="toctree-l5"><a class="reference internal" href="documentation/manual/triqs/gfs/c++/gf_block.html#iterators">Iterators</a></li>
+<li class="toctree-l5"><a class="reference internal" href="documentation/manual/triqs/gfs/c++/gf_block.html#examples">Examples</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="documentation/manual/triqs/gfs/c++/gf_legendre.html"><strong>[gf&lt;legendre&gt;]</strong> Legendre representation</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="documentation/manual/triqs/gfs/c++/gf_legendre.html#synopsis">Synopsis</a></li>
+<li class="toctree-l5"><a class="reference internal" href="documentation/manual/triqs/gfs/c++/gf_legendre.html#domain-mesh">Domain &amp; mesh</a></li>
+<li class="toctree-l5"><a class="reference internal" href="documentation/manual/triqs/gfs/c++/gf_legendre.html#singularity">Singularity</a></li>
+<li class="toctree-l5"><a class="reference internal" href="documentation/manual/triqs/gfs/c++/gf_legendre.html#evaluation-method">Evaluation method</a></li>
+<li class="toctree-l5"><a class="reference internal" href="documentation/manual/triqs/gfs/c++/gf_legendre.html#data-storage">Data storage</a></li>
+<li class="toctree-l5"><a class="reference internal" href="documentation/manual/triqs/gfs/c++/gf_legendre.html#hdf5-storage-convention">HDF5 storage convention</a></li>
+<li class="toctree-l5"><a class="reference internal" href="documentation/manual/triqs/gfs/c++/gf_legendre.html#examples">Examples</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="documentation/manual/triqs/gfs/c++/gf_product.html"><strong>[gf&lt;cartesian_product&lt;X,Y,…&gt;&gt;]</strong> Multiple variables</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="documentation/manual/triqs/gfs/c++/gf_product.html#domain-mesh">Domain &amp; mesh</a></li>
+<li class="toctree-l5"><a class="reference internal" href="documentation/manual/triqs/gfs/c++/gf_product.html#subscript-operator">Subscript operator</a></li>
+<li class="toctree-l5"><a class="reference internal" href="documentation/manual/triqs/gfs/c++/gf_product.html#clef-expressions">Clef expressions</a></li>
+<li class="toctree-l5"><a class="reference internal" href="documentation/manual/triqs/gfs/c++/gf_product.html#singularity">Singularity</a></li>
+<li class="toctree-l5"><a class="reference internal" href="documentation/manual/triqs/gfs/c++/gf_product.html#interpolation-method">Interpolation method</a></li>
+<li class="toctree-l5"><a class="reference internal" href="documentation/manual/triqs/gfs/c++/gf_product.html#data-storage">Data storage</a></li>
+<li class="toctree-l5"><a class="reference internal" href="documentation/manual/triqs/gfs/c++/gf_product.html#hdf5-storage-convention">HDF5 storage convention</a></li>
+<li class="toctree-l5"><a class="reference internal" href="documentation/manual/triqs/gfs/c++/gf_product.html#functional-techniques">Functional techniques</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="documentation/manual/triqs/gfs/c++/gf_part_eval_curry.html">Partial evaluation</a><ul>
+<li class="toctree-l7"><a class="reference internal" href="documentation/manual/triqs/gfs/c++/gf_part_eval_curry.html#id1">Partial evaluation</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="documentation/manual/triqs/gfs/c++/gf_product.html#examples">Examples</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="documentation/manual/triqs/gfs/c++/clef.html">Interaction with CLEF expressions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="documentation/manual/triqs/gfs/c++/fourier.html">Fourier transforms</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="documentation/manual/triqs/gfs/c++/fourier.html#synopsis">Synopsis</a></li>
+<li class="toctree-l4"><a class="reference internal" href="documentation/manual/triqs/gfs/c++/fourier.html#fourier">fourier</a></li>
+<li class="toctree-l4"><a class="reference internal" href="documentation/manual/triqs/gfs/c++/fourier.html#example">Example</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="documentation/manual/triqs/gfs/c++/fourier_impl_notes.html">Fourier: implementation notes</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="documentation/manual/triqs/gfs/c++/fourier_impl_notes.html#the-fftw-library">The FFTW library</a></li>
+<li class="toctree-l6"><a class="reference internal" href="documentation/manual/triqs/gfs/c++/fourier_impl_notes.html#implementation-in-real-time-frequency-using-fftw">Implementation in real time/frequency using FFTW</a></li>
+<li class="toctree-l6"><a class="reference internal" href="documentation/manual/triqs/gfs/c++/fourier_impl_notes.html#implementation-in-imaginary-time-frequency-using-fftw">Implementation in imaginary time/frequency using FFTW</a><ul>
+<li class="toctree-l7"><a class="reference internal" href="documentation/manual/triqs/gfs/c++/fourier_impl_notes.html#special-case-of-real-functions-in-time-for-fermions">Special case of real functions in time for fermions</a></li>
+<li class="toctree-l7"><a class="reference internal" href="documentation/manual/triqs/gfs/c++/fourier_impl_notes.html#special-case-of-real-functions-in-time-for-bosons">Special case of real functions in time for bosons</a></li>
+</ul>
+</li>
+<li class="toctree-l6"><a class="reference internal" href="documentation/manual/triqs/gfs/c++/fourier_impl_notes.html#usage-of-the-tail-in-the-tf">Usage of the tail in the TF</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="documentation/manual/triqs/gfs/c++/tail.html">High-Frequency moments of the Green’s function</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="documentation/manual/triqs/gfs/c++/tail.html#api">API</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="documentation/manual/triqs/gfs/c++/tail.html#example">Example</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="documentation/manual/triqs/gfs/c++/tail.html#adjusting-the-fit-parameters-advanced">Adjusting the fit parameters (Advanced)</a></li>
+<li class="toctree-l6"><a class="reference internal" href="documentation/manual/triqs/gfs/c++/tail.html#adjusting-the-fit-window-advanced">Adjusting the fit window (Advanced)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="documentation/manual/triqs/gfs/c++/concepts.html">Concepts</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="documentation/manual/triqs/gfs/c++/concepts.html#domain">Domain</a></li>
+<li class="toctree-l4"><a class="reference internal" href="documentation/manual/triqs/gfs/c++/concepts.html#purefunctionondomain">PureFunctionOnDomain</a></li>
+<li class="toctree-l4"><a class="reference internal" href="documentation/manual/triqs/gfs/c++/concepts.html#mesh">Mesh</a></li>
+<li class="toctree-l4"><a class="reference internal" href="documentation/manual/triqs/gfs/c++/concepts.html#meshpoint">MeshPoint</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="documentation/manual/triqs/gfs/c++/implementation_notes.html">Implementation notes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="documentation/manual/triqs/gfs/py/contents.html">py</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="documentation/manual/triqs/gfs/py/block.html">The blocks: matrix-valued Green’s functions</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="documentation/manual/triqs/gfs/py/block/GfImTime.html"><strong>[GfImTime]</strong> Matsubara Green’s function in imaginary time</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="documentation/manual/triqs/gfs/py/block/GfImTime.html#reference">Reference</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="documentation/manual/triqs/gfs/py/block/GfImTime.html#hdf5-data-scheme">HDF5 data scheme</a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="documentation/manual/triqs/gfs/py/block/GfImTime.html#example">Example</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="documentation/manual/triqs/gfs/py/block/GfImFreq.html"><strong>[GfImFreq]</strong> Matsubara Green’s function in imaginary frequencies</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="documentation/manual/triqs/gfs/py/block/GfImFreq.html#reference">Reference</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="documentation/manual/triqs/gfs/py/block/GfImFreq.html#hdf5-data-scheme">HDF5 data scheme</a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="documentation/manual/triqs/gfs/py/block/GfImFreq.html#example">Example</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="documentation/manual/triqs/gfs/py/block/GfReTime.html"><strong>[GfReTime]</strong> Retarded Green’s function in real time</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="documentation/manual/triqs/gfs/py/block/GfReTime.html#reference">Reference</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="documentation/manual/triqs/gfs/py/block/GfReTime.html#hdf5-data-scheme">HDF5 data scheme</a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="documentation/manual/triqs/gfs/py/block/GfReTime.html#example">Example</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="documentation/manual/triqs/gfs/py/block/GfReFreq.html"><strong>[GfReFreq]</strong> Retarded Green’s function in real frequencies</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="documentation/manual/triqs/gfs/py/block/GfReFreq.html#reference">Reference</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="documentation/manual/triqs/gfs/py/block/GfReFreq.html#hdf5-data-scheme">HDF5 data scheme</a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="documentation/manual/triqs/gfs/py/block/GfReFreq.html#examples">Examples</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="documentation/manual/triqs/gfs/py/block/GfLegendre.html"><strong>[GfLegendre]</strong> Matsubara Green’s function with Legendre polynomials</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="documentation/manual/triqs/gfs/py/block/GfLegendre.html#reference">Reference</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="documentation/manual/triqs/gfs/py/block/GfLegendre.html#hdf5-data-scheme">HDF5 data scheme</a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="documentation/manual/triqs/gfs/py/block/GfLegendre.html#example">Example</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="documentation/manual/triqs/gfs/py/block.html#operations">Operations</a></li>
+<li class="toctree-l4"><a class="reference internal" href="documentation/manual/triqs/gfs/py/block.html#slicing">Slicing</a></li>
+<li class="toctree-l4"><a class="reference internal" href="documentation/manual/triqs/gfs/py/block.html#bracket-accessor">Bracket Accessor</a></li>
+<li class="toctree-l4"><a class="reference internal" href="documentation/manual/triqs/gfs/py/block.html#assignment-or-operator">Assignment: &lt;&lt; or = operator</a></li>
+<li class="toctree-l4"><a class="reference internal" href="documentation/manual/triqs/gfs/py/block.html#lazy-expressions">Lazy expressions</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="documentation/manual/triqs/gfs/py/descriptors.html">Descriptors</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="documentation/manual/triqs/gfs/py/descriptors.html#reference">Reference</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="documentation/manual/triqs/gfs/py/block.html#shelve-pickle">shelve / pickle</a></li>
+<li class="toctree-l4"><a class="reference internal" href="documentation/manual/triqs/gfs/py/block.html#plot-options">Plot options</a></li>
+<li class="toctree-l4"><a class="reference internal" href="documentation/manual/triqs/gfs/py/block.html#direct-access-to-data-points">Direct access to data points</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="documentation/manual/triqs/gfs/py/full.html"><strong>BlockGf</strong>: The complete Green’s function</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="documentation/manual/triqs/gfs/py/full.html#a-little-example">A little example</a></li>
+<li class="toctree-l4"><a class="reference internal" href="documentation/manual/triqs/gfs/py/full.html#reference">Reference</a></li>
+<li class="toctree-l4"><a class="reference internal" href="documentation/manual/triqs/gfs/py/full.html#operations">Operations</a></li>
+<li class="toctree-l4"><a class="reference internal" href="documentation/manual/triqs/gfs/py/full.html#block-access">Block access</a></li>
+<li class="toctree-l4"><a class="reference internal" href="documentation/manual/triqs/gfs/py/full.html#iterator">Iterator</a></li>
+<li class="toctree-l4"><a class="reference internal" href="documentation/manual/triqs/gfs/py/full.html#view-or-copies">View or copies?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="documentation/manual/triqs/gfs/py/full.html#shelve-pickle">shelve / pickle</a></li>
+<li class="toctree-l4"><a class="reference internal" href="documentation/manual/triqs/gfs/py/full.html#hdf5">HDF5</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="documentation/manual/triqs/gfs/py/transforms.html">Fourier and Legendre to Matsubara transforms</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="documentation/manual/triqs/gfs/py/transforms.html#time-to-frequency">Time to frequency</a></li>
+<li class="toctree-l4"><a class="reference internal" href="documentation/manual/triqs/gfs/py/transforms.html#legendre-to-matsubara">Legendre to Matsubara</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="documentation/manual/triqs/gfs/py/tail.html">High-Frequency moments of the Green’s function</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="documentation/manual/triqs/gfs/py/tail.html#python-api">Python API</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="documentation/manual/triqs/gfs/py/tools.html">Tools for GFs</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="documentation/manual/triqs/hdf5/contents.html"><strong>[triqs/h5]</strong> The HDF5 format</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="documentation/manual/triqs/hdf5/ref.html">Reference documentation/manual</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="documentation/manual/triqs/hdf5/ref.html#hdfarchive">HDFArchive</a></li>
+<li class="toctree-l3"><a class="reference internal" href="documentation/manual/triqs/hdf5/ref.html#hdfarchivegroup">HDFArchiveGroup</a></li>
+<li class="toctree-l3"><a class="reference internal" href="documentation/manual/triqs/hdf5/ref.html#hdfarchiveinert">HDFArchiveInert</a></li>
+<li class="toctree-l3"><a class="reference internal" href="documentation/manual/triqs/hdf5/ref.html#hdf-compliant-objects">Hdf-compliant objects</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="documentation/manual/triqs/hdf5/ref.html#hdf5-data-scheme">HDF5 data scheme</a></li>
+<li class="toctree-l4"><a class="reference internal" href="documentation/manual/triqs/hdf5/ref.html#how-does-a-class-become-hdf-compliant">How does a class become hdf-compliant ?</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="documentation/manual/triqs/hdf5/protocol1.html">Solution 1. The class provides the transformation into a dict of hdf-compliant objects</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="documentation/manual/triqs/hdf5/protocol1.html#principle">Principle</a></li>
+<li class="toctree-l6"><a class="reference internal" href="documentation/manual/triqs/hdf5/protocol1.html#example">Example</a></li>
+<li class="toctree-l6"><a class="reference internal" href="documentation/manual/triqs/hdf5/protocol1.html#what-happens-in-details">What happens in details  ?</a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="documentation/manual/triqs/hdf5/protocol2.html">Solution 2. The class does the I/O work by itself</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="documentation/manual/triqs/hilbert_space/contents.html"><strong>[triqs/hilbert_space]</strong> Many-body states and Hilbert spaces</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="documentation/cpp_api/triqs/hilbert_space/fundamental_operator_set.html">[fundamental_operator_set] Fundamental operator set</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="documentation/cpp_api/triqs/hilbert_space/fundamental_operator_set.html#member-types">Member types</a></li>
+<li class="toctree-l3"><a class="reference internal" href="documentation/cpp_api/triqs/hilbert_space/fundamental_operator_set.html#member-functions">Member functions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="documentation/cpp_api/triqs/hilbert_space/fundamental_operator_set.html#non-member-functions">Non Member functions</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="documentation/cpp_api/triqs/hilbert_space/hilbert_space.html">[hilbert_space] Full Hilbert space</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="documentation/cpp_api/triqs/hilbert_space/hilbert_space.html#member-functions">Member functions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="documentation/cpp_api/triqs/hilbert_space/hilbert_space.html#non-member-functions">Non Member functions</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="documentation/cpp_api/triqs/hilbert_space/sub_hilbert_space.html">[sub_hilbert_space] Hilbert subspace</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="documentation/cpp_api/triqs/hilbert_space/sub_hilbert_space.html#member-functions">Member functions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="documentation/cpp_api/triqs/hilbert_space/sub_hilbert_space.html#non-member-functions">Non Member functions</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="documentation/cpp_api/triqs/hilbert_space/state.html">[state] Many-body state</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="documentation/cpp_api/triqs/hilbert_space/state.html#template-parameters">Template parameters</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="documentation/cpp_api/triqs/hilbert_space/imperative_operator.html">[imperative_operator] Imperative operator</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="documentation/cpp_api/triqs/hilbert_space/imperative_operator.html#template-parameters">Template parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="documentation/cpp_api/triqs/hilbert_space/imperative_operator.html#member-functions">Member functions</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="documentation/cpp_api/triqs/hilbert_space/space_partition.html">[autopartition] Automatic partitioning algorithm</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="documentation/cpp_api/triqs/hilbert_space/space_partition.html#template-parameters">Template parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="documentation/cpp_api/triqs/hilbert_space/space_partition.html#member-types">Member types</a></li>
+<li class="toctree-l3"><a class="reference internal" href="documentation/cpp_api/triqs/hilbert_space/space_partition.html#member-functions">Member functions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="documentation/cpp_api/triqs/hilbert_space/space_partition.html#non-member-functions">Non Member functions</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="documentation/manual/triqs/hilbert_space/contents.html#example-of-use">Example of use</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="documentation/manual/triqs/lattice_tools/contents.html"><strong>[triqs/lattice]</strong> Lattice tools</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="documentation/manual/triqs/lattice_tools/contents.html#introductory-example">Introductory example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="documentation/manual/triqs/lattice_tools/contents.html#reference-documentation-manual">Reference documentation/manual</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="documentation/manual/triqs/lattice_tools/bravais.html">Bravais Lattice</a></li>
+<li class="toctree-l3"><a class="reference internal" href="documentation/manual/triqs/lattice_tools/tightbinding_and_example.html">The BravaisLattice and TightBinding classes: definitions and example</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="documentation/manual/triqs/lattice_tools/tightbinding_and_example.html#bravaislattice">BravaisLattice</a></li>
+<li class="toctree-l4"><a class="reference internal" href="documentation/manual/triqs/lattice_tools/tightbinding_and_example.html#tightbinding">TightBinding</a></li>
+<li class="toctree-l4"><a class="reference internal" href="documentation/manual/triqs/lattice_tools/tightbinding_and_example.html#energies-on-bz-path">energies_on_bz_path</a></li>
+<li class="toctree-l4"><a class="reference internal" href="documentation/manual/triqs/lattice_tools/tightbinding_and_example.html#example">Example</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="documentation/manual/triqs/lattice_tools/dos.html">Density of state and related tools</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="documentation/manual/triqs/lattice_tools/dos.html#the-density-of-state-dos">The Density of state: DOS</a></li>
+<li class="toctree-l4"><a class="reference internal" href="documentation/manual/triqs/lattice_tools/dos.html#reading-a-dos-from-a-text-file">Reading a DOS from a text file</a></li>
+<li class="toctree-l4"><a class="reference internal" href="documentation/manual/triqs/lattice_tools/dos.html#computing-a-dos-from-a-tight-binding">Computing a DOS from a tight_binding</a></li>
+<li class="toctree-l4"><a class="reference internal" href="documentation/manual/triqs/lattice_tools/dos.html#the-dos-computed-from-a-function">The DOS computed from a function</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="documentation/manual/triqs/lattice_tools/hilbert.html">Hilbert Transform</a></li>
+<li class="toctree-l3"><a class="reference internal" href="documentation/manual/triqs/lattice_tools/sumk.html">Sums over Brillouin zone</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="documentation/manual/triqs/mc_tools/contents.html">Tools for Monte Carlo</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="documentation/manual/triqs/mc_tools/loop.html">Introduction</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="documentation/manual/triqs/mc_tools/loop.html#the-monte-carlo-loop">The Monte Carlo loop</a></li>
+<li class="toctree-l3"><a class="reference internal" href="documentation/manual/triqs/mc_tools/loop.html#c-variable-names">C++ variable names</a></li>
+<li class="toctree-l3"><a class="reference internal" href="documentation/manual/triqs/mc_tools/loop.html#monte-carlo-loop-and-connection-with-moves-and-measures">Monte Carlo loop and connection with moves and measures</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="documentation/manual/triqs/mc_tools/tutorial.html">Tutorial</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="documentation/manual/triqs/mc_tools/tutorial.html#the-c-code-for-this-problem">The C++ code for this problem</a></li>
+<li class="toctree-l3"><a class="reference internal" href="documentation/manual/triqs/mc_tools/tutorial.html#initializing-the-mpi">Initializing the MPI</a></li>
+<li class="toctree-l3"><a class="reference internal" href="documentation/manual/triqs/mc_tools/tutorial.html#constructing-the-monte-carlo-simulation">Constructing the Monte Carlo simulation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="documentation/manual/triqs/mc_tools/tutorial.html#moves-and-measures">Moves and measures</a></li>
+<li class="toctree-l3"><a class="reference internal" href="documentation/manual/triqs/mc_tools/tutorial.html#the-move">The move</a></li>
+<li class="toctree-l3"><a class="reference internal" href="documentation/manual/triqs/mc_tools/tutorial.html#the-measure">The measure</a></li>
+<li class="toctree-l3"><a class="reference internal" href="documentation/manual/triqs/mc_tools/tutorial.html#starting-the-monte-carlo-simulation">Starting the Monte Carlo simulation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="documentation/manual/triqs/mc_tools/tutorial.html#end-of-the-simulation-gathering-results">End of the simulation - gathering results</a></li>
+<li class="toctree-l3"><a class="reference internal" href="documentation/manual/triqs/mc_tools/tutorial.html#writing-your-own-monte-carlo-simulation">Writing your own Monte Carlo simulation</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="documentation/manual/triqs/mc_tools/concepts.html">Concepts</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="documentation/manual/triqs/mc_tools/concepts.html#introduction-motivations">Introduction &amp; Motivations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="documentation/manual/triqs/mc_tools/concepts.html#the-move-concept">The Move concept</a></li>
+<li class="toctree-l3"><a class="reference internal" href="documentation/manual/triqs/mc_tools/concepts.html#the-measure-concept">The Measure concept</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="documentation/manual/triqs/mc_tools/full_ref.html">Full documentation/manual/triqs</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="documentation/manual/triqs/mc_tools/random.html">Random number generator</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="documentation/manual/triqs/mc_tools/random.html#generic-use">Generic use</a></li>
+<li class="toctree-l3"><a class="reference internal" href="documentation/manual/triqs/mc_tools/random.html#getting-a-list-of-random-number-generators">Getting a list of random number generators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="documentation/manual/triqs/mc_tools/random.html#accessing-the-random-number-generator-from-the-monte-carlo-class">Accessing the random number generator from the Monte Carlo class</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="documentation/manual/triqs/mc_tools/ising.html">Example: the Ising chain in a magnetic field</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="documentation/manual/triqs/mc_tools/ising.html#the-configuration">The configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="documentation/manual/triqs/mc_tools/ising.html#the-move">The move</a></li>
+<li class="toctree-l3"><a class="reference internal" href="documentation/manual/triqs/mc_tools/ising.html#measure">Measure</a></li>
+<li class="toctree-l3"><a class="reference internal" href="documentation/manual/triqs/mc_tools/ising.html#main-program">Main program</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="documentation/manual/triqs/operators/contents.html"><strong>[triqs/operators]</strong> Second-quantization operators and many-body Hamiltonians</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="documentation/manual/triqs/operators/operators.html">Second-quantization operators</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="documentation/manual/triqs/operators/operators.html#template-parameters">Template parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="documentation/manual/triqs/operators/operators.html#construction-factories">Construction/factories</a></li>
+<li class="toctree-l3"><a class="reference internal" href="documentation/manual/triqs/operators/operators.html#overloaded-operations">Overloaded operations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="documentation/manual/triqs/operators/operators.html#member-types">Member types</a></li>
+<li class="toctree-l3"><a class="reference internal" href="documentation/manual/triqs/operators/operators.html#methods">Methods</a></li>
+<li class="toctree-l3"><a class="reference internal" href="documentation/manual/triqs/operators/operators.html#free-functions">Free functions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="documentation/manual/triqs/operators/operators.html#iteration-over-monomials">Iteration over monomials</a></li>
+<li class="toctree-l3"><a class="reference internal" href="documentation/manual/triqs/operators/operators.html#serialization-hdf5">Serialization &amp; HDF5</a></li>
+<li class="toctree-l3"><a class="reference internal" href="documentation/manual/triqs/operators/operators.html#python">Python</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="documentation/manual/triqs/operators/util/hamiltonians.html">Hamiltonians</a></li>
+<li class="toctree-l2"><a class="reference internal" href="documentation/manual/triqs/operators/util/U_matrix.html">U matrix construction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="documentation/manual/triqs/operators/util/observables.html">Observables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="documentation/manual/triqs/operators/util/op_struct.html">Helper functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="documentation/manual/triqs/operators/util/extractors.html">Coefficient extraction</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="documentation/manual/triqs/operators/util/extractors.html#c">C++</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="documentation/manual/triqs/operators/util/extractors.html#python">Python</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="documentation/manual/triqs/plotting_protocols/contents.html">Plotting protocols</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="documentation/manual/triqs/plotting_protocols/plotting/plotting.html">Plotting TRIQS objects</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="documentation/manual/triqs/plotting_protocols/plotting/plotting.html#a-thin-layer-above-matplotlib">A thin layer above matplotlib</a></li>
+<li class="toctree-l3"><a class="reference internal" href="documentation/manual/triqs/plotting_protocols/plotting/plotting.html#multiple-panels-figures">Multiple panels figures</a></li>
+<li class="toctree-l3"><a class="reference internal" href="documentation/manual/triqs/plotting_protocols/plotting/plotting.html#plot-protocol-advanced">Plot protocol [Advanced]</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="documentation/manual/triqs/plotting_protocols/plotting/plotting.html#example">Example</a></li>
+<li class="toctree-l4"><a class="reference internal" href="documentation/manual/triqs/plotting_protocols/plotting/plotting.html#example-with-options">Example with options</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="documentation/manual/triqs/plotting_protocols/fit/fit.html">Fitting data</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="documentation/manual/triqs/plotting_protocols/fit/fit.html#a-simple-example">A simple example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="documentation/manual/triqs/plotting_protocols/fit/fit.html#reference">Reference</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="documentation/manual/triqs/provenance/contents.html">Reproducibility, provenance.</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="documentation/manual/triqs/provenance/contents.html#triqs-code-version">TRIQS code version</a></li>
+<li class="toctree-l2"><a class="reference internal" href="documentation/manual/triqs/provenance/contents.html#saving-the-script-in-the-data-archive">Saving the script in the data archive</a></li>
+<li class="toctree-l2"><a class="reference internal" href="documentation/manual/triqs/provenance/contents.html#from-the-data-to-the-figures">From the data to the figures</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="documentation/manual/triqs/random_generator/contents.html">Random number generators</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="documentation/manual/triqs/random_generator/contents.html#usage">Usage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="documentation/manual/triqs/random_generator/contents.html#example">Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="documentation/manual/triqs/random_generator/contents.html#complete-documentation-manual-triqs">Complete documentation/manual/triqs</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="documentation/manual/triqs/statistical_analysis/contents.html"><strong>[triqs/statistics]</strong> Tools for statistical analysis: binning, jackknife and autocorrelation time</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="documentation/manual/triqs/statistical_analysis/contents.html#introduction">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="documentation/manual/triqs/statistical_analysis/contents.html#synopsis">Synopsis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="documentation/manual/triqs/statistical_analysis/contents.html#concepts">Concepts</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="documentation/manual/triqs/statistical_analysis/contents.html#timeseries">TimeSeries</a></li>
+<li class="toctree-l3"><a class="reference internal" href="documentation/manual/triqs/statistical_analysis/contents.html#observable">Observable</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="documentation/manual/triqs/statistical_analysis/contents.html#example">Example</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="documentation/manual/triqs/statistical_analysis/binning.html">Binning</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="documentation/manual/triqs/statistical_analysis/binning.html#synopsis">Synopsis</a></li>
+<li class="toctree-l4"><a class="reference internal" href="documentation/manual/triqs/statistical_analysis/binning.html#example">Example</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="documentation/manual/triqs/statistical_analysis/jackknife.html">Jackknife</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="documentation/manual/triqs/statistical_analysis/jackknife.html#synopsis">Synopsis</a></li>
+<li class="toctree-l4"><a class="reference internal" href="documentation/manual/triqs/statistical_analysis/jackknife.html#example">Example</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="documentation/manual/triqs/statistical_analysis/autocorrelation_time.html">Autocorrelation time</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="documentation/manual/triqs/statistical_analysis/autocorrelation_time.html#synopsis">Synopsis</a></li>
+<li class="toctree-l4"><a class="reference internal" href="documentation/manual/triqs/statistical_analysis/autocorrelation_time.html#example">Example</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="documentation/manual/triqs/statistical_analysis/autocorrelation_function.html">Autocorrelation function</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="documentation/manual/triqs/statistical_analysis/autocorrelation_function.html#synopsis">Synopsis</a></li>
+<li class="toctree-l4"><a class="reference internal" href="documentation/manual/triqs/statistical_analysis/autocorrelation_function.html#example">Example</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="documentation/manual/triqs/statistical_analysis/green_function.html">A practical example: computing the error bar of a Green’s function</a></li>
+<li class="toctree-l3"><a class="reference internal" href="documentation/manual/triqs/statistical_analysis/ising2d.html">Full example: Monte-Carlo simulation of the 2D Ising model</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="documentation/manual/triqs/statistical_analysis/contents.html#histogram">Histogram</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="documentation/cpp_api/triqs/statistics/histogram.html">triqs::statistics::histogram</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="documentation/cpp_api/triqs/statistics/histogram.html#member-functions">Member functions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="documentation/cpp_api/triqs/statistics/histogram.html#non-member-functions">Non Member functions</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="documentation/manual/triqs/utilities/contents.html"><strong>[triqs/utility]</strong> Utilities: exceptions, tuple-tools, etc.</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="documentation/manual/triqs/utilities/exceptions.html">1. Exceptions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="documentation/manual/triqs/utilities/tupletools.html">2. Tuple tools</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="documentation/manual/triqs/utilities/tupletools.html#apply">2.1. apply</a></li>
+<li class="toctree-l3"><a class="reference internal" href="documentation/manual/triqs/utilities/tupletools.html#for-each">2.2. for_each</a></li>
+<li class="toctree-l3"><a class="reference internal" href="documentation/manual/triqs/utilities/tupletools.html#for-each-zip">2.3. for_each_zip</a></li>
+<li class="toctree-l3"><a class="reference internal" href="documentation/manual/triqs/utilities/tupletools.html#map">2.4. map</a></li>
+<li class="toctree-l3"><a class="reference internal" href="documentation/manual/triqs/utilities/tupletools.html#fold">2.5. fold</a></li>
+<li class="toctree-l3"><a class="reference internal" href="documentation/manual/triqs/utilities/tupletools.html#reverse">2.6. reverse</a></li>
+<li class="toctree-l3"><a class="reference internal" href="documentation/manual/triqs/utilities/tupletools.html#called-on-tuple">2.7. called_on_tuple</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="documentation/manual/triqs/utilities/python_include_mess.html">3. Python include warnings</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="documentation/manual/triqs/conventions.html">C++11/14, notations and documentation conventions</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="documentation/manual/triqs/conventions.html#c-11-c-14">C++11/C++14</a></li>
+<li class="toctree-l2"><a class="reference internal" href="documentation/manual/triqs/conventions.html#notation">Notation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="documentation/manual/triqs/conventions.html#documentation-conventions-for-c-code">Documentation conventions for c++ code</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="documentation/manual/triqs/conventions.html#add">add</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="documentation/manual/triqs/conventions.html#template-parameters">Template parameters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="documentation/manual/triqs/conventions.html#parameters">Parameters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="documentation/manual/triqs/conventions.html#return-value">Return value</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="documentation/manual/cpp2py/contents.html">c++2py: a C++/Python interfacing tool</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="documentation/manual/cpp2py/cfunction.html">The cfunction class</a></li>
+<li class="toctree-l2"><a class="reference internal" href="documentation/manual/cpp2py/class.html">The class_ class</a></li>
+<li class="toctree-l2"><a class="reference internal" href="documentation/manual/cpp2py/convert.html">Convertion  vs wrapping</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="documentation/manual/cpp2py/convert.html#wrapping-classes-from-c-to-python">Wrapping classes from C++ to Python</a></li>
+<li class="toctree-l3"><a class="reference internal" href="documentation/manual/cpp2py/convert.html#convertion">Convertion</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="documentation/manual/cpp2py/magic.html">Magic for Jupyter notebook</a></li>
+<li class="toctree-l2"><a class="reference internal" href="documentation/manual/cpp2py/module.html">The module_ class</a></li>
+<li class="toctree-l2"><a class="reference internal" href="documentation/manual/cpp2py/principle.html">General organization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="documentation/manual/cpp2py/reference.html">Python API of the desc file</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="documentation/manual/cpp2py/module.html">The module_ class</a></li>
+<li class="toctree-l3"><a class="reference internal" href="documentation/manual/cpp2py/cfunction.html">The cfunction class</a></li>
+<li class="toctree-l3"><a class="reference internal" href="documentation/manual/cpp2py/class.html">The class_ class</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="documentation/manual/cpp2py/tutorial.html">Tutorial</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="documentation/manual/cpp2py/tutorial.html#a-first-example">A first example</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="documentation/manual/cpp2py/wrap.html">Wrapping classes from C++ to Python</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h3><a href="table.html">Table of Contents</a></h3>
+<div class="sidebar">
+  <div class="container-fluid sidebar-container">
+      <div class="row sidebar-row">
+        <h5>Hello</h5>
+        
+          
+        
+      </div>
+      <div class="row sidebar-row search-row">
+        <div
+          class="sidebar-section"
+          id="searchbox"
+          style="display: none"
+          role="search"
+        >
+          <div class="sidebar-header">
+            <a class="sidebar-header-link">Quick search</a>
+          </div>
+        </div>
+        <div class="searchformwrapper">
+          <form class="search" action="search.html" method="get">
+            <input type="text" name="q" aria-labelledby="searchlabel" />
+            <input type="submit" value="Go" />
+          </form>
+        </div>
+        <script type="text/javascript">
+          $("#searchbox").show(0);
+        </script>
+      </div>
+    </div>
+  </div>
+</div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+  <footer>
+    <div class="container-fluid">
+      <div class="row footer">
+        <div class="col-xs-12 center-xs middle-xs">
+          <div class="outro">
+            <p class="footer-description">
+              TRIQS (Toolbox for Research on Interacting Quantum Systems) is a
+              scientific project providing a set of C++ and Python libraries to
+              develop new tools for the study of interacting quantum systems
+              based at the Center for Computational Quantum Physics at the
+              Flatiron Institute.
+            </p>
+          </div>
+          <ul class="footer-links">
+            <li class="footer-link">
+              <a exact="true" href="/about.html">About</a>
+            </li>
+            <li class="footer-link">
+              <a
+                target="_blank"
+                rel="noopener noreferrer"
+                href="https://simonsfoundation.org"
+                >Simons Foundation</a
+              >
+            </li>
+            <li class="footer-link">
+              <a
+                target="_blank"
+                rel="noopener noreferrer"
+                href="https://flatironinstitute.org"
+                >Flatiron Institute</a
+              >
+            </li>
+            <li class="footer-link"><a exact="true" href="/">Github</a></li>
+            <li class="footer-link">
+              <a exact="true" href="/contact">Contact</a>
+            </li>
+          </ul>
+          <p class="updated">Updated on November 20, 2019 (2:20pm)</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+  
+  </body>
+</html>

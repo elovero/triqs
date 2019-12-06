@@ -6,7 +6,7 @@
   padding: 0 30px;
   text-align: center;
   font-size: 11px;
-  font-family: $font_button_family;
+  font-family: $typographic-font-family;
   font-weight: $font_button_weight;
   font-style: $font_button_style;
   line-height: 30px;
@@ -16,21 +16,21 @@
   white-space: nowrap;
   border-radius: 3px;
   cursor: pointer;
-  color: $color_2;
-  border: 1px solid $color_2;
+  color: $color-primary;
+  border: 1px solid $color-primary;
   box-sizing: border-box;
-  background-color: $background_color_0;
+  background-color: $color-transparent;
   margin-bottom: 1rem;
   &:hover {
-    background-color: $color_3;
-    color: $color_5;
-    border-color: $color_3;
+    background-color: $color-secondary;
+    color: $color-white;
+    border-color: $color-secondary;
     outline: 0;
   }
   &:focus {
-    background-color: $color_3;
-    color: $color_5;
-    border-color: $color_3;
+    background-color: $color-secondary;
+    color: $color-white;
+    border-color: $color-secondary;
     outline: 0;
   }
 }
@@ -38,10 +38,10 @@ button {
   display: inline-block;
   height: 30px;
   padding: 0 30px;
-  color: $color_2;
+  color: $color-primary;
   text-align: center;
   font-size: 11px;
-  font-family: $font_button_family;
+  font-family: $typographic-font-family;
   font-weight: $font_button_weight;
   font-style: $font_button_style;
   line-height: 30px;
@@ -49,22 +49,22 @@ button {
   text-transform: uppercase;
   text-decoration: none;
   white-space: nowrap;
-  background-color: $background_color_1;
+  background-color: $color-transparent;
   border-radius: 3px;
-  border: 1px solid $color_2;
+  border: 1px solid $color-primary;
   cursor: pointer;
   box-sizing: border-box;
   margin-bottom: 1rem;
   &:hover {
-    background-color: $color_3;
-    color: $color_5;
-    border-color: $color_3;
+    background-color: $color-secondary;
+    color: $color-white;
+    border-color: $color-secondary;
     outline: 0;
   }
   &:focus {
-    background-color: $color_3;
-    color: $color_5;
-    border-color: $color_3;
+    background-color: $color-secondary;
+    color: $color-white;
+    border-color: $color-secondary;
     outline: 0;
   }
 }
@@ -75,11 +75,11 @@ input[type="submit"] {
   display: inline-block;
   height: 30px;
   padding: 0 30px;
-  background-color: $color_3;
-  color: $color_5;
+  background-color: $color-secondary;
+  color: $color-white;
   text-align: center;
   font-size: 11px;
-  font-family: $font_button_family;
+  font-family: $typographic-font-family;
   font-weight: $font_button_weight;
   font-style: $font_button_style;
   line-height: 30px;
@@ -89,19 +89,19 @@ input[type="submit"] {
   white-space: nowrap;
 
   border-radius: 3px;
-  border: 1px solid $color_3;
+  border: 1px solid $color-secondary;
   cursor: pointer;
   box-sizing: border-box;
   &:hover {
-    background-color: $background_color_1;
-    color: $color_2;
-    border: 1px solid $color_2;
+    background-color: $color-transparent;
+    color: $color-primary;
+    border: 1px solid $color-primary;
     outline: 0;
   }
   &:focus {
-    background-color: $background_color_1;
-    color: $color_2;
-    border: 1px solid $color_2;
+    background-color: $color-transparent;
+    color: $color-primary;
+    border: 1px solid $color-primary;
     outline: 0;
   }
 }
@@ -109,10 +109,10 @@ input[type="reset"] {
   display: inline-block;
   height: 30px;
   padding: 0 30px;
-  color: $color_2;
+  color: $color-primary;
   text-align: center;
   font-size: 11px;
-  font-family: $font_button_family;
+  font-family: $typographic-font-family;
   font-weight: $font_button_weight;
   font-style: $font_button_style;
   line-height: 30px;
@@ -120,21 +120,21 @@ input[type="reset"] {
   text-transform: uppercase;
   text-decoration: none;
   white-space: nowrap;
-  background-color: $background_color_1;
+  background-color: $color-transparent;
   border-radius: 3px;
-  border: 1px solid $color_2;
+  border: 1px solid $color-primary;
   cursor: pointer;
   box-sizing: border-box;
   &:hover {
-    background-color: $color_3;
-    color: $color_5;
-    border-color: $color_3;
+    background-color: $color-secondary;
+    color: $color-white;
+    border-color: $color-secondary;
     outline: 0;
   }
   &:focus {
-    background-color: $color_3;
-    color: $color_5;
-    border-color: $color_3;
+    background-color: $color-secondary;
+    color: $color-white;
+    border-color: $color-secondary;
     outline: 0;
   }
 }
@@ -142,10 +142,10 @@ input[type="button"] {
   display: inline-block;
   height: 30px;
   padding: 0 30px;
-  color: $color_2;
+  color: $color-primary;
   text-align: center;
   font-size: 11px;
-  font-family: $font_button_family;
+  font-family: $typographic-font-family;
   font-weight: $font_button_weight;
   font-style: $font_button_style;
   line-height: 30px;
@@ -153,21 +153,21 @@ input[type="button"] {
   text-transform: uppercase;
   text-decoration: none;
   white-space: nowrap;
-  background-color: $background_color_1;
+  background-color: $color-transparent;
   border-radius: 3px;
-  border: 1px solid $color_2;
+  border: 1px solid $color-primary;
   cursor: pointer;
   box-sizing: border-box;
   &:hover {
-    background-color: $color_3;
-    color: $color_5;
-    border-color: $color_3;
+    background-color: $color-secondary;
+    color: $color-white;
+    border-color: $color-secondary;
     outline: 0;
   }
   &:focus {
-    background-color: $color_3;
-    color: $color_5;
-    border-color: $color_3;
+    background-color: $color-secondary;
+    color: $color-white;
+    border-color: $color-secondary;
     outline: 0;
   }
 }

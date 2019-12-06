@@ -1,8 +1,8 @@
 /* Footer
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 footer {
-  background-color: $color_4;
-  color: $color_5;
+  background-color: $color-blackish;
+  color: $color-white;
   padding: 2.5rem 0;
   border-top: 0.05rem solid #e5e5e5;
   font-size: 1.6rem;
@@ -10,8 +10,8 @@ footer {
 }
 
 .footer > p.updated {
-  color: $color_1;
-  background-color: $background-color_0;
+  color: $color-base;
+  background-color: $color-whiteish;
 }
 
 .footer p:last-child {
@@ -24,8 +24,8 @@ footer {
   padding: 0 1rem;
   margin: 2rem auto;
   max-width: 50rem;
-  background: $color_4;
-  color: $color_5;
+  background: $color-blackish;
+  color: $color-white;
 }
 
 .footer-links {
@@ -44,10 +44,10 @@ footer {
 
 li.footer-link > a {
   text-decoration: none;
-  border-bottom: 1px solid $color_2;
-  color: $color_5;
+  border-bottom: 1px solid $color-primary;
+  color: $color-white;
 
   &:hover {
-    color: $color_3;
+    color: $color-secondary;
   }
 }

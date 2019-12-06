@@ -1,13 +1,12 @@
 .. toctree::
    :maxdepth: 2
 
-   gettingstarted
-   mainconcepts
-   codeformulas
-   applications
-   capiref
-   pythonapiref
-   contributing
-   changelog
-   about
-   faqs
+    gettingstarted
+    mathconcepts
+    codeconcepts
+    applications
+    capiref
+    pythonapiref
+    contributing
+    about
+    faqs
