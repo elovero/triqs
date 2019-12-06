@@ -7,6 +7,6 @@
     applications
     capiref
     pythonapiref
-    contributing
+    community
     about
     faqs

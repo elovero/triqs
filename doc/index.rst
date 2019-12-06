@@ -24,14 +24,15 @@ This duality is a real advantage in the development of new many-body tools. Crit
 _Include a small iconic code example below the fold on Home?_
 
 
-.. .. toctree::
+.. toctree::
+  :maxdepth: 2
 
-..    gettingstarted
-..    mainconcepts
-..    codeformulas
-..    applications
-..    capiref
-..    pythonapiref
-..    contributing
-..    about
-..    faqs
+  gettingstarted
+  mainconcepts
+  codeformulas
+  applications
+  capiref
+  pythonapiref
+  community
+  about
+  faqs

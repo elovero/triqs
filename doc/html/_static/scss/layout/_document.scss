@@ -16,7 +16,7 @@
   padding-right: $flexboxgrid-outer-margin;
   padding-left: $flexboxgrid-outer-margin;
   max-width: 1820px;
-  width: calc(100% - 300px);
+  width: calc(100% - (300px + $flexboxgrid-outer-margin));
 }
 
 .bodywrapper {
