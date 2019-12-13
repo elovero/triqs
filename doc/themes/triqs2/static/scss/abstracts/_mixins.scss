@@ -407,7 +407,8 @@
 $breakpointsArr: (
   "sm": 48em,
   "md": 62em,
-  "lg": 75em
+  "lg": 75em,
+  "xl": 150em
 ) !default;
 
 @mixin breakpoint($breakpointClass) {

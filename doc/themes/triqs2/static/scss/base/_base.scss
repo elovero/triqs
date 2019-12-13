@@ -15,15 +15,15 @@ body {
   font-family: $typographic-font-family;
   font-weight: $font_body_text_weight;
   font-style: $font_body_text_style;
-  font-size: 1.5rem;
-  line-height: 1.6;
+  font-size: 1.4rem;
+  line-height: 1.5;
   margin: 0;
   padding: 0;
   display: flex;
-  min-height: calc(100vh - 40px);
+  min-height: 100vh;
   flex-direction: column;
 
-  @include breakpoint("sm") {
+  @include breakpoint("xl") {
     font-size: 1.6rem;
   }
 }

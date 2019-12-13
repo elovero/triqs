@@ -1,20 +1,13 @@
 /* Sidebar
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 .sidebar {
-  position: fixed;
-  right: 0px;
-  top: 0;
-  width: 300px;
-  box-shadow: 1px 0 0 2px $color-gray-border;
   min-height: 100%;
   opacity: 1 !important;
-  background-color: $color-white;
+  background-color: $color-whiteish;
 }
 .sidebar-container {
-  margin-top: 100px;
   padding-right: 1rem;
   padding-left: 1rem;
-  overflow-y: auto;
 }
 .sidebar-header,
 .toctree-l1 {
@@ -56,13 +49,16 @@
 }
 
 .sidebar-row {
-  padding: 0 2rem;
+  padding: -10px 4rem 2rem 0rem;
 }
 
 .search-row {
   border-top: 1px solid $color-gray-border;
-  margin-top: 4rem;
-  padding-top: 4rem;
+
+  @include breakpoint("xl") {
+    margin-top: 4rem;
+    padding-top: 4rem;
+  }
 }
 
 .sidebar-ul {
