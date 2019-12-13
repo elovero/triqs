@@ -13,6 +13,7 @@
     <script type="text/javascript" src="../../../../../_static/doctools.js"></script>
     <script type="text/javascript" src="../../../../../_static/language_data.js"></script>
     <script type="text/javascript" src="../../../../../_static/triqs2.js"></script>
+    <script type="text/javascript" src="../../../../../_static/prism.js"></script>
     <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=default"></script>
     <link rel="shortcut icon" href="../../../../../_static/favicon.ico"/>
     <link rel="author" title="About these documents" href="../../../../../about.html" />
@@ -21,6 +22,7 @@
     <link rel="next" title="triqs::gfs::gf::mesh" href="mesh.html" />
     <link rel="prev" title="triqs::gfs::gf" href="../gf.html" />
 <link rel="stylesheet" href="https://use.typekit.net/hsv6sot.css" />
+<link href="/_static/prism.css" rel="stylesheet" />
 <script type="text/javascript">
   try {
     Typekit.load();
@@ -88,43 +90,50 @@
 <span id="id1"></span><h1>triqs::gfs::gf::constructor<a class="headerlink" href="#triqs-gfs-gf-constructor" title="Permalink to this headline">¶</a></h1>
 <p><em>#include &lt;triqs/gfs/gf.hpp&gt;</em></p>
 <p><strong>Synopsis</strong></p>
-<blockquote>
-<div><ol class="cppsynopsis arabic">
-<li><div class="line-block">
-<div class="line"><span class="red">gf</span> ()</div>
+<dl class="glossary simple">
+<dt id="term-environment">environment</dt><dd><p>A structure where information about all documents under the root is
+saved, and used for cross-referencing.  The environment is pickled
+after the parsing stage, so that successive runs only need to read
+and parse new and changed documents.</p>
+</dd>
+<dt id="term-source-directory">source directory</dt><dd><p>The directory which, including its subdirectories, contains all
+source files for one Sphinx project.</p>
+</dd>
+</dl>
+<div class="synop-block docutils container">
+<p><cite>gf</cite> ()</p>
 </div>
-</li>
-<li><div class="line-block">
-<div class="line"><span class="red">gf</span> (gf&lt;Var, Target&gt; const &amp; <span class="param">x</span>)</div>
+<div class="synop-block docutils container">
+<p><cite>gf</cite> (gf&lt;Var, Target&gt; const &amp; <cite>x</cite>)</p>
 </div>
-</li>
-<li><div class="line-block">
-<div class="line"><span class="red">gf</span> (gf&lt;Var, Target&gt; &amp;&amp; )</div>
+<div class="synop-block docutils container">
+<p><span class="xref std std-ref">gf</span> (gf&lt;Var, Target&gt; &amp;&amp; )</p>
 </div>
-</li>
-<li><div class="line-block">
-<div class="line"><span class="red">gf</span> (gf::mesh_t <span class="param">m</span>,</div>
-<div class="line-block">
-<div class="line">gf::target_shape_t <span class="param">shape</span>,</div>
-<div class="line">arrays::memory_layout_t&lt;arity + Target::rank&gt; const &amp; <span class="param">ml</span>,</div>
-<div class="line">gf::indices_t const &amp; <span class="param">ind</span> = indices_t{})</div>
+<div class="synop-block docutils container">
+<p><span class="xref std std-ref">gf</span> (gf::mesh_t <span class="param">m</span>,
+gf::target_shape_t <span class="param">shape</span>,
+arrays::memory_layout_t&lt;arity + Target::rank&gt; const &amp; <span class="param">ml</span>,
+gf::indices_t const &amp; <span class="param">ind</span> = indices_t{})</p>
 </div>
+<div class="synop-block docutils container">
+<p><span class="xref std std-ref">gf</span> (gf::mesh_t <span class="param">m</span>, gf::data_t <span class="param">dat</span>, gf::indices_t <span class="param">ind</span>)</p>
 </div>
-</li>
+<div class="synop-block docutils container">
+<ol class="arabic" start="6">
 <li><div class="line-block">
-<div class="line"><span class="red">gf</span> (gf::mesh_t <span class="param">m</span>, gf::data_t <span class="param">dat</span>, gf::indices_t <span class="param">ind</span>)</div>
-</div>
-</li>
-<li><div class="line-block">
-<div class="line"><span class="red">gf</span> (gf::mesh_t <span class="param">m</span>,</div>
+<div class="line"><span class="xref std std-ref">gf</span> (gf::mesh_t <span class="param">m</span>,</div>
 <div class="line-block">
 <div class="line">gf::target_shape_t <span class="param">shape</span> = target_shape_t{},</div>
 <div class="line">gf::indices_t const &amp; <span class="param">ind</span> = indices_t{})</div>
 </div>
 </div>
 </li>
+</ol>
+</div>
+<div class="synop-block docutils container">
+<ol class="arabic" start="7">
 <li><div class="line-block">
-<div class="line"><span class="red">gf</span> (gf::mesh_t <span class="param">m</span>,</div>
+<div class="line"><span class="xref std std-ref">gf</span> (gf::mesh_t <span class="param">m</span>,</div>
 <div class="line-block">
 <div class="line">gf::data_t <span class="param">dat</span>,</div>
 <div class="line">arrays::memory_layout_t&lt;arity + Target::rank&gt; const &amp; <span class="param">ml</span>,</div>
@@ -132,26 +141,42 @@
 </div>
 </div>
 </li>
-<li><div class="line-block">
-<div class="line"><span class="red">gf</span> (gf_view&lt;Var, Target&gt; const &amp; <span class="param">g</span>)</div>
+</ol>
 </div>
-</li>
+<div class="synop-block docutils container">
+<ol class="arabic" start="8">
 <li><div class="line-block">
-<div class="line"><span class="red">gf</span> (gf_const_view&lt;Var, Target&gt; const &amp; <span class="param">g</span>)</div>
-</div>
-</li>
-<li><div class="line-block">
-<div class="line"><span class="green">template&lt;typename G&gt;</span></div>
-<div class="line"><span class="red">gf</span> (G const &amp; <span class="param">g</span>)</div>
-</div>
-</li>
-<li><div class="line-block">
-<div class="line"><span class="green">template&lt;typename Tag&gt;</span></div>
-<div class="line"><span class="red">gf</span> (mpi_lazy&lt;Tag, gf_const_view&lt;Var, Target&gt; &gt; <span class="param">l</span>)</div>
+<div class="line"><span class="xref std std-ref">gf</span> (gf_view&lt;Var, Target&gt; const &amp; <span class="param">g</span>)</div>
 </div>
 </li>
 </ol>
-</div></blockquote>
+</div>
+<div class="synop-block docutils container">
+<ol class="arabic" start="9">
+<li><div class="line-block">
+<div class="line"><span class="xref std std-ref">gf</span> (gf_const_view&lt;Var, Target&gt; const &amp; <span class="param">g</span>)</div>
+</div>
+</li>
+</ol>
+</div>
+<div class="synop-block docutils container">
+<ol class="arabic" start="10">
+<li><div class="line-block">
+<div class="line"><span class="green">template&lt;typename G&gt;</span></div>
+<div class="line"><span class="xref std std-ref">gf</span> (G const &amp; <span class="param">g</span>)</div>
+</div>
+</li>
+</ol>
+</div>
+<div class="synop-block docutils container">
+<ol class="arabic" start="11">
+<li><div class="line-block">
+<div class="line"><span class="green">template&lt;typename Tag&gt;</span></div>
+<div class="line"><span class="xref std std-ref">gf</span> (mpi_lazy&lt;Tag, gf_const_view&lt;Var, Target&gt; &gt; <span class="param">l</span>)</div>
+</div>
+</li>
+</ol>
+</div>
 <p>Documentation</p>
 <blockquote>
 <div><p><strong>1)</strong>   Empty Green function (with empty array).</p>
@@ -182,7 +207,7 @@
 <li><p><span class="param">l</span> The lazy object</p></li>
 </ul>
 <blockquote>
-<div><p>NB : type must be the same, e.g. g2(reduce(g1)) will work only if mesh, Target, Singularity are the same…</p>
+<div><p>NB : type must be the same, e.g. g2(refuce(g1)) will work only if mesh, Target, Singularity are the same…</p>
 </div></blockquote>
 </div></blockquote>
 </div>

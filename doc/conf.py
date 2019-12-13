@@ -106,7 +106,7 @@ html_static_path = ['_static']
 # A list of JavaScript filename. The entry must be a filename string or a tuple
 # containing the filename string and the attributes dictionary. The filename
 # must be relative to the html_static_path, or a full URI.
-html_js_files = ['triqs2.js']
+html_js_files = ['triqs2.js', 'prism.js']
 
 # Custom sidebar templates, maps document names to template names.
 # EXAMPLE:

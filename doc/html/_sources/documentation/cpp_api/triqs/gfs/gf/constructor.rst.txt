@@ -2,7 +2,7 @@
    Generated automatically by cpp2rst
 
 .. highlight:: c
-.. role:: red
+.. role:: ref
 .. role:: green
 .. role:: param
 
@@ -18,43 +18,77 @@ triqs::gfs::gf::constructor
 
 **Synopsis**
 
- .. rst-class:: cppsynopsis
 
-    1. | :red:`gf` ()
+.. glossary::
 
-    2. | :red:`gf` (gf<Var, Target> const & :param:`x`)
+   environment
+      A structure where information about all documents under the root is
+      saved, and used for cross-referencing.  The environment is pickled
+      after the parsing stage, so that successive runs only need to read
+      and parse new and changed documents.
 
-    3. | :red:`gf` (gf<Var, Target> && )
+   source directory
+      The directory which, including its subdirectories, contains all
+      source files for one Sphinx project.
 
-    4. | :red:`gf` (gf::mesh_t :param:`m`,
-       |   gf::target_shape_t :param:`shape`,
-       |   arrays::memory_layout_t<arity + Target::rank> const & :param:`ml`,
-       |   gf::indices_t const & :param:`ind` = indices_t{})
 
-    5. | :red:`gf` (gf::mesh_t :param:`m`, gf::data_t :param:`dat`, gf::indices_t :param:`ind`)
+.. container:: synop-block
 
-    6. | :red:`gf` (gf::mesh_t :param:`m`,
+   `gf` ()
+
+.. container:: synop-block
+
+   `gf` (gf<Var, Target> const & `x`)
+
+.. container:: synop-block
+
+   :ref:`gf` (gf<Var, Target> && )
+
+.. container:: synop-block
+
+   :ref:`gf` (gf::mesh_t :param:`m`,
+   gf::target_shape_t :param:`shape`,
+   arrays::memory_layout_t<arity + Target::rank> const & :param:`ml`,
+   gf::indices_t const & :param:`ind` = indices_t{})
+
+.. container:: synop-block
+
+   :ref:`gf` (gf::mesh_t :param:`m`, gf::data_t :param:`dat`, gf::indices_t :param:`ind`)
+
+.. container:: synop-block
+
+    6. | :ref:`gf` (gf::mesh_t :param:`m`,
        |   gf::target_shape_t :param:`shape` = target_shape_t{},
        |   gf::indices_t const & :param:`ind` = indices_t{})
 
-    7. | :red:`gf` (gf::mesh_t :param:`m`,
+.. container:: synop-block
+
+    7. | :ref:`gf` (gf::mesh_t :param:`m`,
        |   gf::data_t :param:`dat`,
        |   arrays::memory_layout_t<arity + Target::rank> const & :param:`ml`,
        |   gf::indices_t :param:`ind`)
 
-    8. | :red:`gf` (gf_view<Var, Target> const & :param:`g`)
+.. container:: synop-block
 
-    9. | :red:`gf` (gf_const_view<Var, Target> const & :param:`g`)
+    8. | :ref:`gf` (gf_view<Var, Target> const & :param:`g`)
+
+.. container:: synop-block
+
+    9. | :ref:`gf` (gf_const_view<Var, Target> const & :param:`g`)
+
+.. container:: synop-block
 
     10. | :green:`template<typename G>`
-        | :red:`gf` (G const & :param:`g`)
+        | :ref:`gf` (G const & :param:`g`)
+
+.. container:: synop-block
 
     11. | :green:`template<typename Tag>`
-        | :red:`gf` (mpi_lazy<Tag, gf_const_view<Var, Target> > :param:`l`)
+        | :ref:`gf` (mpi_lazy<Tag, gf_const_view<Var, Target> > :param:`l`)
+
+
 
 Documentation
-
-
 
  **1)**   Empty Green function (with empty array).
 
@@ -103,7 +137,7 @@ Parameters
 
  * :param:`l` The lazy object
 
-  NB : type must be the same, e.g. g2(reduce(g1)) will work only if mesh, Target, Singularity are the same...
+  NB : type must be the same, e.g. g2(refuce(g1)) will work only if mesh, Target, Singularity are the same...
 
 
 Example
