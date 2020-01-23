@@ -376,8 +376,8 @@ p a {
 .container-fluid {
   margin-right: auto;
   margin-left: auto;
-  padding-right: 4rem;
-  padding-left: 4rem;
+  padding-right: 2rem;
+  padding-left: 2rem;
   max-width: 1820px;
 }
 
@@ -2658,25 +2658,26 @@ p a {
   }
 }
 .document {
-  margin-top: 80px;
-  margin-bottom: 80px;
+  margin: 80px auto;
+  width: 100%;
+  max-width: 1900px;
   display: flex;
   flex: 1;
 }
+
 @media only screen and (min-width: 48em) {
-  .document .section {
+  .section {
     padding-top: 10px;
   }
 }
-
 .sphinxsidebar {
   flex: 0 0 300px;
   min-width: 300px;
 }
 
 .documentwrapper {
-  padding-right: 4rem;
-  padding-left: 4rem;
+  padding-right: 2rem;
+  padding-left: 2rem;
   max-width: 1820px;
   width: 100%;
   flex: 1;
@@ -2717,6 +2718,11 @@ footer {
   max-width: 50rem;
   background: #292d33;
   color: #fff;
+}
+@media only screen and (min-width: 150em) {
+  .footer-description {
+    max-width: 100rem;
+  }
 }
 
 .footer-links {
@@ -2879,8 +2885,14 @@ li.footer-link > a:hover {
 }
 
 .sidebar-container {
-  padding-right: 1rem;
-  padding-left: 1rem;
+  padding-right: 2rem;
+  padding-left: calc(2rem / 2);
+}
+@media only screen and (min-width: 150em) {
+  .sidebar-container {
+    padding-right: 4rem;
+    padding-left: 2rem;
+  }
 }
 
 .sidebar-header,
@@ -3410,32 +3422,27 @@ dl {
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 /* Table
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
-th {
-  padding: 12px 15px;
-  text-align: left;
-  border-bottom: 1px solid #e1e1e1;
-}
-th:first-child {
-  padding-left: 0;
-}
-th:last-child {
-  padding-right: 0;
-}
-
-td {
-  padding: 12px 15px;
-  text-align: left;
-  border-bottom: 1px solid #e1e1e1;
-}
-td:first-child {
-  padding-left: 0;
-}
-td:last-child {
-  padding-right: 0;
-}
-
 table {
-  margin-bottom: 2.5rem;
+  table-layout: fixed;
+  border-collapse: collapse;
+  margin-bottom: 1.5em;
+  width: 100%;
+  background-color: #fbf9f8;
+}
+
+th,
+td {
+  border-bottom: 1px solid #ccc !important;
+  padding-bottom: 0.25em;
+  padding-top: 0.25em;
+  text-align: left;
+  vertical-align: top;
+}
+th a,
+td a {
+  color: #000;
+  text-decoration: none;
+  padding-bottom: 1px;
 }
 
 /* Home

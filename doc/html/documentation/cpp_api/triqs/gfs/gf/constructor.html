@@ -90,16 +90,6 @@
 <span id="id1"></span><h1>triqs::gfs::gf::constructor<a class="headerlink" href="#triqs-gfs-gf-constructor" title="Permalink to this headline">¶</a></h1>
 <p><em>#include &lt;triqs/gfs/gf.hpp&gt;</em></p>
 <p><strong>Synopsis</strong></p>
-<dl class="glossary simple">
-<dt id="term-environment">environment</dt><dd><p>A structure where information about all documents under the root is
-saved, and used for cross-referencing.  The environment is pickled
-after the parsing stage, so that successive runs only need to read
-and parse new and changed documents.</p>
-</dd>
-<dt id="term-source-directory">source directory</dt><dd><p>The directory which, including its subdirectories, contains all
-source files for one Sphinx project.</p>
-</dd>
-</dl>
 <div class="synop-block docutils container">
 <p><cite>gf</cite> ()</p>
 </div>
@@ -107,54 +97,39 @@ source files for one Sphinx project.</p>
 <p><cite>gf</cite> (gf&lt;Var, Target&gt; const &amp; <cite>x</cite>)</p>
 </div>
 <div class="synop-block docutils container">
-<p><span class="xref std std-ref">gf</span> (gf&lt;Var, Target&gt; &amp;&amp; )</p>
+<p><cite>gf</cite> (gf&lt;Var, Target&gt; &amp;&amp; )</p>
 </div>
 <div class="synop-block docutils container">
-<p><span class="xref std std-ref">gf</span> (gf::mesh_t <span class="param">m</span>,
-gf::target_shape_t <span class="param">shape</span>,
-arrays::memory_layout_t&lt;arity + Target::rank&gt; const &amp; <span class="param">ml</span>,
-gf::indices_t const &amp; <span class="param">ind</span> = indices_t{})</p>
+<dl class="simple">
+<dt><cite>gf</cite> (gf::mesh_t <cite>m</cite>,</dt><dd><p>gf::target_shape_t <cite>shape</cite>,
+arrays::memory_layout_t&lt;arity + Target::rank&gt; const &amp; <cite>ml</cite>,
+gf::indices_t const &amp; <cite>ind</cite> = indices_t{})</p>
+</dd>
+</dl>
 </div>
 <div class="synop-block docutils container">
-<p><span class="xref std std-ref">gf</span> (gf::mesh_t <span class="param">m</span>, gf::data_t <span class="param">dat</span>, gf::indices_t <span class="param">ind</span>)</p>
+<p><cite>gf</cite> (gf::mesh_t <cite>m</cite>, gf::data_t <cite>dat</cite>, gf::indices_t <cite>ind</cite>)</p>
 </div>
 <div class="synop-block docutils container">
-<ol class="arabic" start="6">
-<li><div class="line-block">
-<div class="line"><span class="xref std std-ref">gf</span> (gf::mesh_t <span class="param">m</span>,</div>
-<div class="line-block">
-<div class="line">gf::target_shape_t <span class="param">shape</span> = target_shape_t{},</div>
-<div class="line">gf::indices_t const &amp; <span class="param">ind</span> = indices_t{})</div>
-</div>
-</div>
-</li>
-</ol>
+<p><cite>gf</cite> (gf::mesh_t <cite>m</cite>,
+gf::target_shape_t <cite>shape</cite> = target_shape_t{},
+gf::indices_t const &amp; <cite>ind</cite> = indices_t{})</p>
 </div>
 <div class="synop-block docutils container">
-<ol class="arabic" start="7">
-<li><div class="line-block">
-<div class="line"><span class="xref std std-ref">gf</span> (gf::mesh_t <span class="param">m</span>,</div>
-<div class="line-block">
-<div class="line">gf::data_t <span class="param">dat</span>,</div>
-<div class="line">arrays::memory_layout_t&lt;arity + Target::rank&gt; const &amp; <span class="param">ml</span>,</div>
-<div class="line">gf::indices_t <span class="param">ind</span>)</div>
-</div>
-</div>
-</li>
-</ol>
+<dl class="simple">
+<dt><cite>gf</cite> (gf::mesh_t <cite>m</cite>,</dt><dd><p>gf::data_t <cite>dat</cite>,
+arrays::memory_layout_t&lt;arity + Target::rank&gt; const &amp; <cite>ml</cite>,
+gf::indices_t <cite>ind</cite>)</p>
+</dd>
+</dl>
 </div>
 <div class="synop-block docutils container">
-<ol class="arabic" start="8">
-<li><div class="line-block">
-<div class="line"><span class="xref std std-ref">gf</span> (gf_view&lt;Var, Target&gt; const &amp; <span class="param">g</span>)</div>
-</div>
-</li>
-</ol>
+<p><cite>gf</cite> (<span class="xref std std-ref">gf_view</span> &lt;Var, Target&gt; const &amp; <cite>g</cite>)</p>
 </div>
 <div class="synop-block docutils container">
 <ol class="arabic" start="9">
 <li><div class="line-block">
-<div class="line"><span class="xref std std-ref">gf</span> (gf_const_view&lt;Var, Target&gt; const &amp; <span class="param">g</span>)</div>
+<div class="line"><span class="xref std std-ref">gf</span> (gf_const_view&lt;Var, Target&gt; const &amp; <cite>g</cite>)</div>
 </div>
 </li>
 </ol>
@@ -163,7 +138,7 @@ gf::indices_t const &amp; <span class="param">ind</span> = indices_t{})</p>
 <ol class="arabic" start="10">
 <li><div class="line-block">
 <div class="line"><span class="green">template&lt;typename G&gt;</span></div>
-<div class="line"><span class="xref std std-ref">gf</span> (G const &amp; <span class="param">g</span>)</div>
+<div class="line"><span class="xref std std-ref">gf</span> (G const &amp; <cite>g</cite>)</div>
 </div>
 </li>
 </ol>
@@ -172,7 +147,7 @@ gf::indices_t const &amp; <span class="param">ind</span> = indices_t{})</p>
 <ol class="arabic" start="11">
 <li><div class="line-block">
 <div class="line"><span class="green">template&lt;typename Tag&gt;</span></div>
-<div class="line"><span class="xref std std-ref">gf</span> (mpi_lazy&lt;Tag, gf_const_view&lt;Var, Target&gt; &gt; <span class="param">l</span>)</div>
+<div class="line"><span class="xref std std-ref">gf</span> (mpi_lazy&lt;Tag, gf_const_view&lt;Var, Target&gt; &gt; <cite>l</cite>)</div>
 </div>
 </li>
 </ol>
@@ -311,7 +286,7 @@ gf::indices_t const &amp; <span class="param">ind</span> = indices_t{})</p>
               <a exact="true" href="/contact">Contact</a>
             </li>
           </ul>
-          <p class="updated">Updated on November 20, 2019 (2:20pm)</p>
+          <p class="updated">Updated on January 20, 2020 (2:20pm)</p>
         </div>
       </div>
     </div>

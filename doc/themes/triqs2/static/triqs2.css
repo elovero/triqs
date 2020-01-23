@@ -2719,6 +2719,11 @@ footer {
   background: #292d33;
   color: #fff;
 }
+@media only screen and (min-width: 150em) {
+  .footer-description {
+    max-width: 100rem;
+  }
+}
 
 .footer-links {
   display: flex;
@@ -3417,32 +3422,27 @@ dl {
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 /* Table
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
-th {
-  padding: 12px 15px;
-  text-align: left;
-  border-bottom: 1px solid #e1e1e1;
-}
-th:first-child {
-  padding-left: 0;
-}
-th:last-child {
-  padding-right: 0;
-}
-
-td {
-  padding: 12px 15px;
-  text-align: left;
-  border-bottom: 1px solid #e1e1e1;
-}
-td:first-child {
-  padding-left: 0;
-}
-td:last-child {
-  padding-right: 0;
-}
-
 table {
-  margin-bottom: 2.5rem;
+  table-layout: fixed;
+  border-collapse: collapse;
+  margin-bottom: 1.5em;
+  width: 100%;
+  background-color: #fbf9f8;
+}
+
+th,
+td {
+  border-bottom: 1px solid #ccc !important;
+  padding-bottom: 0.25em;
+  padding-top: 0.25em;
+  text-align: left;
+  vertical-align: top;
+}
+th a,
+td a {
+  color: #000;
+  text-decoration: none;
+  padding-bottom: 1px;
 }
 
 /* Home

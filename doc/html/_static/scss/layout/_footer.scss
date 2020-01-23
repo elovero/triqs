@@ -25,6 +25,10 @@ footer {
   max-width: 50rem;
   background: $color-blackish;
   color: $color-white;
+
+  @include breakpoint("xl") {
+    max-width: 100rem;
+  }
 }
 
 .footer-links {

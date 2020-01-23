@@ -1,15 +1,15 @@
 .document {
-  margin-top: 80px;
-  margin-bottom: 80px;
-  // min-height: calc(100vh - 220px);
-
-  @include breakpoint("sm") {
-    .section {
-      padding-top: 10px;
-    }
-  }
+  margin: 80px auto;
+  width: 100%;
+  max-width: 1900px;
   display: flex;
   flex: 1;
+}
+
+@include breakpoint("sm") {
+  .section {
+    padding-top: 10px;
+  }
 }
 
 .sphinxsidebar {
@@ -18,8 +18,8 @@
 }
 
 .documentwrapper {
-  padding-right: $flexboxgrid-outer-margin;
-  padding-left: $flexboxgrid-outer-margin;
+  padding-right: 2rem;
+  padding-left: 2rem;
   max-width: 1820px;
   width: 100%;
   flex: 1;

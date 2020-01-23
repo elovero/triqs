@@ -6,7 +6,6 @@ $flexboxgrid-grid-columns: 12 !default;
 // Set the gutter between columns.
 $flexboxgrid-gutter-width: 1rem !default;
 // Set a margin for the container sides.
-$flexboxgrid-outer-margin: 4rem !default;
 // Create or remove breakpoints for your project
 // Syntax:
 // name SIZErem,
@@ -25,8 +24,8 @@ $half-gutter-width: $flexboxgrid-gutter-width * 0.5;
 .container-fluid {
   margin-right: auto;
   margin-left: auto;
-  padding-right: $flexboxgrid-outer-margin;
-  padding-left: $flexboxgrid-outer-margin;
+  padding-right: 2rem;
+  padding-left: 2rem;
   max-width: 1820px;
 }
 

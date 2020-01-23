@@ -1,27 +1,51 @@
 /* Table
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
-th {
-  padding: 12px 15px;
-  text-align: left;
-  border-bottom: 1px solid #e1e1e1;
-  &:first-child {
-    padding-left: 0;
-  }
-  &:last-child {
-    padding-right: 0;
-  }
-}
-td {
-  padding: 12px 15px;
-  text-align: left;
-  border-bottom: 1px solid #e1e1e1;
-  &:first-child {
-    padding-left: 0;
-  }
-  &:last-child {
-    padding-right: 0;
-  }
-}
 table {
-  margin-bottom: 2.5rem;
+  table-layout: fixed;
+  border-collapse: collapse;
+  margin-bottom: 1.5em;
+  width: 100%;
+  background-color: $color-whiteish;
 }
+
+th,
+td {
+  border-bottom: 1px solid #ccc !important;
+  padding-bottom: 0.25em;
+  padding-top: 0.25em;
+  text-align: left;
+  vertical-align: top;
+
+  a {
+    color: #000;
+    text-decoration: none;
+    padding-bottom: 1px;
+  }
+}
+
+// th {
+//   padding: 12px 15px;
+//   text-align: left;
+//   border-bottom: 1px solid #e1e1e1;
+//   &:first-child {
+//     padding-left: 0;
+//   }
+//   &:last-child {
+//     padding-right: 0;
+//   }
+// }
+// td {
+//   padding: 12px 15px;
+//   text-align: left;
+//   border-bottom: 1px solid #e1e1e1;
+//   &:first-child {
+//     padding-left: 0;
+//   }
+//   &:last-child {
+//     padding-right: 0;
+//   }
+// }
+// table {
+//   margin-bottom: 2.5rem;
+//   background-color: pink;
+// }

@@ -13,6 +13,7 @@ function addPrismToCode() {
   });
 }
 $(document).ready(function() {
-  // Once the DOM is loaded for the page, attach code elements with prism tags
+  // Once the DOM is loaded for the page, find all the tags
+  // Now attach code elements with prism tags
   addPrismToCode();
 });

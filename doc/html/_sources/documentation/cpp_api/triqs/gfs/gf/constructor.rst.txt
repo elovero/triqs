@@ -19,19 +19,6 @@ triqs::gfs::gf::constructor
 **Synopsis**
 
 
-.. glossary::
-
-   environment
-      A structure where information about all documents under the root is
-      saved, and used for cross-referencing.  The environment is pickled
-      after the parsing stage, so that successive runs only need to read
-      and parse new and changed documents.
-
-   source directory
-      The directory which, including its subdirectories, contains all
-      source files for one Sphinx project.
-
-
 .. container:: synop-block
 
    `gf` ()
@@ -42,49 +29,49 @@ triqs::gfs::gf::constructor
 
 .. container:: synop-block
 
-   :ref:`gf` (gf<Var, Target> && )
+   `gf` (gf<Var, Target> && )
 
 .. container:: synop-block
 
-   :ref:`gf` (gf::mesh_t :param:`m`,
-   gf::target_shape_t :param:`shape`,
-   arrays::memory_layout_t<arity + Target::rank> const & :param:`ml`,
-   gf::indices_t const & :param:`ind` = indices_t{})
+  `gf` (gf::mesh_t `m`,
+   gf::target_shape_t `shape`,
+   arrays::memory_layout_t<arity + Target::rank> const & `ml`,
+   gf::indices_t const & `ind` = indices_t{})
 
 .. container:: synop-block
 
-   :ref:`gf` (gf::mesh_t :param:`m`, gf::data_t :param:`dat`, gf::indices_t :param:`ind`)
+   `gf` (gf::mesh_t `m`, gf::data_t `dat`, gf::indices_t `ind`)
 
 .. container:: synop-block
 
-    6. | :ref:`gf` (gf::mesh_t :param:`m`,
-       |   gf::target_shape_t :param:`shape` = target_shape_t{},
-       |   gf::indices_t const & :param:`ind` = indices_t{})
+   `gf` (gf::mesh_t `m`,
+   gf::target_shape_t `shape` = target_shape_t{},
+   gf::indices_t const & `ind` = indices_t{})
 
 .. container:: synop-block
 
-    7. | :ref:`gf` (gf::mesh_t :param:`m`,
-       |   gf::data_t :param:`dat`,
-       |   arrays::memory_layout_t<arity + Target::rank> const & :param:`ml`,
-       |   gf::indices_t :param:`ind`)
+   `gf` (gf::mesh_t `m`,
+    gf::data_t `dat`,
+    arrays::memory_layout_t<arity + Target::rank> const & `ml`,
+    gf::indices_t `ind`)
 
 .. container:: synop-block
 
-    8. | :ref:`gf` (gf_view<Var, Target> const & :param:`g`)
+   `gf` (:ref:`gf_view<triqs_gfs__gf_view>` <Var, Target> const & `g`)
 
 .. container:: synop-block
 
-    9. | :ref:`gf` (gf_const_view<Var, Target> const & :param:`g`)
+    9. | :ref:`gf` (gf_const_view<Var, Target> const & `g`)
 
 .. container:: synop-block
 
     10. | :green:`template<typename G>`
-        | :ref:`gf` (G const & :param:`g`)
+        | :ref:`gf` (G const & `g`)
 
 .. container:: synop-block
 
     11. | :green:`template<typename Tag>`
-        | :ref:`gf` (mpi_lazy<Tag, gf_const_view<Var, Target> > :param:`l`)
+        | :ref:`gf` (mpi_lazy<Tag, gf_const_view<Var, Target> > `l`)
 
 
 
