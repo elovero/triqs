@@ -96,7 +96,6 @@ var _ = {
 		 * @returns {string}
 		 */
 		getLanguage: function (element) {
-            console.log("getLanguage 😺", element);
 			while (element && !lang.test(element.className)) {
 				element = element.parentElement;
 			}

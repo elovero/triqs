@@ -9,7 +9,7 @@ function addPrismToCode() {
   window.Prism.manual = false;
 
   Prism.highlightAll(false, function() {
-    console.log("AUTO LOADED PRISM 🍕");
+    console.log("AUTO LOADED PRISM 🍕🍕");
   });
 }
 $(document).ready(function() {

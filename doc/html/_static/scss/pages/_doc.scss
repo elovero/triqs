@@ -1,0 +1,28 @@
+/* Doc
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+.compact > * {
+  line-height: 1.1;
+  margin-bottom: 1rem;
+}
+
+.compact > h1 {
+  font-size: 200%;
+  line-height: 2;
+}
+
+.cppsynopsis {
+  background: #2d2d2d;
+  color: #ccc;
+  font-family: Consolas, Monaco, "Andale Mono", "Ubuntu Mono", monospace;
+  font-size: 1em;
+  text-align: left;
+  white-space: pre;
+  word-spacing: normal;
+  word-break: normal;
+  word-wrap: normal;
+  line-height: 1.5;
+}
+
+.cpp-class {
+  color: #cc99cd;
+}

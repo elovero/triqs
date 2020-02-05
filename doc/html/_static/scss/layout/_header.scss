@@ -12,23 +12,37 @@
   font-style: $font_navigation_style;
   background-color: $color-white;
   border-top: 1px solid $color-secondary;
+  border-bottom: 1px solid #e3e3e3;
+  transition: all 0.25s cubic-bezier(0.785, 0.135, 0.15, 0.86);
+  height: 55px;
 }
-// linear-gradient(90deg, #a16eff 0%, #3dcebb 100%)
 
 .header-content {
-  padding-left: 20px;
-  padding-right: 20px;
+  padding-left: $spacing-large;
+  padding-right: $spacing-large;
+  padding-top: $spacing-small;
+  padding-bottom: $spacing-small;
   margin-right: auto;
   margin-left: auto;
   font-size: 0.8rem;
   text-transform: uppercase;
 
+  // "sm": 48em,
+  // "md": 62em,
+  // "lg": 75em,
+  // "xl": 150em
+
   @include breakpoint("md") {
     font-size: 1.2rem;
+    max-width: 1216px;
   }
 
   @include breakpoint("lg") {
-    max-width: 1820px;
+    max-width: 1616px;
+  }
+
+  @include breakpoint("xl") {
+    max-width: 1900px;
   }
 }
 
@@ -38,14 +52,15 @@
   align-items: center;
 
   @include breakpoint("sm") {
-    flex-direction: row;
+    display: flex;
     justify-content: space-between;
-    align-items: baseline;
+    align-items: center;
+    flex-direction: row;
   }
 }
 
 .header-subrow {
-  flex-direction: column;
+  flex-direction: row;
   justify-content: center;
   align-items: center;
 
@@ -54,10 +69,6 @@
     align-items: baseline;
     justify-content: flex-end;
   }
-}
-
-.nav-item {
-  padding: 1rem;
 }
 
 .nav-logo {
@@ -71,9 +82,22 @@
 .nav-link {
   color: $color-base;
   font-weight: 700;
-  padding: 1rem;
+  padding: 1rem 1rem 0 1rem;
+  font-size: 1.3rem;
+  line-height: 1.08em;
+  letter-spacing: 0.05em;
 
   &:hover {
     color: $color-secondary;
   }
+}
+
+.nav-logo-link {
+  padding: 0 !important;
+}
+
+.nav-logo-img {
+  height: 26px;
+  padding-top: calc(#{$spacing-small} * 0.75);
+  padding-bottom: calc(#{$spacing-small} * 0.75);
 }
