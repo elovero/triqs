@@ -1,3 +1,4 @@
 documentation/cpp_api
 *.output
 .vscode
+/html/*
