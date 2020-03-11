@@ -1,4 +1,4 @@
-.. index:: main_concepts
+.. _mainconcepts:
 
 Main Concepts
 =============

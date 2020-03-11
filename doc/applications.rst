@@ -1,6 +1,6 @@
 .. _applications:
 
-**Applications based on TRIQS**
+**Applications**
 ===============================
 
 The TRIQS collaboration not only works at the elaboration of libraries to

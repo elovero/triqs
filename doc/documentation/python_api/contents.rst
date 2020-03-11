@@ -6,3 +6,6 @@
    pytriqs
    pytriqs/gf/Gf
    pytriqs/utility/dichotomy
+
+Python API
+===============================

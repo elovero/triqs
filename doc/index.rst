@@ -32,13 +32,14 @@ techniques.
 TRIQS is free software distributed under the GPL license.
 
 .. toctree::
-   :maxdepth: 1
+   :maxdepth: 2
 
-    getting_started
-    main_concepts
-    applications
-    documentation/cpp_api
-    documentation/python_api
+   gettingstarted
+   mainconcepts
+   applications
+   documentation/cpp_api/cppapi
+   documentation/python_api/pythonapi
+   contributing
 
 .. TRIQS applications
 .. -----------------------

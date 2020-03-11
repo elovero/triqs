@@ -9,3 +9,6 @@
     triqs/statistics
     mpi
     itertools
+
+C++ API
+===============================

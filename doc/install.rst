@@ -31,8 +31,8 @@ To this end, we propose two options to the user:
    This will guarantee that you are using the latest stable release including essential
    bug-fixes. Note that new releases might occasionally include changes of the API, which
    we summarize in a set of release notes.
-   We use continuous integration to ensure that the master branch always compiles and 
-   passes all tests. This is checked for both the TRIQS library and several public 
+   We use continuous integration to ensure that the master branch always compiles and
+   passes all tests. This is checked for both the TRIQS library and several public
    (and private) applications.
 
 #. You use a version tag, e.g. version 2.0, for TRIQS and all applications.

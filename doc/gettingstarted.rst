@@ -1,4 +1,4 @@
-.. index:: getting_started
+.. _gettingstarted:
 
 .. highlight:: bash
 
@@ -142,7 +142,7 @@ Further reading
 ################
 
 .. toctree::
-   :maxdepth: 1
+   :maxdepth: 2
 
    installation/install_options
    installation/environment_vars
