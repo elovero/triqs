@@ -1,0 +1,115 @@
+/* Typography
+  –––––––––––––––––––––––––––––––––––––––––––––––––– */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: $font-weight-normal;
+  line-height: 1.4;
+  margin-top: 0;
+  margin-bottom: $spacing-medium;
+}
+
+// Headline - h1
+h1 {
+  font-family: $typographic-font-family;
+  letter-spacing: -0.1rem;
+  color: darken($color-primary, 10%);
+  @include breakpoint("xl") {
+    font-size: 3.2rem;
+  }
+}
+
+// Body text header - h2
+h2 {
+  font-family: $typographic-font-family;
+  letter-spacing: -0.1rem;
+  border-bottom: 1px solid $color-gray-border;
+
+  @include breakpoint("xl") {
+    font-size: 2.4rem;
+  }
+}
+
+// Summary - h3
+h3 {
+  font-family: $typographic-font-family;
+  letter-spacing: -0.1rem;
+
+  @include breakpoint("xl") {
+    font-size: 1.9rem;
+  }
+}
+// Byline - h4
+h4 {
+  font-family: $typographic-font-family;
+  letter-spacing: -0.08rem;
+  text-transform: uppercase;
+
+  @include breakpoint("xl") {
+    font-size: 1.6rem;
+  }
+}
+
+h5 {
+  letter-spacing: -0.05rem;
+
+  @include breakpoint("xl") {
+    font-size: 1.4rem;
+  }
+}
+
+h6 {
+  font-size: 1.4rem;
+  line-height: 1.6;
+  letter-spacing: 0;
+
+  @include breakpoint("xl") {
+    font-size: 1.3rem;
+  }
+}
+
+:focus {
+  outline-color: $color-transparent;
+  outline-style: none;
+}
+
+p {
+  margin-top: $spacing-extra-small;
+  font-family: $serif-font-family;
+  font-weight: $font_body_text_weight;
+  font-style: $font_body_text_style;
+  margin-bottom: $spacing-medium;
+}
+
+td > p {
+  font-family: $typographic-font-family;
+  margin: 0.5rem 0;
+}
+
+/* Links
+    –––––––––––––––––––––––––––––––––––––––––––––––––– */
+
+a {
+  text-decoration: none;
+  color: $color-primary;
+  padding: 0 0 0.2em;
+  font-weight: 500;
+  text-decoration: none;
+  border-bottom: none;
+
+  &:hover {
+    color: $color-secondary;
+  }
+}
+
+p a {
+  border-bottom: 1px solid $color-primary;
+}
+
+.headerlink {
+  display: none;
+}

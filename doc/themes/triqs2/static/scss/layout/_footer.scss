@@ -1,0 +1,57 @@
+/* Footer
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+footer {
+  background-color: $color-blackish;
+  color: $color-white;
+  padding: 2.5rem 0;
+  border-top: 0.05rem solid #e5e5e5;
+  z-index: 10;
+}
+
+.footer > p.updated {
+  color: $color-base;
+  background-color: $color-whiteish;
+}
+
+.footer p:last-child {
+  margin-bottom: 0;
+}
+
+.footer-description {
+  line-height: 1.5;
+  text-align: center;
+  padding: 0 1rem;
+  margin: 2rem auto;
+  max-width: 50rem;
+  background: $color-blackish;
+  color: $color-white;
+  font-family: $typographic-font-family;
+
+  @include breakpoint("xl") {
+    max-width: 100rem;
+  }
+}
+
+.footer-links {
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
+  flex-wrap: wrap;
+}
+
+.footer-link {
+  margin: 0.25rem 0.5rem;
+  list-style-type: none;
+  font-size: 1.5rem;
+  line-height: 1.5;
+}
+
+li.footer-link > a {
+  text-decoration: none;
+  border-bottom: 1px solid $color-primary;
+  color: $color-white;
+
+  &:hover {
+    color: $color-secondary;
+  }
+}

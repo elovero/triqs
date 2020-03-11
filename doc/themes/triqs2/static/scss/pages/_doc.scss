@@ -1,0 +1,61 @@
+/* Doc
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+
+$syntax_normal: #1b1e23;
+$syntax_comment: #828282;
+$syntax_diff: #24292e;
+$syntax_diff_bg: #fbfbfb;
+
+$syntax_number: #20a5ba;
+$syntax_keyword: #c30771;
+$syntax_atom: #10a778;
+$syntax_string: #008ec4;
+$syntax_error: #ffbedc;
+$syntax_unknown_variable: #838383;
+$syntax_known_variable: #005f87;
+$syntax_matchbracket: #20bbfc;
+$syntax_key: #6636b4;
+$selection: #d7d4f0;
+$hr: rgba(0, 0, 0, 0.05);
+
+.compact > * {
+  line-height: 1.1;
+  margin-bottom: 1rem;
+}
+
+.compact > h1 {
+  font-size: 200%;
+  line-height: 2;
+}
+
+.cppsynopsis {
+  // background: $syntax_diff_bg;
+  // color: $syntax_normal;
+  // font-family: source-code-pro, Consolas, Monaco, "Andale Mono", "Ubuntu Mono",
+  //   monospace;
+  // font-weight: 400;
+  // font-size: 1.3rem;
+  // text-align: left;
+  // white-space: pre;
+  // word-spacing: normal;
+  // word-break: normal;
+  // word-wrap: normal;
+  // line-height: 1.2;
+  // padding: $spacing-extra-small $spacing-small;
+}
+
+// function name
+.red {
+  color: $syntax_keyword;
+}
+
+// params
+.blue,
+.param {
+  color: $syntax_string;
+}
+
+// Template and params
+.green {
+  color: $syntax_key;
+}

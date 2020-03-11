@@ -1,0 +1,75 @@
+/* Variables
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+$typographic-font-family: "proxima-nova", -apple-system, BlinkMacSystemFont,
+  "avenir next", avenir, helvetica, "helvetica neue", ubuntu, roboto, noto,
+  "segoe ui", arial, sans-serif;
+$mono-fonts: 14px/1.5 Menlo, Consolas, monospace;
+$serif-font-family: "Source Serif Pro", Iowan Old Style, Apple Garamond,
+  Palatino Linotype, Times New Roman, "Droid Serif", Times, serif,
+  Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol;
+
+$font-weight-normal: 500;
+$font-weight-light: 400;
+$font-weight-heavy: 900;
+$font-style-normal: normal;
+
+$color-base: #3e4349;
+$color-primary: #56478f;
+$color-secondary: #a18dcc;
+$color-tertiary: #a16eff;
+$color-quad: #5762d5;
+$color-white: #fff;
+$color-whiteish: #fbf9f8;
+$color-gray: lighten($color-base, 40%);
+$color-gray-border: lighten($color-base, 60%);
+$color-gray-bg: lighten($color-base, 79%);
+$color-blackish: #292d33;
+$color-transparent: transparent;
+
+$spacing-extra-small: 4px;
+$spacing-small: 8px;
+$spacing-medium: 16px;
+$spacing-large: 32px;
+$spacing-extra-large: 64px;
+$spacing-extra-extra-large: 128px;
+
+// Observable Fonts
+// $triqs-navy: #353e58;
+// $triqs-blue-dark: #4b5992;
+// $triqs-pink-dark: #c65d7b;
+// $triqs-yellow-dark: #d39817;
+// $triqs-blue: #5061a6;
+// $triqs-pink: #ca6c87;
+// $triqs-yellow: #edcf6d;
+// $triqs-blue-light: #596ab0;
+// $triqs-pink-light: #e7c0cb;
+// $triqs-yellow-light: #ebc855;
+// $triqs-blue-lightest: #d8dcea;
+// $triqs-pink-lightest: #f3dae1;
+// $triqs-yellow-lightest: #f6edcc;
+
+// Old variables for style
+// Logo - .nav-logo
+$font_logo_weight: 500;
+$font_logo_style: normal;
+// Navigation - .header
+$font_navigation_weight: 500;
+$font_navigation_style: normal;
+// Headline - h1
+$font_headline_weight: 500;
+$font_headline_style: normal;
+// Body text header - h2
+$font_body_text_header_weight: 500;
+$font_body_text_header_style: normal;
+// Summary - h3
+$font_summary_weight: 500;
+$font_summary_style: normal;
+// Byline - h4
+$font_byline_weight: 500;
+$font_byline_style: normal;
+// Body text
+$font_body_text_weight: 400;
+$font_body_text_style: normal;
+// Button
+$font_button_weight: 900;
+$font_button_style: normal;

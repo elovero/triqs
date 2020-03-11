@@ -1,0 +1,52 @@
+/* List
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+ul {
+  list-style: none;
+  padding-left: 0;
+  margin-top: 0;
+  margin-bottom: 2.5rem;
+  ul {
+    margin: 0 0 3rem 1.5rem;
+    font-size: 90%;
+  }
+  ol {
+    margin: 1.5rem 0 1.5rem 3rem;
+    font-size: 90%;
+  }
+}
+ol {
+  // list-style: decimal inside;
+  list-style: none;
+  counter-reset: my-awesome-counter;
+  padding-left: 0;
+  margin-top: 0;
+  margin-bottom: 2.5rem;
+  ol {
+    margin: 1.5rem 0 1.5rem 3rem;
+    font-size: 90%;
+  }
+  ul {
+    margin: 1.5rem 0 1.5rem 3rem;
+    font-size: 90%;
+  }
+  li {
+    margin-bottom: 1rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: baseline;
+    counter-increment: my-awesome-counter;
+  }
+  ol li::before {
+    content: counter(my-awesome-counter) ". ";
+    color: red;
+    font-weight: bold;
+  }
+}
+
+blockquote {
+  margin-bottom: 2.5rem;
+}
+dl {
+  margin-bottom: 2.5rem;
+}

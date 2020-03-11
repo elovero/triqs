@@ -1,0 +1,109 @@
+{# layout.html ~~~~~~~~~~~ TRIQS2 layout template. :copyright: Copyright 2019,
+Elizabeth Lovero for the TRIQS team.#} {%-extends "basic/layout.html" %} {%
+block extrahead %}
+<link rel="stylesheet" href="https://use.typekit.net/hsv6sot.css" />
+<link href="/_static/prism.css" rel="stylesheet" />
+<script type="text/javascript">
+  try {
+    Typekit.load();
+  } catch (e) {}
+</script>
+{% endblock %} {%- block body_tag %}
+<body>
+  {% endblock %} {% block header %}
+  <header class="header">
+    <nav class="header-content">
+      <div class="row header-row">
+        <div class="col-xs-2 logo-col">
+          <div class="row start-xs">
+            <div class="nav-item">
+              <a class="nav-link nav-logo-link" href="/">
+                <img class="nav-logo-img" src="/_static/triqs_rgb.svg" />
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="col-xs-6">
+          <div class="row">
+            <div class="nav-item">
+              <a class="nav-link" href="/documentation.html">Docs</a>
+            </div>
+            <div class="nav-item">
+              <a class="nav-link" href="/tutorials.html">Tutorials</a>
+            </div>
+            <div class="nav-item">
+              <a class="nav-link" href="/applications.html">Applications</a>
+            </div>
+            <div class="nav-item">
+              <a class="nav-link" href="/community.html">Community</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-xs-4">
+          <div class="row end-xs">
+            <div class="nav-item">
+              <a class="nav-link" href="/about.html">About</a>
+            </div>
+            <div class="nav-item">
+              <a
+                class="nav-link"
+                target="_blank"
+                rel="noopener noreferrer"
+                href="https://github.com/TRIQS/triqs"
+                >Github</a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </header>
+  {% endblock %} {% block relbar1 %}{% endblock %} {%- block relbar2 %}{%
+  endblock %} {% block footer %}
+  <footer>
+    <div class="container-fluid">
+      <div class="row footer">
+        <div class="col-xs-12 center-xs middle-xs">
+          <div class="outro">
+            <p class="footer-description">
+              TRIQS (Toolbox for Research on Interacting Quantum Systems) is a
+              scientific project providing a set of C++ and Python libraries to
+              develop new tools for the study of interacting quantum systems
+              based at the Center for Computational Quantum Physics at the
+              Flatiron Institute.
+            </p>
+          </div>
+          <ul class="footer-links">
+            <li class="footer-link">
+              <a exact="true" href="/about.html">About</a>
+            </li>
+            <li class="footer-link">
+              <a
+                target="_blank"
+                rel="noopener noreferrer"
+                href="https://simonsfoundation.org"
+                >Simons Foundation</a
+              >
+            </li>
+            <li class="footer-link">
+              <a
+                target="_blank"
+                rel="noopener noreferrer"
+                href="https://flatironinstitute.org"
+                >Flatiron Institute</a
+              >
+            </li>
+            <li class="footer-link"><a exact="true" href="/">Github</a></li>
+            <li class="footer-link">
+              <a exact="true" href="/contact">Contact</a>
+            </li>
+          </ul>
+          <p class="updated">Updated on January 20, 2020 (2:20pm)</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+  {% endblock %}
+  <!-- <script type="text/javascript" src="/_static/triqs2.js"></script>
+  <script type="text/javascript" src="/_static/prism.js"></script> -->
+</body>
